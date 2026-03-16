@@ -80,7 +80,7 @@
       <canvas id="frameCanvas"></canvas>
       <div class="hero-content" id="heroContent">
 
-        <h1 class="hero-title animate-on-load" data-delay="1" style="margin-bottom: 2rem; white-space: nowrap; font-size: min(4.5vw, 4rem);">
+        <h1 class="hero-title animate-on-load" data-delay="1">
           Építünk. Automatizálunk. <span class="gradient-text">Növelünk.</span>
         </h1>
         <a href="#cta" class="cta-button animate-on-load" data-delay="4">
@@ -344,18 +344,18 @@
       var f = frames[0];
       if (!f) return;
       var iw = f.width || 1920, ih = f.height || 1080;
-      var imgRatio = iw / ih, canvasRatio = cw / ch;
+      var imgRatio = iw / ih;
       var dw, dh, dx, dy;
-      if (window.innerWidth > 768) {
-        if (canvasRatio > imgRatio) { dw = cw; dh = cw / imgRatio; }
-        else { dh = ch; dw = ch * imgRatio; }
-      } else {
-        var zoom = 1.2;
-        if (canvasRatio > imgRatio) { dh = ch * zoom; dw = dh * imgRatio; }
-        else { dw = cw * zoom; dh = dw / imgRatio; }
-      }
+      // Always cover the canvas (like object-fit: cover)
+      dh = ch;
+      dw = ch * imgRatio;
+      if (dw < cw) { dw = cw; dh = cw / imgRatio; }
       dx = (cw - dw) / 2;
       dy = (ch - dh) / 2;
+      // On mobile portrait, shift up slightly so the subject is more centered
+      if (window.innerWidth <= 768) {
+        dy = dy * 0.4;
+      }
       drawDims = { dx: dx, dy: dy, dw: dw, dh: dh };
     }
 

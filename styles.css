@@ -653,6 +653,7 @@ img {
   position: relative;
   z-index: 1;
   padding: 7rem 0;
+  background: #ffffff;
 }
 
 .section::before {
@@ -698,6 +699,14 @@ img {
   color: #143642;
   text-align: center;
   margin-bottom: 3.5rem;
+}
+
+/* ===== SERVICES SECTION (sticky stack behind showcase) ===== */
+.services-section {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #ffffff;
 }
 
 /* ===== SERVICES CARDS (Bento Grid) ===== */
@@ -885,6 +894,10 @@ img {
 /* ===== STATS ===== */
 .stats-section {
   padding: 5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #ffffff;
 }
 
 .stats-panel {
@@ -941,6 +954,10 @@ img {
 /* ===== CTA SECTION ===== */
 .cta-section {
   padding: 5rem 0 7rem;
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  box-shadow: 0 -40px 80px rgba(0, 0, 0, 0.04);
 }
 
 .cta-panel {
@@ -1098,7 +1115,15 @@ img {
   position: relative;
   z-index: 2;
   margin-top: 65vh;
+  text-align: center;
+  padding: 0 1.5rem;
   transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.hero-scroll .hero-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+  white-space: nowrap;
 }
 
 /* ===== LOADER PROGRESS BAR ===== */
@@ -1762,7 +1787,17 @@ img {
   }
 
   .hero-scroll {
-    height: 160vh;
+    height: 180vh;
+  }
+
+  .hero-scroll .hero-content {
+    margin-top: 55vh;
+  }
+
+  .hero-scroll .hero-title {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+    white-space: normal;
+    line-height: 1.15;
   }
 
   .page-hero {
@@ -2057,7 +2092,9 @@ img {
 .showcase-section {
   min-height: 240vh;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  background: #ffffff;
+  box-shadow: 0 -40px 80px rgba(0, 0, 0, 0.06);
 }
 
 .showcase-section::before {
