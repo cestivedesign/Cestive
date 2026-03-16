@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+  <title>Árak — Cestive</title>
+  <meta name="description" content="Átlátható árazás, egyedi ajánlatok — minden projektet a Te igényeidre szabva árazunk.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Starscape -->
+  <canvas id="starscape"></canvas>
+
+  <!-- Loader (no progress bar — subpage) -->
+  <div id="loader" class="loader">
+    <div class="loader-text">
+      <span class="loader-letter" style="animation-delay: 0s">C</span><span class="loader-letter" style="animation-delay: 0.08s">e</span><span class="loader-letter" style="animation-delay: 0.16s">s</span><span class="loader-letter" style="animation-delay: 0.24s">t</span><span class="loader-letter" style="animation-delay: 0.32s">i</span><span class="loader-letter" style="animation-delay: 0.4s">v</span><span class="loader-letter" style="animation-delay: 0.48s">e</span><span class="loader-dot" style="animation-delay: 0.6s">.</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress"></div>
+
+  <!-- Background Blobs -->
+  <div class="blobs-container" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+    <div class="blob blob-6"></div>
+  </div>
+
+  <!-- Grain Overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a>
+        <a href="folyamat.html" class="nav-link">Folyamat</a>
+        <a href="rolunk.html" class="nav-link">Rólunk</a>
+        <a href="referenciak.html" class="nav-link">Referenciák</a>
+        <a href="arak.html" class="nav-link active">Árak</a>
+      </div>
+      <a href="mailto:hello@cestive.hu" class="nav-cta">Kapcsolat</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="szolgaltatasok.html" class="mobile-link">Szolgáltatások</a>
+    <a href="folyamat.html" class="mobile-link">Folyamat</a>
+    <a href="rolunk.html" class="mobile-link">Rólunk</a>
+    <a href="referenciak.html" class="mobile-link">Referenciák</a>
+    <a href="arak.html" class="mobile-link active">Árak</a>
+    <a href="mailto:hello@cestive.hu" class="mobile-link mobile-cta">Kapcsolat</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label scroll-reveal">ÁRAK</span>
+      <h1 class="section-title scroll-reveal">Átlátható árazás, egyedi ajánlat.</h1>
+      <p class="page-hero-subtitle scroll-reveal">Minden projektet egyedileg árazunk az igényeid alapján. Válaszd ki a számodra legmegfelelőbb csomagot, és kérj személyre szabott ajánlatot.</p>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <!-- Starter -->
+        <div class="glass pricing-card scroll-reveal" data-delay="0">
+          <div class="pricing-header">
+            <h3 class="pricing-title">Starter</h3>
+            <p class="pricing-desc">Tökéletes induláshoz — landing page vagy egyszerű weboldal, amely professzionális online jelenlétet biztosít.</p>
+            <div class="pricing-price">Egyedi ajánlat<span>projekt alapú árazás</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Landing page vagy 1-5 oldalas weboldal
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Reszponzív design
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              SEO alapok
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Kapcsolati űrlap
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Analitika integráció
+            </li>
+          </ul>
+          <a href="mailto:hello@cestive.hu?subject=Starter csomag — ajánlatkérés" class="pricing-cta secondary">Ajánlatot kérek</a>
+        </div>
+
+        <!-- Pro (Featured) -->
+        <div class="glass pricing-card premium scroll-reveal" data-delay="1">
+          <span class="pricing-badge">Legnépszerűbb</span>
+          <div class="pricing-header">
+            <h3 class="pricing-title">Pro</h3>
+            <p class="pricing-desc">Komplex webalkalmazás AI automatizálással — a legtöbb üzleti igényre tökéletes választás.</p>
+            <div class="pricing-price">Egyedi ajánlat<span>projekt alapú árazás</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Egyedi webalkalmazás (Next.js / React)
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              AI chatbot vagy automatizálás
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              CMS integráció
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Fizetési integráció (Stripe)
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Haladó SEO & analitika
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              1 hónap ingyenes támogatás
+            </li>
+          </ul>
+          <a href="mailto:hello@cestive.hu?subject=Pro csomag — ajánlatkérés" class="pricing-cta primary">Ajánlatot kérek</a>
+        </div>
+
+        <!-- Enterprise / Egyedi -->
+        <div class="glass pricing-card scroll-reveal" style="transition-delay: 0.2s; border-color: rgba(14, 116, 144, 0.3);">
+          <div class="pricing-header">
+            <h3 class="pricing-title">Egyedi Ajánlat</h3>
+            <p class="pricing-desc">Ahol a standard megoldások véget érnek. Nagyvállalati rendszerek, skálázható szoftverek és dedikált AI fejlesztés.</p>
+            <div class="pricing-price">Egyedi<span>ár</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li class="pricing-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Saját fejlesztésű backend & adatbázis
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Komplex workflow automatizációk
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              SaaS szoftver-fejlesztés
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Dedikált fejlesztői kapacitás
+            </li>
+            <li class="pricing-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Személyes projektmenedzsment
+            </li>
+          </ul>
+          <a href="mailto:hello@cestive.hu?subject=Egyedi%20projekt%20ajánlatkérés" class="pricing-cta primary" style="background: var(--accent-gradient, #78cad2); color: #143642;">Egyedi ajánlatot kérek</a>
+        </div>
+
+      </div>
+
+      <div class="glass scroll-reveal" style="margin-top: 4rem; padding: 3rem; text-align: center; border: 1px dashed rgba(120, 202, 210, 0.3);">
+        <h3 class="value-title" style="font-size: 1.8rem; margin-bottom: 1rem;">Nem találod, amit keresel?</h3>
+        <p class="value-desc" style="max-width: 600px; margin: 0 auto 2rem auto;">Minden projekt más. Ha egyik csomag sem fedi le teljesen az igényeidet, ne aggódj! Üljünk le egy kávéra (virtuálisan is lehet), és beszéljük át, pontosan mire van szükséged.</p>
+        <a href="mailto:hello@cestive.hu" class="nav-cta" style="display: inline-block; padding: 1rem 2.5rem;">Személyes konzultáció</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section" id="cta">
+    <div class="container">
+      <div class="glass cta-panel scroll-reveal">
+        <h2 class="cta-title">Készen állsz, hogy <span class="gradient-text">felgyorsítsd</span> az üzleted?</h2>
+        <p class="cta-subtitle">Beszéljünk arról, hogyan segíthet a web és az AI a növekedésedben.</p>
+        <a href="mailto:hello@cestive.hu" class="cta-button">Írj nekünk <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
+      <div class="footer-links">
+        <a href="szolgaltatasok.html">Szolgáltatások</a>
+        <a href="folyamat.html">Folyamat</a>
+        <a href="rolunk.html">Rólunk</a>
+        <a href="referenciak.html">Referenciák</a>
+        <a href="arak.html">Árak</a>
+        <a href="#">Adatvédelem</a>
+        <a href="#">ÁSZF</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 Cestive &mdash; Készítette a Cestive csapat</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
