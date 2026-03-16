@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+  <title>Cestive — Webfejlesztés & AI Automatizálás</title>
+  <meta name="description" content="Prémium weboldalak és AI automatizálás — hogy az üzleted ne csak működjön, hanem skálázódjon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Starscape -->
+  <canvas id="starscape"></canvas>
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="loader-text">
+      <span class="loader-letter" style="animation-delay: 0s">C</span><span class="loader-letter" style="animation-delay: 0.08s">e</span><span class="loader-letter" style="animation-delay: 0.16s">s</span><span class="loader-letter" style="animation-delay: 0.24s">t</span><span class="loader-letter" style="animation-delay: 0.32s">i</span><span class="loader-letter" style="animation-delay: 0.4s">v</span><span class="loader-letter" style="animation-delay: 0.48s">e</span><span class="loader-dot" style="animation-delay: 0.6s">.</span>
+    </div>
+    <div class="loader-progress">
+      <div class="loader-bar-track">
+        <div class="loader-bar-fill" id="loaderBar"></div>
+      </div>
+      <span class="loader-percent" id="loaderPercent">0%</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress"></div>
+
+  <!-- Background Blobs -->
+  <div class="blobs-container" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+    <div class="blob blob-6"></div>
+  </div>
+
+  <!-- Grain Overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a>
+        <a href="folyamat.html" class="nav-link">Folyamat</a>
+        <a href="rolunk.html" class="nav-link">Rólunk</a>
+      </div>
+      <a href="#cta" class="nav-cta">Kapcsolat</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="szolgaltatasok.html" class="mobile-link">Szolgáltatások</a>
+    <a href="folyamat.html" class="mobile-link">Folyamat</a>
+    <a href="rolunk.html" class="mobile-link">Rólunk</a>
+    <a href="#cta" class="mobile-link mobile-cta">Kapcsolat</a>
+  </div>
+
+  <!-- Hero Section with Scroll Frame Animation -->
+  <section class="hero-scroll" id="hero">
+    <div class="hero-sticky">
+      <canvas id="frameCanvas"></canvas>
+      <div class="hero-content" id="heroContent">
+
+        <h1 class="hero-title animate-on-load" data-delay="1" style="margin-bottom: 2rem; white-space: nowrap; font-size: min(4.5vw, 4rem);">
+          Építünk. Automatizálunk. <span class="gradient-text">Növelünk.</span>
+        </h1>
+        <a href="#cta" class="cta-button animate-on-load" data-delay="4">
+          Kérj ingyenes konzultációt <span class="cta-arrow">→</span>
+        </a>
+      </div>
+      <div class="scroll-cue animate-on-load" data-delay="5" id="scrollCue">
+        <span class="scroll-text">Görgess</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Marquee -->
+  <section class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>Next.js</span><span class="marquee-diamond">◆</span>
+        <span>React</span><span class="marquee-diamond">◆</span>
+        <span>Supabase</span><span class="marquee-diamond">◆</span>
+        <span>OpenAI</span><span class="marquee-diamond">◆</span>
+        <span>Claude API</span><span class="marquee-diamond">◆</span>
+        <span>Webflow</span><span class="marquee-diamond">◆</span>
+        <span>Vercel</span><span class="marquee-diamond">◆</span>
+        <span>Tailwind CSS</span><span class="marquee-diamond">◆</span>
+        <span>Zapier</span><span class="marquee-diamond">◆</span>
+        <span>Make.com</span><span class="marquee-diamond">◆</span>
+        <span>n8n</span><span class="marquee-diamond">◆</span>
+        <span>Stripe</span><span class="marquee-diamond">◆</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span>Next.js</span><span class="marquee-diamond">◆</span>
+        <span>React</span><span class="marquee-diamond">◆</span>
+        <span>Supabase</span><span class="marquee-diamond">◆</span>
+        <span>OpenAI</span><span class="marquee-diamond">◆</span>
+        <span>Claude API</span><span class="marquee-diamond">◆</span>
+        <span>Webflow</span><span class="marquee-diamond">◆</span>
+        <span>Vercel</span><span class="marquee-diamond">◆</span>
+        <span>Tailwind CSS</span><span class="marquee-diamond">◆</span>
+        <span>Zapier</span><span class="marquee-diamond">◆</span>
+        <span>Make.com</span><span class="marquee-diamond">◆</span>
+        <span>n8n</span><span class="marquee-diamond">◆</span>
+        <span>Stripe</span><span class="marquee-diamond">◆</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section services-section" id="szolgaltatasok">
+    <div class="container">
+      <span class="section-label scroll-reveal">SZOLGÁLTATÁSOK</span>
+      <h2 class="section-title scroll-reveal">Amit építünk, az eredményt hoz.</h2>
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <a href="szolgaltatasok.html" class="card-link">
+          <div class="glass card scroll-reveal" data-delay="0">
+            <div class="card-icon card-icon-blue">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Webfejlesztés</h3>
+            <p class="card-desc">Egyedi, gyors és SEO-optimalizált weboldalak. Landing page-ektől komplex webalkalmazásokig — minden projektet a modern technológia csúcsával építünk.</p>
+            <div class="card-tags">
+              <span class="card-tag">Next.js</span>
+              <span class="card-tag">React</span>
+              <span class="card-tag">Tailwind</span>
+            </div>
+            <span class="card-more">Részletek <span class="cta-arrow">→</span></span>
+          </div>
+        </a>
+        <!-- Card 2 -->
+        <a href="szolgaltatasok.html" class="card-link">
+          <div class="glass card scroll-reveal" data-delay="1">
+            <div class="card-icon card-icon-teal">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                <circle cx="9" cy="10" r="1.5" fill="currentColor"/>
+                <circle cx="15" cy="10" r="1.5" fill="currentColor"/>
+                <path d="M12 2v4M2 12h4M18 12h4M12 18v4"/>
+                <path d="M4.93 4.93l2.83 2.83M16.24 4.93l-2.83 2.83"/>
+                <path d="M8 15c0 0 1.5 2 4 2s4-2 4-2"/>
+              </svg>
+            </div>
+            <h3 class="card-title">AI Automatizálás</h3>
+            <p class="card-desc">Ismétlődő feladatok automatizálása mesterséges intelligenciával. Chatbotok, tartalom generálás, ügyfélkezelés és munkafolyamat optimalizálás.</p>
+            <div class="card-tags">
+              <span class="card-tag">OpenAI</span>
+              <span class="card-tag">Claude</span>
+              <span class="card-tag">n8n</span>
+            </div>
+            <span class="card-more">Részletek <span class="cta-arrow">→</span></span>
+          </div>
+        </a>
+        <!-- Card 3 -->
+        <a href="szolgaltatasok.html" class="card-link">
+          <div class="glass card scroll-reveal" data-delay="2">
+            <div class="card-icon card-icon-green">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Növekedési Rendszerek</h3>
+            <p class="card-desc">Analitika, lead generálás és konverzió optimalizálás. Összekapcsoljuk a weboldaladat az üzleti célaiddal, hogy mérhető eredményeket hozzon.</p>
+            <div class="card-tags">
+              <span class="card-tag">Supabase</span>
+              <span class="card-tag">Stripe</span>
+              <span class="card-tag">Analytics</span>
+            </div>
+            <span class="card-more">Részletek <span class="cta-arrow">→</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section stats-section" id="rolunk">
+    <div class="container">
+      <div class="glass stats-panel">
+        <div class="stat scroll-reveal" data-delay="0" data-target="50" data-suffix="+">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Projekt</span>
+        </div>
+        <div class="stat scroll-reveal" data-delay="1" data-target="98" data-suffix="%">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Elégedettség</span>
+        </div>
+        <div class="stat scroll-reveal" data-delay="2" data-target="3" data-suffix="x">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Gyorsabb delivery</span>
+        </div>
+        <div class="stat scroll-reveal" data-delay="3" data-target="24" data-suffix="/7">
+          <span class="stat-number">0</span>
+          <span class="stat-label">AI automatizáció</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section" id="cta">
+    <div class="container">
+      <div class="glass cta-panel scroll-reveal">
+        <h2 class="cta-title">Készen állsz, hogy <span class="gradient-text">felgyorsítsd</span> az üzleted?</h2>
+        <p class="cta-subtitle">Beszéljünk arról, hogyan segíthet a web és az AI a növekedésedben.</p>
+        <a href="mailto:hello@cestive.hu" class="cta-button">Írj nekünk <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
+      <div class="footer-links">
+        <a href="szolgaltatasok.html">Szolgáltatások</a>
+        <a href="folyamat.html">Folyamat</a>
+        <a href="rolunk.html">Rólunk</a>
+        <a href="#">Adatvédelem</a>
+        <a href="#">ÁSZF</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 Cestive &mdash; Készítette a Cestive csapat</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+  <!-- Frame Animation (only on homepage) -->
+  <script>
+  (function(){
+    const FRAME_COUNT = 121;
+    const frames = new Array(FRAME_COUNT);
+    let loadedFrames = 0;
+    const canvas = document.getElementById('frameCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: false });
+    let currentFrame = -1;
+    let ticking = false;
+    let drawDims = null;
+    const loaderBar = document.getElementById('loaderBar');
+    const loaderPercent = document.getElementById('loaderPercent');
+    const heroSection = document.getElementById('hero');
+    const heroContent = document.getElementById('heroContent');
+
+    // Preload frames
+    for (let i = 1; i <= FRAME_COUNT; i++) {
+      const idx = i - 1;
+      const img = new Image();
+      img.src = 'frames/frame_' + String(i).padStart(4, '0') + '.jpg';
+      img.onload = function() {
+        if (typeof createImageBitmap !== 'undefined') {
+          createImageBitmap(img).then(function(bmp) {
+            frames[idx] = bmp;
+            loadedFrames++;
+            updateLoaderProgress();
+            if (loadedFrames === FRAME_COUNT) onAllLoaded();
+          });
+        } else {
+          frames[idx] = img;
+          loadedFrames++;
+          updateLoaderProgress();
+          if (loadedFrames === FRAME_COUNT) onAllLoaded();
+        }
+      };
+    }
+
+    function updateLoaderProgress() {
+      const pct = Math.round((loadedFrames / FRAME_COUNT) * 100);
+      if (loaderBar) loaderBar.style.width = pct + '%';
+      if (loaderPercent) loaderPercent.textContent = pct + '%';
+    }
+
+    function onAllLoaded() {
+      resizeCanvas();
+      drawFrame(0);
+      hideLoader();
+    }
+
+    function calcDrawDims() {
+      var cw = canvas.width, ch = canvas.height;
+      var f = frames[0];
+      if (!f) return;
+      var iw = f.width || 1920, ih = f.height || 1080;
+      var imgRatio = iw / ih, canvasRatio = cw / ch;
+      var dw, dh, dx, dy;
+      if (window.innerWidth > 768) {
+        if (canvasRatio > imgRatio) { dw = cw; dh = cw / imgRatio; }
+        else { dh = ch; dw = ch * imgRatio; }
+      } else {
+        var zoom = 1.2;
+        if (canvasRatio > imgRatio) { dh = ch * zoom; dw = dh * imgRatio; }
+        else { dw = cw * zoom; dh = dw / imgRatio; }
+      }
+      dx = (cw - dw) / 2;
+      dy = (ch - dh) / 2;
+      drawDims = { dx: dx, dy: dy, dw: dw, dh: dh };
+    }
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      calcDrawDims();
+      if (currentFrame >= 0) drawFrame(currentFrame);
+    }
+
+    function drawFrame(index) {
+      var f = frames[index];
+      if (!f || !drawDims) return;
+      ctx.drawImage(f, drawDims.dx, drawDims.dy, drawDims.dw, drawDims.dh);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    // Scroll handler for frame animation
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var rect = heroSection.getBoundingClientRect();
+          var scrollable = heroSection.offsetHeight - window.innerHeight;
+          var progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+          var frameIndex = Math.min(FRAME_COUNT - 1, Math.floor(progress * FRAME_COUNT));
+          if (frameIndex !== currentFrame) {
+            currentFrame = frameIndex;
+            drawFrame(frameIndex);
+          }
+          // Fade out hero text as scroll progresses
+          var textOpacity = 1 - Math.min(1, progress / 0.25);
+          var textShift = progress * 80;
+          heroContent.style.opacity = textOpacity;
+          heroContent.style.transform = 'translateY(-' + textShift + 'px)';
+          var scrollCue = document.getElementById('scrollCue');
+          if (scrollCue) {
+            scrollCue.style.opacity = textOpacity;
+            scrollCue.style.transform = 'translateY(-' + textShift + 'px)';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+  </script>
+</body>
+</html>

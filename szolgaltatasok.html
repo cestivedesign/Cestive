@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+  <title>Szolgáltatások — Cestive</title>
+  <meta name="description" content="Webfejlesztés, AI automatizálás és növekedési rendszerek — prémium digitális szolgáltatások a Cestive-tól.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Starscape -->
+  <canvas id="starscape"></canvas>
+
+  <!-- Loader (no progress bar — subpage) -->
+  <div id="loader" class="loader">
+    <div class="loader-text">
+      <span class="loader-letter" style="animation-delay: 0s">C</span><span class="loader-letter" style="animation-delay: 0.08s">e</span><span class="loader-letter" style="animation-delay: 0.16s">s</span><span class="loader-letter" style="animation-delay: 0.24s">t</span><span class="loader-letter" style="animation-delay: 0.32s">i</span><span class="loader-letter" style="animation-delay: 0.4s">v</span><span class="loader-letter" style="animation-delay: 0.48s">e</span><span class="loader-dot" style="animation-delay: 0.6s">.</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress"></div>
+
+  <!-- Background Blobs -->
+  <div class="blobs-container" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+    <div class="blob blob-6"></div>
+  </div>
+
+  <!-- Grain Overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="szolgaltatasok.html" class="nav-link active">Szolgáltatások</a>
+        <a href="folyamat.html" class="nav-link">Folyamat</a>
+        <a href="rolunk.html" class="nav-link">Rólunk</a>
+      </div>
+      <a href="mailto:hello@cestive.hu" class="nav-cta">Kapcsolat</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="szolgaltatasok.html" class="mobile-link active">Szolgáltatások</a>
+    <a href="folyamat.html" class="mobile-link">Folyamat</a>
+    <a href="rolunk.html" class="mobile-link">Rólunk</a>
+    <a href="mailto:hello@cestive.hu" class="mobile-link mobile-cta">Kapcsolat</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label scroll-reveal">SZOLGÁLTATÁSOK</span>
+      <h1 class="section-title scroll-reveal">Megoldásaink, amik eredményt hoznak.</h1>
+      <p class="page-hero-subtitle scroll-reveal">Prémium digitális szolgáltatások, az ötlettől az indulásig. Minden projektet egyedileg, a Te igényeidre szabva építünk.</p>
+    </div>
+  </section>
+
+  <!-- Service 1: Webfejlesztés -->
+  <section class="service-detail section scroll-reveal">
+    <div class="container">
+      <div class="service-detail-inner">
+        <div class="service-detail-content">
+          <span class="service-detail-number scroll-reveal">01 — WEB</span>
+          <h2 class="service-detail-title scroll-reveal">Webfejlesztés</h2>
+          <p class="service-detail-desc scroll-reveal">Egyedi, gyors és SEO-optimalizált weboldalakat építünk, amelyek nem csak jól néznek ki, hanem konvertálnak is. Landing page-ektől komplex webalkalmazásokig — minden projektet a legmodernebb technológiákkal valósítunk meg.</p>
+          <ul class="service-features-list scroll-reveal">
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Reszponzív design — tökéletes megjelenés minden eszközön
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              SEO optimalizálás — hogy megtaláljanak a Google-ben
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Analitika integráció — mérhető eredmények
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Gyors betöltés — Core Web Vitals optimalizálva
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              CMS integráció — könnyű tartalomkezelés
+            </li>
+          </ul>
+          <div class="card-tags scroll-reveal">
+            <span class="card-tag">Next.js</span>
+            <span class="card-tag">React</span>
+            <span class="card-tag">Tailwind</span>
+            <span class="card-tag">Vercel</span>
+            <span class="card-tag">Webflow</span>
+          </div>
+        </div>
+        <div class="service-visual scroll-reveal">
+          <div class="glass service-icon-large card-icon-blue">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service 2: AI Automatizálás -->
+  <section class="service-detail section scroll-reveal">
+    <div class="container">
+      <div class="service-detail-inner">
+        <div class="service-detail-content">
+          <span class="service-detail-number scroll-reveal">02 — AI</span>
+          <h2 class="service-detail-title scroll-reveal">AI Automatizálás</h2>
+          <p class="service-detail-desc scroll-reveal">Mesterséges intelligenciával automatizáljuk az ismétlődő feladatokat, hogy a csapatod arra fókuszálhasson, ami igazán számít. Chatbotoktól a komplex munkafolyamat-automatizálásig — az AI-t a Te üzletedre szabjuk.</p>
+          <ul class="service-features-list scroll-reveal">
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Egyedi chatbotok — 24/7 ügyfélszolgálat
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Tartalom automatizálás — AI-generált szövegek, képek
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Workflow automatizálás — Make.com, Zapier, n8n integrációk
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Dokumentum feldolgozás — AI-alapú adatkinyerés
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Prediktív analitika — adatvezérelt döntéshozatal
+            </li>
+          </ul>
+          <div class="card-tags scroll-reveal">
+            <span class="card-tag">OpenAI</span>
+            <span class="card-tag">Claude API</span>
+            <span class="card-tag">n8n</span>
+            <span class="card-tag">Make.com</span>
+            <span class="card-tag">Zapier</span>
+          </div>
+        </div>
+        <div class="service-visual scroll-reveal">
+          <div class="glass service-icon-large card-icon-teal">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+              <circle cx="9" cy="10" r="1.5" fill="currentColor"/>
+              <circle cx="15" cy="10" r="1.5" fill="currentColor"/>
+              <path d="M12 2v4M2 12h4M18 12h4M12 18v4"/>
+              <path d="M4.93 4.93l2.83 2.83M16.24 4.93l-2.83 2.83"/>
+              <path d="M8 15c0 0 1.5 2 4 2s4-2 4-2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service 3: Növekedési Rendszerek -->
+  <section class="service-detail section scroll-reveal">
+    <div class="container">
+      <div class="service-detail-inner">
+        <div class="service-detail-content">
+          <span class="service-detail-number scroll-reveal">03 — GROWTH</span>
+          <h2 class="service-detail-title scroll-reveal">Növekedési Rendszerek</h2>
+          <p class="service-detail-desc scroll-reveal">Összekapcsoljuk a weboldalad az üzleti célaiddal. Analitika, lead generálás, fizetési integráció és konverzió optimalizálás — egy komplett növekedési motor, ami mérhető eredményeket hoz.</p>
+          <ul class="service-features-list scroll-reveal">
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Lead generálás — automatizált ügyfélszerzés
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Konverzió optimalizálás — A/B tesztelés, heatmap-ek
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Stripe integráció — online fizetési megoldások
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              CRM rendszerek — ügyfélkapcsolat-kezelés
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Analitika dashboard — valós idejű üzleti metrikák
+            </li>
+          </ul>
+          <div class="card-tags scroll-reveal">
+            <span class="card-tag">Supabase</span>
+            <span class="card-tag">Stripe</span>
+            <span class="card-tag">Analytics</span>
+            <span class="card-tag">HubSpot</span>
+          </div>
+        </div>
+        <div class="service-visual scroll-reveal">
+          <div class="glass service-icon-large card-icon-green">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section" id="cta">
+    <div class="container">
+      <div class="glass cta-panel scroll-reveal">
+        <h2 class="cta-title">Készen állsz, hogy <span class="gradient-text">felgyorsítsd</span> az üzleted?</h2>
+        <p class="cta-subtitle">Beszéljünk arról, hogyan segíthet a web és az AI a növekedésedben.</p>
+        <a href="mailto:hello@cestive.hu" class="cta-button">Írj nekünk <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
+      <div class="footer-links">
+        <a href="szolgaltatasok.html">Szolgáltatások</a>
+        <a href="folyamat.html">Folyamat</a>
+        <a href="rolunk.html">Rólunk</a>
+        <a href="#">Adatvédelem</a>
+        <a href="#">ÁSZF</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 Cestive &mdash; Készítette a Cestive csapat</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
