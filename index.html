@@ -339,6 +339,9 @@
       hideLoader();
     }
 
+    var isMobile = function() { return window.innerWidth <= 768; };
+    var BG_COLOR = '#d5e8ed';
+
     function calcDrawDims() {
       var cw = canvas.width, ch = canvas.height;
       var f = frames[0];
@@ -346,15 +349,19 @@
       var iw = f.width || 1920, ih = f.height || 1080;
       var imgRatio = iw / ih;
       var dw, dh, dx, dy;
-      // Always cover the canvas (like object-fit: cover)
-      dh = ch;
-      dw = ch * imgRatio;
-      if (dw < cw) { dw = cw; dh = cw / imgRatio; }
-      dx = (cw - dw) / 2;
-      dy = (ch - dh) / 2;
-      // On mobile portrait, shift up slightly so the subject is more centered
-      if (window.innerWidth <= 768) {
-        dy = dy * 0.4;
+      if (isMobile()) {
+        // Mobile: fit full width so the entire logo is visible
+        dw = cw;
+        dh = cw / imgRatio;
+        dx = 0;
+        dy = (ch - dh) / 2 * 0.65; // slightly above center
+      } else {
+        // Desktop: cover
+        dh = ch;
+        dw = ch * imgRatio;
+        if (dw < cw) { dw = cw; dh = cw / imgRatio; }
+        dx = (cw - dw) / 2;
+        dy = (ch - dh) / 2;
       }
       drawDims = { dx: dx, dy: dy, dw: dw, dh: dh };
     }
@@ -371,6 +378,11 @@
     function drawFrame(index) {
       var f = frames[index];
       if (!f || !drawDims) return;
+      if (isMobile()) {
+        // Fill with the animation's background blue so there's no white gap
+        ctx.fillStyle = BG_COLOR;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
       ctx.drawImage(f, drawDims.dx, drawDims.dy, drawDims.dw, drawDims.dh);
     }
 
