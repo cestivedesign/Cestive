@@ -218,6 +218,87 @@ if (statItems.length > 0) {
   animate();
 })();
 
+// ===== MAGNETIC BUTTONS =====
+document.querySelectorAll('.cta-button').forEach(btn => {
+  btn.addEventListener('mousemove', function(e) {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = 'translate(' + (x * 0.15) + 'px, ' + (y * 0.15) + 'px)';
+  });
+  btn.addEventListener('mouseleave', function() {
+    btn.style.transform = '';
+  });
+});
+
+// ===== FAQ ACCORDION =====
+document.querySelectorAll('.faq-trigger').forEach(trigger => {
+  trigger.addEventListener('click', function() {
+    const item = this.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      if (openItem !== item) {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+      }
+    });
+    item.classList.toggle('open');
+    this.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+
+// ===== QUOTE FORM SUBMISSION (EmailJS) =====
+const quoteForm = document.getElementById('quoteForm');
+if (quoteForm) {
+  emailjs.init('lImh7Y3P4X0INk2f4');
+
+  quoteForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('formSubmit');
+    const errorEl = document.getElementById('formError');
+    errorEl.hidden = true;
+
+    // Collect form data
+    const data = {};
+    new FormData(quoteForm).forEach(function(val, key) { data[key] = val; });
+
+    // Client-side required check
+    var required = ['name', 'email', 'company', 'industry', 'service', 'description'];
+    for (var i = 0; i < required.length; i++) {
+      if (!data[required[i]] || !data[required[i]].trim()) {
+        errorEl.textContent = 'Kérjük, töltsd ki az összes kötelező mezőt (*).';
+        errorEl.hidden = false;
+        return;
+      }
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = 'Küldés... <span class="cta-arrow">→</span>';
+
+    try {
+      await emailjs.send('service_l1itukg', 'template_9wkzyl9', {
+        name: data.name,
+        email: data.email,
+        phone: data.phone || 'Nem adta meg',
+        company: data.company,
+        website: data.website || 'Nem adta meg',
+        industry: data.industry,
+        service: data.service,
+        description: data.description,
+        budget: data.budget || 'Nem adta meg',
+        timeline: data.timeline || 'Nem adta meg',
+        source: data.source || 'Nem adta meg'
+      });
+      window.location.href = 'koszonjuk.html';
+    } catch (err) {
+      errorEl.textContent = 'Hiba történt a küldés során. Kérjük, próbáld újra vagy írj a hello@cestive.hu címre.';
+      errorEl.hidden = false;
+      btn.disabled = false;
+      btn.innerHTML = 'Ajánlat kérése <span class="cta-arrow">→</span>';
+    }
+  });
+}
+
 // ===== SCROLL PROGRESS BAR =====
 const scrollProgressBar = document.getElementById('scrollProgress');
 if (scrollProgressBar) {

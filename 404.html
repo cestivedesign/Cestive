@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Cestive</title>
+  <meta name="description" content="Az oldal nem található.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Starscape -->
+  <canvas id="starscape"></canvas>
+
+  <!-- Background Blobs -->
+  <div class="blobs-container" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+    <div class="blob blob-6"></div>
+  </div>
+
+  <!-- Grain Overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a>
+        <a href="folyamat.html" class="nav-link">Folyamat</a>
+        <a href="rolunk.html" class="nav-link">Rólunk</a>
+        <a href="referenciak.html" class="nav-link">Referenciák</a>
+        <a href="arak.html" class="nav-link">Ajánlat</a>
+      </div>
+      <a href="mailto:hello@cestive.hu" class="nav-cta">Kapcsolat</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="szolgaltatasok.html" class="mobile-link">Szolgáltatások</a>
+    <a href="folyamat.html" class="mobile-link">Folyamat</a>
+    <a href="rolunk.html" class="mobile-link">Rólunk</a>
+    <a href="referenciak.html" class="mobile-link">Referenciák</a>
+    <a href="arak.html" class="mobile-link">Ajánlat</a>
+    <a href="mailto:hello@cestive.hu" class="mobile-link mobile-cta">Kapcsolat</a>
+  </div>
+
+  <!-- 404 Content -->
+  <section class="error-page">
+    <div class="container">
+      <span class="error-code">404</span>
+      <h1 class="error-title">Az oldal nem található</h1>
+      <p class="error-desc">A keresett oldal nem létezik, vagy áthelyezésre került.</p>
+      <a href="index.html" class="cta-button">Vissza a főoldalra <span class="cta-arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
+      <div class="footer-links">
+        <a href="szolgaltatasok.html">Szolgáltatások</a>
+        <a href="folyamat.html">Folyamat</a>
+        <a href="rolunk.html">Rólunk</a>
+        <a href="referenciak.html">Referenciák</a>
+        <a href="arak.html">Ajánlat</a>
+        <a href="adatvédelem.html">Adatvédelem</a>
+        <a href="aszf.html">ÁSZF</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 Cestive &mdash; Készítette a Cestive csapat</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

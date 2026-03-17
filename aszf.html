@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+  <title>Általános Szerződési Feltételek — Cestive</title>
+  <meta name="description" content="A Cestive általános szerződési feltételei. A szolgáltatásaink igénybevételének feltételei és szabályai.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Starscape -->
+  <canvas id="starscape"></canvas>
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="loader-text">
+      <span class="loader-letter" style="animation-delay: 0s">C</span><span class="loader-letter" style="animation-delay: 0.08s">e</span><span class="loader-letter" style="animation-delay: 0.16s">s</span><span class="loader-letter" style="animation-delay: 0.24s">t</span><span class="loader-letter" style="animation-delay: 0.32s">i</span><span class="loader-letter" style="animation-delay: 0.4s">v</span><span class="loader-letter" style="animation-delay: 0.48s">e</span><span class="loader-dot" style="animation-delay: 0.6s">.</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress"></div>
+
+  <!-- Background Blobs -->
+  <div class="blobs-container" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+    <div class="blob blob-6"></div>
+  </div>
+
+  <!-- Grain Overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a>
+        <a href="folyamat.html" class="nav-link">Folyamat</a>
+        <a href="rolunk.html" class="nav-link">Rólunk</a>
+        <a href="referenciak.html" class="nav-link">Referenciák</a>
+        <a href="arak.html" class="nav-link">Ajánlat</a>
+      </div>
+      <a href="mailto:hello@cestive.hu" class="nav-cta">Kapcsolat</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="szolgaltatasok.html" class="mobile-link">Szolgáltatások</a>
+    <a href="folyamat.html" class="mobile-link">Folyamat</a>
+    <a href="rolunk.html" class="mobile-link">Rólunk</a>
+    <a href="referenciak.html" class="mobile-link">Referenciák</a>
+    <a href="arak.html" class="mobile-link">Ajánlat</a>
+    <a href="mailto:hello@cestive.hu" class="mobile-link mobile-cta">Kapcsolat</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label scroll-reveal">JOGI</span>
+      <h1 class="section-title scroll-reveal">Általános Szerződési Feltételek</h1>
+    </div>
+  </section>
+
+  <!-- Legal Content -->
+  <section class="section">
+    <div class="container">
+      <div class="legal-content glass scroll-reveal">
+
+        <p class="legal-updated">Utolsó frissítés: 2026. március 17.</p>
+
+        <h2>1. Általános rendelkezések</h2>
+        <p>Jelen Általános Szerződési Feltételek (a továbbiakban: „ÁSZF") a Cestive (a továbbiakban: „Szolgáltató") által nyújtott webfejlesztési, AI automatizálási és digitális növekedési szolgáltatásokra vonatkoznak.</p>
+        <p>A Szolgáltató szolgáltatásainak igénybevételével a Megrendelő elfogadja a jelen ÁSZF-ben foglalt feltételeket.</p>
+
+        <h2>2. Szolgáltatások</h2>
+        <p>A Szolgáltató az alábbi szolgáltatásokat nyújtja:</p>
+        <ul>
+          <li>Weboldal és webalkalmazás tervezés és fejlesztés</li>
+          <li>AI alapú automatizálási megoldások (chatbotok, workflow automatizálás)</li>
+          <li>Növekedési rendszerek (analitika, lead generálás, fizetési integráció)</li>
+          <li>Tanácsadás és konzultáció</li>
+        </ul>
+
+        <h2>3. Megrendelés és szerződéskötés</h2>
+        <p>A szerződés a Megrendelő írásos megrendelésének (e-mail) Szolgáltató általi visszaigazolásával jön létre. A megrendelés tartalmazza a projekt leírását, az árat, a fizetési ütemezést és a határidőket.</p>
+
+        <h2>4. Árak és fizetési feltételek</h2>
+        <ul>
+          <li>Az árak magyar forintban (HUF) értendők és az ÁFA-t nem tartalmazzák, kivéve, ha az ajánlatban másként szerepel.</li>
+          <li>A fizetés az egyedi megállapodás szerint történik, jellemzően: 50% előleg a projekt indításakor, 50% az átadáskor.</li>
+          <li>A fizetési határidő a számla kézhezvételétől számított 8 naptári nap, hacsak az egyedi megállapodás másként nem rendelkezik.</li>
+        </ul>
+
+        <h2>5. Határidők</h2>
+        <p>A projekt határidőit az egyedi megállapodás tartalmazza. A Szolgáltató mindent megtesz a határidők betartásáért, de vis maior vagy a Megrendelő késedelmes visszajelzése miatti csúszásért nem vállal felelősséget.</p>
+
+        <h2>6. Szellemi tulajdon</h2>
+        <ul>
+          <li>Az elkészült egyedi fejlesztések szellemi tulajdonjoga a teljes vételár kifizetését követően a Megrendelőre száll át.</li>
+          <li>A Szolgáltató fenntartja a jogot, hogy az elkészült munkát referenciáként használja portfóliójában, kivéve, ha a Megrendelő ezt írásban kizárja.</li>
+          <li>Harmadik féltől származó licenszek (betűtípusok, képek, szoftverek) használati feltételei az eredeti licencelő feltételei szerint érvényesek.</li>
+        </ul>
+
+        <h2>7. Garancia és támogatás</h2>
+        <p>A Szolgáltató az átadástól számított 30 napig ingyenes hibajavítási garanciát vállal. Ez a garancia a Szolgáltató által okozott technikai hibákra vonatkozik, és nem terjed ki a Megrendelő által végzett módosítások következményeire.</p>
+
+        <h2>8. Felelősség korlátozása</h2>
+        <p>A Szolgáltató felelőssége a szerződéses összeg mértékéig terjedhet. A Szolgáltató nem vállal felelősséget közvetett károkért, elmaradt haszonért vagy harmadik fél által okozott károkért.</p>
+
+        <h2>9. Elállás és felmondás</h2>
+        <ul>
+          <li>A Megrendelő a projekt indítása előtt jogosult elállni, az addig felmerült költségek megtérítése mellett.</li>
+          <li>A projekt indítása után mindkét fél 15 napos felmondási idővel mondhatja fel a szerződést írásban. Az elvégzett munka ellenértékét a Megrendelő köteles megfizetni.</li>
+        </ul>
+
+        <h2>10. Alkalmazandó jog és jogviták</h2>
+        <p>A jelen ÁSZF-re a magyar jog az irányadó. A felek vitáikat elsősorban tárgyalás útján rendezik; ennek sikertelensége esetén a jogvita elbírálására a Szolgáltató székhelye szerinti bíróság rendelkezik illetékességgel.</p>
+
+        <h2>11. Az ÁSZF módosítása</h2>
+        <p>A Szolgáltató fenntartja a jogot jelen ÁSZF egyoldalú módosítására. A módosításokról a weboldalon tájékoztatjuk ügyfeleinket.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
+      <div class="footer-links">
+        <a href="szolgaltatasok.html">Szolgáltatások</a>
+        <a href="folyamat.html">Folyamat</a>
+        <a href="rolunk.html">Rólunk</a>
+        <a href="referenciak.html">Referenciák</a>
+        <a href="arak.html">Ajánlat</a>
+        <a href="adatvédelem.html">Adatvédelem</a>
+        <a href="aszf.html">ÁSZF</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 Cestive &mdash; Készítette a Cestive csapat</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
