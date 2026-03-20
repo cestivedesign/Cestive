@@ -39,26 +39,6 @@
   <!-- Grain Overlay -->
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- SVG Cloud Filter Definition -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="width:0;height:0;position:absolute;" aria-hidden="true">
-    <filter id="ref-cloud" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" seed="462" baseFrequency="0.011" numOctaves="5" result="noise1"/>
-      <feTurbulence type="fractalNoise" seed="462" baseFrequency="0.011" numOctaves="2" result="noise2"/>
-      <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur1"/>
-      <feDisplacementMap in="blur1" in2="noise1" scale="100" result="cloud1"/>
-      <feFlood flood-color="rgb(215,215,215)" flood-opacity="0.15"/>
-      <feComposite operator="in" in2="SourceGraphic"/>
-      <feOffset dx="-10" dy="-3"/>
-      <feMorphology radius="20"/>
-      <feGaussianBlur stdDeviation="20"/>
-      <feDisplacementMap scale="100" in2="noise1" result="cloud2"/>
-      <feMerge>
-        <feMergeNode in="cloud1"/>
-        <feMergeNode in="cloud2"/>
-      </feMerge>
-    </filter>
-  </svg>
-
   <!-- Navigation -->
   <nav id="navbar" class="navbar">
     <div class="nav-inner">
@@ -101,11 +81,8 @@
         
         <!-- Projekt 1: Crew Cutz (kiemelt) -->
         <a href="https://crewcutz.hu/" target="_blank" rel="noopener" class="glass ref-card ref-featured scroll-reveal">
-          <div class="ref-image" style="border-radius: 20px 20px 0 0;">
+          <div class="ref-image" style="border-radius: 20px 20px 0 0; overflow: hidden;">
             <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop" alt="Crew Cutz Barbershop" loading="lazy" style="width: 100%; height: 300px; object-fit: cover; display: block;">
-            <div class="ref-cloud-wrap" aria-hidden="true">
-              <div class="ref-cloud-shape"></div>
-            </div>
           </div>
           <div class="ref-content">
             <h3 class="ref-title">Crew Cutz Barbershop</h3>
@@ -129,9 +106,6 @@
         <div class="glass ref-card scroll-reveal">
           <div class="ref-image">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
-            <div class="ref-cloud-wrap" aria-hidden="true">
-              <div class="ref-cloud-shape"></div>
-            </div>
           </div>
           <div class="ref-content">
             <h3 class="ref-title">SaaS Onboarding Automatizáció</h3>
@@ -155,9 +129,6 @@
         <div class="glass ref-card scroll-reveal" style="transition-delay: 0.1s">
           <div class="ref-image">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7 10 10 7 13 10 17 6"/></svg>
-            <div class="ref-cloud-wrap" aria-hidden="true">
-              <div class="ref-cloud-shape"></div>
-            </div>
           </div>
           <div class="ref-content">
             <h3 class="ref-title">E-commerce Webalkalmazás</h3>
