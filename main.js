@@ -336,3 +336,87 @@ if (scrollProgressBar) {
     scrollProgressBar.style.width = pct + '%';
   }, { passive: true });
 }
+
+// ===== GLOWING CARD EFFECT =====
+(function() {
+  const glowCards = document.querySelectorAll('[data-glow]');
+  if (!glowCards.length) return;
+
+  const pointer = { x: 0, y: 0 };
+  const states = new Map();
+
+  glowCards.forEach(card => {
+    states.set(card, { angle: 0 });
+  });
+
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function animateAngle(card, from, to) {
+    const startTime = performance.now();
+    const duration = 2000;
+
+    function tick(now) {
+      const p = Math.min((now - startTime) / duration, 1);
+      const value = from + (to - from) * easeOutQuart(p);
+
+      const glowEl = card.querySelector('.glow-effect');
+      if (glowEl) glowEl.style.setProperty('--glow-start', String(value));
+
+      const state = states.get(card);
+      if (state) state.angle = value;
+
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function update(x, y) {
+    const proximity = 64;
+    const inactiveZone = 0.01;
+
+    glowCards.forEach(card => {
+      const glowEl = card.querySelector('.glow-effect');
+      if (!glowEl) return;
+
+      const rect = card.getBoundingClientRect();
+      const cx = rect.left + rect.width * 0.5;
+      const cy = rect.top + rect.height * 0.5;
+
+      const dist = Math.hypot(x - cx, y - cy);
+      const inactiveR = 0.5 * Math.min(rect.width, rect.height) * inactiveZone;
+
+      if (dist < inactiveR) {
+        glowEl.style.setProperty('--glow-active', '0');
+        return;
+      }
+
+      const active =
+        x > rect.left - proximity &&
+        x < rect.left + rect.width + proximity &&
+        y > rect.top - proximity &&
+        y < rect.top + rect.height + proximity;
+
+      glowEl.style.setProperty('--glow-active', active ? '1' : '0');
+      if (!active) return;
+
+      const state = states.get(card);
+      const current = state ? state.angle : 0;
+      let target = (180 * Math.atan2(y - cy, x - cx)) / Math.PI + 90;
+
+      const diff = ((target - current + 180) % 360) - 180;
+      animateAngle(card, current, current + diff);
+    });
+  }
+
+  document.body.addEventListener('pointermove', (e) => {
+    pointer.x = e.clientX;
+    pointer.y = e.clientY;
+    update(e.clientX, e.clientY);
+  }, { passive: true });
+
+  window.addEventListener('scroll', () => {
+    update(pointer.x, pointer.y);
+  }, { passive: true });
+})();

@@ -2577,6 +2577,71 @@ img {
   border-bottom: 1px solid rgba(20, 54, 66, 0.08);
 }
 
+/* ===== GLOWING CARD EFFECT ===== */
+.ref-card[data-glow] {
+  overflow: visible;
+  position: relative;
+}
+
+.glow-effect {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 2;
+}
+
+.glow-effect .glow {
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.glow-effect .glow::after {
+  content: "";
+  border-radius: inherit;
+  position: absolute;
+  inset: calc(-1 * var(--glow-border-width, 3px));
+  border: var(--glow-border-width, 3px) solid transparent;
+  background:
+    radial-gradient(circle, #78cad2 10%, #78cad200 20%),
+    radial-gradient(circle at 40% 40%, #a5cc6b 5%, #a5cc6b00 15%),
+    radial-gradient(circle at 60% 60%, #0e7490 10%, #0e749000 20%),
+    radial-gradient(circle at 40% 60%, #5ba4b5 10%, #5ba4b500 20%),
+    repeating-conic-gradient(
+      from 236.84deg at 50% 50%,
+      #78cad2 0%,
+      #0e7490 5%,
+      #a5cc6b 10%,
+      #5ba4b5 15%,
+      #78cad2 20%
+    );
+  background-attachment: fixed;
+  opacity: var(--glow-active, 0);
+  transition: opacity 0.3s;
+  -webkit-mask-clip: padding-box, border-box;
+  mask-clip: padding-box, border-box;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(#0000, #0000),
+    conic-gradient(
+      from calc((var(--glow-start, 0) - var(--glow-spread, 40)) * 1deg),
+      #00000000 0deg,
+      #fff,
+      #00000000 calc(var(--glow-spread, 40) * 2deg)
+    );
+  mask-image:
+    linear-gradient(#0000, #0000),
+    conic-gradient(
+      from calc((var(--glow-start, 0) - var(--glow-spread, 40)) * 1deg),
+      #00000000 0deg,
+      #fff,
+      #00000000 calc(var(--glow-spread, 40) * 2deg)
+    );
+}
+
 @media (max-width: 768px) {
   .referenciak-grid {
     grid-template-columns: 1fr;
