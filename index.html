@@ -326,7 +326,7 @@
       var BG_COLOR = '#d5e8ed';
 
       function calcDrawDims() {
-        var cw = canvas.width, ch = canvas.height;
+        var cw = window.innerWidth, ch = window.innerHeight;
         var f = frames[0];
         if (!f) return;
         var iw = f.width || 1920, ih = f.height || 1080;
