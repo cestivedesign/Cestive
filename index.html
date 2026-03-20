@@ -326,7 +326,8 @@
       var BG_COLOR = '#d5e8ed';
 
       function calcDrawDims() {
-        var cw = window.innerWidth, ch = window.innerHeight;
+        var dpr = window.devicePixelRatio || 1;
+        var cw = window.innerWidth * dpr, ch = window.innerHeight * dpr;
         var f = frames[0];
         if (!f) return;
         var iw = f.width || 1920, ih = f.height || 1080;
@@ -357,8 +358,7 @@
         canvas.style.height = window.innerHeight + 'px';
         
         if (typeof ctx.scale === 'function') {
-          ctx.setTransform(1, 0, 0, 1, 0, 0);
-          ctx.scale(dpr, dpr);
+          ctx.setTransform(1, 0, 0, 1, 0, 0); // Teljesen alapállapot, nem használunk ctx.scale-t
         }
         
         calcDrawDims();
@@ -371,7 +371,7 @@
         if (isMobile()) {
           // Fill with the animation's background blue so there's no white gap
           ctx.fillStyle = BG_COLOR;
-          ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
         ctx.drawImage(f, drawDims.dx, drawDims.dy, drawDims.dw, drawDims.dh);
       }
