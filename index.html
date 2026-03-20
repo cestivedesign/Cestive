@@ -50,13 +50,11 @@
     <div class="nav-inner">
       <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
       <div class="nav-links" id="navLinks">
+        <a href="referenciak.html" class="nav-link">Munkáink</a>
         <a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a>
-        <a href="folyamat.html" class="nav-link">Folyamat</a>
         <a href="rolunk.html" class="nav-link">Rólunk</a>
-        <a href="referenciak.html" class="nav-link">Referenciák</a>
-        <a href="arak.html" class="nav-link">Ajánlat</a>
       </div>
-      <a href="#cta" class="nav-cta">Kapcsolat</a>
+      <a href="arak.html" class="nav-cta">Kezdjük</a>
       <button class="hamburger" id="hamburger" aria-label="Menü">
         <span></span>
         <span></span>
@@ -67,12 +65,10 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
+    <a href="referenciak.html" class="mobile-link">Munkáink</a>
     <a href="szolgaltatasok.html" class="mobile-link">Szolgáltatások</a>
-    <a href="folyamat.html" class="mobile-link">Folyamat</a>
     <a href="rolunk.html" class="mobile-link">Rólunk</a>
-    <a href="referenciak.html" class="mobile-link">Referenciák</a>
-    <a href="arak.html" class="mobile-link">Ajánlat</a>
-    <a href="#cta" class="mobile-link mobile-cta">Kapcsolat</a>
+    <a href="arak.html" class="mobile-link mobile-cta">Kezdjük</a>
   </div>
 
   <!-- Hero Section with Scroll Frame Animation -->
@@ -82,18 +78,35 @@
       <div class="hero-content" id="heroContent">
 
         <h1 class="hero-title animate-on-load" data-delay="1">
-          Építünk. Automatizálunk. <span class="gradient-text">Növelünk.</span>
+          A legújabb technológia. A lehető <span class="gradient-text">legtöbb érték.</span>
         </h1>
-        <a href="#cta" class="cta-button animate-on-load" data-delay="4">
-          Kérj ingyenes konzultációt <span class="cta-arrow">→</span>
-        </a>
+        <div class="hero-buttons animate-on-load" data-delay="3" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="szolgaltatasok.html" class="cta-button" style="background: transparent; border: 1px solid rgba(120, 202, 210, 0.6); color: #143642;">
+            Szolgáltatásaink
+          </a>
+          <a href="arak.html" class="cta-button">
+            Kérj személyre szabott ajánlatot <span class="cta-arrow">→</span>
+          </a>
+        </div>
       </div>
-      <div class="scroll-cue animate-on-load" data-delay="5" id="scrollCue">
+      <div class="scroll-cue animate-on-load" data-delay="5" id="scrollCue" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#143642" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7;"><rect x="5" y="2" width="14" height="20" rx="7"></rect><line x1="12" y1="6" x2="12" y2="10"></line></svg>
         <span class="scroll-text">Görgess</span>
         <div class="scroll-line"></div>
       </div>
     </div>
   </section>
+
+  <!-- Clouds Divider -->
+  <div class="clouds-divider" aria-hidden="true">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+    <div class="cloud cloud-5"></div>
+    <div class="cloud cloud-6"></div>
+    <div class="cloud cloud-7"></div>
+  </div>
 
   <!-- Tech Marquee -->
   <section class="marquee-section">
@@ -129,72 +142,11 @@
     </div>
   </section>
 
-  <!-- Showcase Section (Scroll Grid) -->
-  <section class="showcase-section section" id="showcase">
-    <div class="showcase-sticky">
-      <div class="showcase-grid">
-        <!-- Layer 1: Outer edges (6 images) -->
-        <div class="showcase-layer">
-          <div><img src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?w=800&auto=format&fit=crop&q=60" alt="Projekt 1" /></div>
-          <div><img src="https://images.unsplash.com/photo-1556304044-0699e31c6a34?w=800&auto=format&fit=crop&q=60" alt="Projekt 2" /></div>
-          <div><img src="https://images.unsplash.com/photo-1590330297626-d7aff25a0431?w=800&auto=format&fit=crop&q=60" alt="Projekt 3" /></div>
-          <div><img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=800&auto=format&fit=crop&q=60" alt="Projekt 4" /></div>
-          <div><img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=800&auto=format&fit=crop&q=60" alt="Projekt 5" /></div>
-          <div><img src="https://images.unsplash.com/photo-1565321590372-09331b9dd1eb?w=800&auto=format&fit=crop&q=60" alt="Projekt 6" /></div>
-        </div>
-        <!-- Layer 2: Inner columns (6 images) -->
-        <div class="showcase-layer">
-          <div><img src="https://images.unsplash.com/photo-1531525645387-7f14be1bdbbd?w=800&auto=format&fit=crop&q=60" alt="Projekt 7" /></div>
-          <div><img src="https://images.unsplash.com/photo-1637414165749-9b3cd88b8271?w=800&auto=format&fit=crop&q=60" alt="Projekt 8" /></div>
-          <div><img src="https://images.unsplash.com/photo-1699911251220-8e0de3b5ce88?w=800&auto=format&fit=crop&q=60" alt="Projekt 9" /></div>
-          <div><img src="https://images.unsplash.com/photo-1667483629944-6414ad0648c5?w=800&auto=format&fit=crop&q=60" alt="Projekt 10" /></div>
-          <div><img src="https://plus.unsplash.com/premium_photo-1706078438060-d76ced26d8d5?w=800&auto=format&fit=crop&q=60" alt="Projekt 11" /></div>
-          <div><img src="https://images.unsplash.com/photo-1525385444278-b7968e7e28dc?w=800&auto=format&fit=crop&q=60" alt="Projekt 12" /></div>
-        </div>
-        <!-- Layer 3: Center column top and bottom (2 images) -->
-        <div class="showcase-layer">
-          <div><img src="https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?w=800&auto=format&fit=crop&q=60" alt="Projekt 13" /></div>
-          <div><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=60" alt="Projekt 14" /></div>
-        </div>
-        <!-- Center scaler image -->
-        <div class="showcase-scaler">
-          <img src="https://assets.codepen.io/605876/model-shades.jpg?format=auto&quality=100" alt="Kiemelt projekt" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- Stats Section -->
-  <section class="section stats-section" id="rolunk">
-    <div class="container">
-      <div class="glass stats-panel">
-        <div class="stat scroll-reveal" data-delay="0" data-target="47" data-suffix="+">
-          <span class="stat-number">0</span>
-          <span class="stat-label">Projekt</span>
-        </div>
-        <div class="stat scroll-reveal" data-delay="1" data-target="96" data-suffix="%">
-          <span class="stat-number">0</span>
-          <span class="stat-label">Elégedettség</span>
-        </div>
-        <div class="stat scroll-reveal" data-delay="2" data-target="3.2" data-suffix="x">
-          <span class="stat-number">0</span>
-          <span class="stat-label">Gyorsabb delivery</span>
-        </div>
-        <div class="stat scroll-reveal" data-delay="3" data-target="24" data-suffix="/7">
-          <span class="stat-number">0</span>
-          <span class="stat-label">AI automatizáció</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Services Preview -->
   <section class="section services-preview-section" id="szolgaltatasok-preview">
     <div class="container">
       <span class="section-label scroll-reveal">SZOLGÁLTATÁSOK</span>
-      <h2 class="section-title scroll-reveal">Amit <span class="gradient-text">csinálunk</span></h2>
+      <h2 class="section-title scroll-reveal">Három pillér, egy cél: a Te <span class="gradient-text">növekedésed.</span></h2>
 
       <div class="services-bento">
         <a href="szolgaltatasok.html" class="glass services-bento-card services-bento-large scroll-reveal">
@@ -207,7 +159,7 @@
           </div>
           <span class="services-bento-number">01</span>
           <h3 class="services-bento-title">Webfejlesztés</h3>
-          <p class="services-bento-desc">Egyedi, gyors és SEO-optimalizált weboldalak, amelyek nem csak jól néznek ki, hanem konvertálnak is. Modern technológiával, mérhetően.</p>
+          <p class="services-bento-desc">Weboldalak, webshopok, foglalási rendszerek és admin felületek — a legmodernebb technológiákkal.</p>
           <span class="services-bento-link">Részletek <span class="cta-arrow">&#8594;</span></span>
         </a>
 
@@ -225,7 +177,7 @@
           </div>
           <span class="services-bento-number">02</span>
           <h3 class="services-bento-title">AI Automatizálás</h3>
-          <p class="services-bento-desc">Chatbotoktól a workflow automatizálásig — az AI-t a Te üzletedre szabjuk.</p>
+          <p class="services-bento-desc">Chatbotok, automatikus review válaszok, AI email kezelés és riportok — a Te üzletedre szabva.</p>
           <span class="services-bento-link">Részletek <span class="cta-arrow">&#8594;</span></span>
         </a>
 
@@ -237,7 +189,7 @@
           </div>
           <span class="services-bento-number">03</span>
           <h3 class="services-bento-title">Növekedési Rendszerek</h3>
-          <p class="services-bento-desc">Analitika, lead generálás, fizetési integráció — egy komplett növekedési motor.</p>
+          <p class="services-bento-desc">SEO, email marketing, számlázás automatizálás és hűségprogramok — egy helyen, mérhetően.</p>
           <span class="services-bento-link">Részletek <span class="cta-arrow">&#8594;</span></span>
         </a>
       </div>
@@ -248,158 +200,45 @@
   <section class="section process-overview-section" id="folyamat-preview">
     <div class="container">
       <span class="section-label scroll-reveal">FOLYAMAT</span>
-      <h2 class="section-title scroll-reveal">Négy lépés az <span class="gradient-text">ötlettől</span> az eredményig</h2>
+      <h2 class="section-title scroll-reveal">Három lépésben a kész <span class="gradient-text">projekthez.</span></h2>
 
       <div class="process-overview-grid">
         <div class="glass process-overview-card scroll-reveal" data-delay="0">
           <span class="process-overview-number">01</span>
-          <h3 class="process-overview-title">Felfedezés</h3>
-          <p class="process-overview-desc">Megértjük az üzleted, feltérképezzük a célközönséged és a piaci lehetőségeket.</p>
+          <h3 class="process-overview-title">Egyeztetés</h3>
+          <p class="process-overview-desc">Kitöltöd a kérdőívet, felmérjük az igényeidet, és 24 órán belül személyre szabott ajánlatot küldünk.</p>
         </div>
         <div class="glass process-overview-card scroll-reveal" data-delay="1">
           <span class="process-overview-number">02</span>
-          <h3 class="process-overview-title">Tervezés</h3>
-          <p class="process-overview-desc">Wireframe-ek, UI/UX tervek, technikai architektúra — minden a helyére kerül.</p>
+          <h3 class="process-overview-title">Fejlesztés</h3>
+          <p class="process-overview-desc">Heti demók, folyamatos egyeztetés, átlátható haladás — a piacon elérhető legjobb eszközökkel.</p>
         </div>
         <div class="glass process-overview-card scroll-reveal" data-delay="2">
           <span class="process-overview-number">03</span>
-          <h3 class="process-overview-title">Fejlesztés</h3>
-          <p class="process-overview-desc">Agilis sprint-ek, heti demók, folyamatos tesztelés — átlátható fejlesztési folyamat.</p>
-        </div>
-        <div class="glass process-overview-card scroll-reveal" data-delay="3">
-          <span class="process-overview-number">04</span>
-          <h3 class="process-overview-title">Élesítés</h3>
-          <p class="process-overview-desc">Deployment, monitoring, A/B teszt és optimalizálás — a projekt élete itt kezdődik.</p>
-        </div>
-      </div>
-
-      <div class="process-overview-cta scroll-reveal" data-delay="4">
-        <a href="folyamat.html" class="section-link">Teljes folyamat <span class="cta-arrow">&#8594;</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="section testimonials-section" id="velemenyek">
-    <div class="container">
-      <span class="section-label scroll-reveal">ÜGYFÉLVÉLEMÉNY</span>
-      <h2 class="section-title scroll-reveal">Amit rólunk <span class="gradient-text">mondanak</span></h2>
-
-      <div class="testimonials-grid">
-        <div class="glass testimonial-card testimonial-featured scroll-reveal">
-          <svg class="testimonial-quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15" aria-hidden="true">
-            <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
-            <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
-          </svg>
-          <blockquote class="testimonial-text">
-            A Cestive csapat nem csupán egy weboldalt épített nekünk — egy komplett digitális növekedési motort hoztak létre. Az AI chatbot egyedül kezeli a support kérdések 65%-át, és az új weboldal 140%-kal növelte az online bevételünket.
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-author-info">
-              <span class="testimonial-name">Horváth Márton</span>
-              <span class="testimonial-role">CEO, TechVenture Kft.</span>
-            </div>
-          </div>
-          <div class="testimonial-metric">
-            <span class="testimonial-metric-number">+140%</span>
-            <span class="testimonial-metric-label">online bevétel</span>
-          </div>
-        </div>
-
-        <div class="glass testimonial-card scroll-reveal" data-delay="1">
-          <svg class="testimonial-quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15" aria-hidden="true">
-            <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
-            <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
-          </svg>
-          <blockquote class="testimonial-text">
-            Végre egy csapat, aki érti, hogy a technológia eszköz, nem cél. A Cestive-vel való együttműködés után 3x több prémium lead érkezik havonta.
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-author-info">
-              <span class="testimonial-name">Szabó Réka</span>
-              <span class="testimonial-role">Marketing Director, IngatlanPrémium</span>
-            </div>
-          </div>
-          <div class="testimonial-metric">
-            <span class="testimonial-metric-number">3x</span>
-            <span class="testimonial-metric-label">több prémium lead</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonials-cta scroll-reveal" data-delay="2">
-        <a href="referenciak.html" class="section-link">Összes referencia <span class="cta-arrow">&#8594;</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="section faq-section" id="gyik">
-    <div class="container">
-      <span class="section-label scroll-reveal">GYIK</span>
-      <h2 class="section-title scroll-reveal">Gyakran ismételt <span class="gradient-text">kérdések</span></h2>
-
-      <div class="faq-list">
-        <div class="faq-item scroll-reveal" data-delay="0">
-          <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-question">Mennyi idő alatt készül el egy projekt?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Egy átlagos weboldal projekt 3–6 hét alatt készül el, az AI automatizációs megoldások pedig 2–4 hét alatt. A pontos időtartam a projekt komplexitásától függ — az első konzultáción mindig reális időkeretet adunk.</p>
-          </div>
-        </div>
-
-        <div class="faq-item scroll-reveal" data-delay="1">
-          <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-question">Milyen technológiákat használtok?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Next.js, React, Supabase, Vercel, Webflow a weboldalakhoz. OpenAI, Claude API, n8n, Make.com és Zapier az automatizációkhoz. A technológiát mindig a projekthez választjuk — nem fordítva.</p>
-          </div>
-        </div>
-
-        <div class="faq-item scroll-reveal" data-delay="2">
-          <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-question">Mi történik, ha már van weboldalunk?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Nem kell újat építeni. Auditoljuk a meglévő oldalt, azonosítjuk a fejlődési lehetőségeket, és célzott fejlesztésekkel növeljük a teljesítményt — legyen szó SEO-ról, konverzió optimalizálásról vagy AI integrációról.</p>
-          </div>
-        </div>
-
-        <div class="faq-item scroll-reveal" data-delay="3">
-          <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-question">Mennyibe kerül egy projekt?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Minden projekt egyedi, ezért fix árak helyett személyre szabott ajánlatot készítünk. Töltsd ki az <a href="arak.html" class="faq-link">ajánlatkérő űrlapunkat</a>, és 24 órán belül részletes árajánlattal keresünk.</p>
-          </div>
-        </div>
-
-        <div class="faq-item scroll-reveal" data-delay="4">
-          <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-question">Van garancia a munkára?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Igen. Minden projekt után 30 napos ingyenes támogatást biztosítunk, és hosszú távú karbantartási csomagot is kínálunk. A célunk, hogy a projekt az élesítés után is tökéletesen működjön.</p>
-          </div>
+          <h3 class="process-overview-title">Átadás</h3>
+          <p class="process-overview-desc">Saját domain, szerver, betanítás — a projekt a Tiéd, és azonnal dolgozik.</p>
         </div>
       </div>
     </div>
   </section>
+
+
 
   <!-- CTA Section -->
   <section class="section cta-section" id="cta">
     <div class="container">
-      <div class="glass cta-panel scroll-reveal">
-        <h2 class="cta-title">Készen állsz, hogy <span class="gradient-text">felgyorsítsd</span> az üzleted?</h2>
-        <p class="cta-subtitle">Beszéljünk arról, hogyan segíthet a web és az AI a növekedésedben.</p>
-        <a href="mailto:hello@cestive.hu" class="cta-button">Írj nekünk <span class="cta-arrow">→</span></a>
+      <div class="cta-panel scroll-reveal">
+        <div class="cta-bg-image">
+           <img src="cta_bg.png" alt="Premium Abstract Shape" class="cta-floating-orb">
+        </div>
+        <div class="cta-content">
+          <div class="cta-badge">Limitált Kapacitás</div>
+          <h2 class="cta-title"><span class="gradient-text">Készen állsz</span> a szintlépésre?</h2>
+          <p class="cta-subtitle">Minden hónapban csak kevés új projektet indítunk el, hogy maximális figyelmet kaphass. Mondd el, min dolgozol!</p>
+          <div class="cta-actions">
+            <a href="arak.html" class="cta-button cta-button-glow">Kezdjük el a projektet <span class="cta-arrow">→</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -409,14 +248,13 @@
     <div class="container footer-inner">
       <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
       <div class="footer-links">
+        <a href="referenciak.html">Munkáink</a>
         <a href="szolgaltatasok.html">Szolgáltatások</a>
-        <a href="folyamat.html">Folyamat</a>
         <a href="rolunk.html">Rólunk</a>
-        <a href="referenciak.html">Referenciák</a>
-        <a href="arak.html">Ajánlat</a>
         <a href="adatvédelem.html">Adatvédelem</a>
         <a href="aszf.html">ÁSZF</a>
       </div>
+      <a href="mailto:hello@cestive.hu" class="footer-email">hello@cestive.hu</a>
       <span class="footer-copy">&copy; 2026 Cestive &mdash; Készítette a Cestive csapat</span>
     </div>
   </footer>
@@ -557,74 +395,5 @@
   })();
   </script>
 
-  <!-- Showcase Scroll Grid Animation -->
-  <script type="module">
-  import { animate, scroll, cubicBezier } from 'https://cdn.jsdelivr.net/npm/motion@11.11.16/+esm';
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!prefersReducedMotion) {
-    const image = document.querySelector('.showcase-scaler img');
-    const showcaseSection = document.querySelector('.showcase-section');
-    const layers = document.querySelectorAll('.showcase-grid > .showcase-layer');
-
-    if (image && showcaseSection && layers.length > 0) {
-      const naturalWidth = image.offsetWidth;
-      const naturalHeight = image.offsetHeight;
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-
-      scroll(
-        animate(image, {
-          width: [viewportWidth, naturalWidth],
-          height: [viewportHeight, naturalHeight]
-        }, {
-          width: { easing: cubicBezier(0.65, 0, 0.35, 1) },
-          height: { easing: cubicBezier(0.42, 0, 0.58, 1) }
-        }),
-        {
-          target: showcaseSection,
-          offset: ['start start', '80% end end']
-        }
-      );
-
-      const scaleEasings = [
-        cubicBezier(0.42, 0, 0.58, 1),
-        cubicBezier(0.76, 0, 0.24, 1),
-        cubicBezier(0.87, 0, 0.13, 1)
-      ];
-
-      layers.forEach((layer, index) => {
-        const endOffset = `${1 - (index * 0.05)} end`;
-
-        scroll(
-          animate(layer, {
-            opacity: [0, 0, 1]
-          }, {
-            offset: [0, 0.55, 1],
-            easing: cubicBezier(0.61, 1, 0.88, 1)
-          }),
-          {
-            target: showcaseSection,
-            offset: ['start start', endOffset]
-          }
-        );
-
-        scroll(
-          animate(layer, {
-            scale: [0, 0, 1]
-          }, {
-            offset: [0, 0.3, 1],
-            easing: scaleEasings[index]
-          }),
-          {
-            target: showcaseSection,
-            offset: ['start start', endOffset]
-          }
-        );
-      });
-    }
-  }
-  </script>
 </body>
 </html>

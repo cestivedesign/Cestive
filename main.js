@@ -119,52 +119,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ===== COUNT-UP ANIMATION =====
-function easeOutExpo(t) {
-  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-}
 
-function countUp(el, target, suffix, duration) {
-  suffix = suffix || '';
-  duration = duration || 2000;
-  var start = performance.now();
-
-  function update(now) {
-    var elapsed = now - start;
-    var p = Math.min(elapsed / duration, 1);
-    var eased = easeOutExpo(p);
-    var cur = eased * target;
-    el.textContent = (target % 1 === 0 ? Math.floor(cur) : cur.toFixed(1)) + suffix;
-    if (p < 1) requestAnimationFrame(update);
-    else el.textContent = target + suffix;
-  }
-  requestAnimationFrame(update);
-}
-
-// Observe stat items for count-up
-const statItems = document.querySelectorAll('.stat[data-target]');
-if (statItems.length > 0) {
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const items = entry.target.querySelectorAll('.stat[data-target]');
-        items.forEach((item, i) => {
-          setTimeout(() => {
-            const numEl = item.querySelector('.stat-number');
-            const target = parseFloat(item.dataset.target);
-            const suffix = item.dataset.suffix || '';
-            countUp(numEl, target, suffix);
-          }, i * 200);
-        });
-        statObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  // Observe the parent panel
-  const statsPanel = document.querySelector('.stats-panel');
-  if (statsPanel) statObserver.observe(statsPanel);
-}
 
 /* ===== STARSCAPE ===== */
 (function(){
@@ -247,57 +202,131 @@ document.querySelectorAll('.faq-trigger').forEach(trigger => {
   });
 });
 
-// ===== QUOTE FORM SUBMISSION (EmailJS) =====
+// ===== SINGLE-STEP QUOTE FORM =====
 const quoteForm = document.getElementById('quoteForm');
 if (quoteForm) {
   emailjs.init('lImh7Y3P4X0INk2f4');
+  
+  const errorEl = document.getElementById('formError');
+  const successEl = document.getElementById('formSuccess');
+  const btnSubmit = document.getElementById('btnSubmit');
 
   quoteForm.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = document.getElementById('formSubmit');
-    const errorEl = document.getElementById('formError');
+    
     errorEl.hidden = true;
-
-    // Collect form data
-    const data = {};
-    new FormData(quoteForm).forEach(function(val, key) { data[key] = val; });
-
-    // Client-side required check
-    var required = ['name', 'email', 'company', 'industry', 'service', 'description'];
-    for (var i = 0; i < required.length; i++) {
-      if (!data[required[i]] || !data[required[i]].trim()) {
-        errorEl.textContent = 'Kérjük, töltsd ki az összes kötelező mezőt (*).';
-        errorEl.hidden = false;
-        return;
-      }
+    if(btnSubmit) {
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Küldés...';
     }
-
-    btn.disabled = true;
-    btn.innerHTML = 'Küldés... <span class="cta-arrow">→</span>';
-
+    
+    const formData = new FormData(quoteForm);
+    const data = Object.fromEntries(formData.entries());
+    
     try {
       await emailjs.send('service_l1itukg', 'template_9wkzyl9', {
-        name: data.name,
-        email: data.email,
+        name: data.name || '',
+        email: data.email || '',
         phone: data.phone || 'Nem adta meg',
-        company: data.company,
+        company: data.company || 'Nem adta meg',
         website: data.website || 'Nem adta meg',
-        industry: data.industry,
-        service: data.service,
-        description: data.description,
-        budget: data.budget || 'Nem adta meg',
-        timeline: data.timeline || 'Nem adta meg',
-        source: data.source || 'Nem adta meg'
+        industry: data.industry || 'Nem adta meg',
+        services: data.services || 'Nem választott',
+        budget: data.budget || 'Nem választott',
+        timeline: data.timeline || 'Nem választott',
+        source: data.source || 'Nem választott',
+        description: data.description || '',
+        features: 'Nem választott',
+        content_source: 'Nem választott',
+        branding: 'Nem választott',
+        hosting: 'Nem választott',
+        tech_notes: '',
+        ai_tasks: 'Nem választott',
+        current_tools: '',
+        repetitive_tasks: '',
+        team_size: 'Nem adta meg',
+        payment_pref: 'Nem választott',
+        maintenance: 'Nem választott',
+        success_criteria: '',
+        concerns: '',
+        availability: 'Nem választott',
+        channels: 'Nem választott',
+        extra_notes: '',
+        references: 'Nem adta meg',
+        pages: 'Nem adta meg'
       });
-      window.location.href = 'koszonjuk.html';
+      
+      // Hide form fields container and show success message
+      if (quoteForm.children.length > 0) {
+        quoteForm.children[0].style.display = 'none';
+      }
+      if (successEl) {
+        successEl.classList.add('visible');
+      }
     } catch (err) {
-      errorEl.textContent = 'Hiba történt a küldés során. Kérjük, próbáld újra vagy írj a hello@cestive.hu címre.';
-      errorEl.hidden = false;
-      btn.disabled = false;
-      btn.innerHTML = 'Ajánlat kérése <span class="cta-arrow">→</span>';
+      if (errorEl) {
+        errorEl.textContent = 'Hiba történt a küldés során. Kérjük, próbáld újra vagy írj a hello@cestive.hu címre.';
+        errorEl.hidden = false;
+      }
+      if (btnSubmit) {
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = 'Ajánlatkérés elküldése <span class="cta-arrow">→</span>';
+      }
     }
   });
 }
+
+// ===== WORD SCROLL =====
+const WordScroll = (() => {
+  const defaults = {
+    snap: true,
+    animate: true,
+    start: 180,
+    end: 260,
+    startIndex: 0,
+  };
+
+  const init = (selector = '.word-scroll', options = {}) => {
+    const root = document.querySelector(selector);
+    if (!root) return;
+
+    const config = { ...defaults, ...options };
+    const list = root.querySelector('ul');
+    if (!list) return;
+    const items = [...list.children];
+
+    list.style.setProperty('--count', items.length);
+    items.forEach((item, i) => {
+      item.style.setProperty('--i', i);
+    });
+
+    root.dataset.snap = config.snap;
+    root.dataset.animate = config.animate;
+    root.style.setProperty('--start', config.start);
+    root.style.setProperty('--hue', config.start);
+    root.style.setProperty('--end', config.end);
+
+    const index = Math.max(0, Math.min(config.startIndex, items.length - 1));
+    const target = items[index];
+
+    if (target) {
+      requestAnimationFrame(() => {
+        const offset = target.offsetTop - (root.clientHeight / 2) + (target.clientHeight / 2);
+        root.scrollTop = offset;
+      });
+    }
+  };
+
+  return { init };
+})();
+
+WordScroll.init('.word-scroll', {
+  snap: true,
+  animate: true,
+  start: 180,
+  end: 260,
+  startIndex: 3,
+});
 
 // ===== SCROLL PROGRESS BAR =====
 const scrollProgressBar = document.getElementById('scrollProgress');

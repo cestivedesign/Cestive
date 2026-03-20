@@ -44,13 +44,11 @@
     <div class="nav-inner">
       <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
       <div class="nav-links" id="navLinks">
+        <a href="referenciak.html" class="nav-link">Munkáink</a>
         <a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a>
-        <a href="folyamat.html" class="nav-link">Folyamat</a>
         <a href="rolunk.html" class="nav-link active">Rólunk</a>
-        <a href="referenciak.html" class="nav-link">Referenciák</a>
-        <a href="arak.html" class="nav-link">Ajánlat</a>
       </div>
-      <a href="mailto:hello@cestive.hu" class="nav-cta">Kapcsolat</a>
+      <a href="arak.html" class="nav-cta">Kezdjük</a>
       <button class="hamburger" id="hamburger" aria-label="Menü">
         <span></span>
         <span></span>
@@ -61,12 +59,10 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
+    <a href="referenciak.html" class="mobile-link">Munkáink</a>
     <a href="szolgaltatasok.html" class="mobile-link">Szolgáltatások</a>
-    <a href="folyamat.html" class="mobile-link">Folyamat</a>
     <a href="rolunk.html" class="mobile-link active">Rólunk</a>
-    <a href="referenciak.html" class="mobile-link">Referenciák</a>
-    <a href="arak.html" class="mobile-link">Ajánlat</a>
-    <a href="mailto:hello@cestive.hu" class="mobile-link mobile-cta">Kapcsolat</a>
+    <a href="arak.html" class="mobile-link mobile-cta">Kezdjük</a>
   </div>
 
   <!-- Page Hero -->
@@ -85,28 +81,39 @@
     </div>
   </section>
 
-  <!-- Stats Section -->
-  <section class="section stats-section">
+  <!-- Mottó Section -->
+  <section class="section">
     <div class="container">
-      <div class="glass stats-panel">
-        <div class="stat scroll-reveal" data-delay="0" data-target="50" data-suffix="+">
-          <span class="stat-number">0</span>
-          <span class="stat-label">Projekt</span>
-        </div>
-        <div class="stat scroll-reveal" data-delay="1" data-target="98" data-suffix="%">
-          <span class="stat-number">0</span>
-          <span class="stat-label">Elégedettség</span>
-        </div>
-        <div class="stat scroll-reveal" data-delay="2" data-target="3" data-suffix="x">
-          <span class="stat-number">0</span>
-          <span class="stat-label">Gyorsabb delivery</span>
-        </div>
-        <div class="stat scroll-reveal" data-delay="3" data-target="24" data-suffix="/7">
-          <span class="stat-number">0</span>
-          <span class="stat-label">AI automatizáció</span>
-        </div>
-      </div>
+      <blockquote class="scroll-reveal" style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 600; text-align: center; margin: 2rem auto; max-width: 900px; line-height: 1.4; color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif;">
+        "Azért alapítottuk a Cestive-et, mert elegünk lett a lassú, túlárazott és sablonos webfejlesztésből. Mi valódi értéket építünk, <span style="color: var(--accent-blue);">modern eszközökkel.</span>"
+      </blockquote>
     </div>
+  </section>
+
+  <!-- Word Scroll -->
+  <section class="word-scroll" id="wordScroll">
+    <div class="scroll-spacer"></div>
+    <div class="word-scroll-inner">
+      <h2>
+        <span aria-hidden="true">Mi építünk&nbsp;</span>
+        <span class="sr-only">Mi építünk weboldalakat, webshopokat, foglalási rendszereket és digitális megoldásokat.</span>
+      </h2>
+      <ul>
+        <li>weboldalakat.</li>
+        <li>webshopokat.</li>
+        <li>foglalási rendszereket.</li>
+        <li>AI chatbotokat.</li>
+        <li>email automatizálást.</li>
+        <li>admin felületeket.</li>
+        <li>landing oldalakat.</li>
+        <li>fizetési integrációkat.</li>
+        <li>SEO stratégiákat.</li>
+        <li>növekedési motorokat.</li>
+        <li>digitális rendszereket.</li>
+        <li>skálázható megoldásokat.</li>
+      </ul>
+    </div>
+    <div class="scroll-spacer"></div>
   </section>
 
   <!-- Values Section -->
@@ -114,7 +121,7 @@
     <div class="container">
       <span class="section-label scroll-reveal">ÉRTÉKEINK</span>
       <h2 class="section-title scroll-reveal">Amiben hiszünk.</h2>
-      <div class="values-grid">
+      <div class="values-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
         <div class="glass value-card scroll-reveal" data-delay="0">
           <div class="value-icon value-icon-teal">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -122,8 +129,8 @@
               <circle cx="12" cy="12" r="3"/>
             </svg>
           </div>
-          <h3 class="value-title">Átláthatóság</h3>
-          <p class="value-desc">Nincsenek rejtett költségek, nincsenek meglepetések. Minden lépésről tájékoztatunk, minden döntésbe bevonunk. Az együttműködés bizalomra épül.</p>
+          <h3 class="value-title">Transzparencia</h3>
+          <p class="value-desc">Nincsenek rejtett költségek vagy elhallgatott technikai részletek. Minden lépésről tudni fogsz.</p>
         </div>
         <div class="glass value-card scroll-reveal" data-delay="1">
           <div class="value-icon value-icon-blue">
@@ -131,8 +138,8 @@
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
             </svg>
           </div>
-          <h3 class="value-title">Innováció</h3>
-          <p class="value-desc">Mindig a legmodernebb technológiákat és megoldásokat használjuk. Nem követjük a trendeket — alkalmazzuk őket, ahol valódi értéket adnak.</p>
+          <h3 class="value-title">Sebesség</h3>
+          <p class="value-desc">Gyors iterációk, rövidebb piacra lépési idő (Time-to-market). Nem húzzuk az időt felesleges körökkel.</p>
         </div>
         <div class="glass value-card scroll-reveal" data-delay="2">
           <div class="value-icon value-icon-green">
@@ -140,8 +147,17 @@
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </div>
-          <h3 class="value-title">Eredményorientáltság</h3>
-          <p class="value-desc">Nem a szép szavak, hanem a mérhető eredmények számítanak. Minden projektet adat- és célvezérelten közelítünk meg, hogy a befektetésed megtérüljön.</p>
+          <h3 class="value-title">Tulajdonosi Szemlélet</h3>
+          <p class="value-desc">Üzleti döntéseket hozunk, nem csak kódolunk. Úgy építjük a projektet, mintha a sajátunk lenne.</p>
+        </div>
+        <div class="glass value-card scroll-reveal" data-delay="3">
+          <div class="value-icon" style="color: #FACC15; background: rgba(250, 204, 21, 0.1);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="value-title">Jövőállóság</h3>
+          <p class="value-desc">Olyan tech stacket használunk (React, Next.js, Supabase), amit a leggyorsabban skálázódó cégek is.</p>
         </div>
       </div>
     </div>
@@ -152,131 +168,180 @@
     <div class="container">
       <span class="section-label scroll-reveal">TECH STACK</span>
       <h2 class="section-title scroll-reveal">Amivel dolgozunk.</h2>
-      <div class="tech-grid">
-        <div class="glass tech-item scroll-reveal" data-delay="0">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6"/>
-              <polyline points="8 6 2 12 8 18"/>
-            </svg>
-          </div>
-          <span class="tech-name">Next.js</span>
+      <div class="tech-grid" style="grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));">
+        <!-- We use simple glass cards since the huge SVG list is too long, mimicking the original layout -->
+        <div class="glass tech-item scroll-reveal"><span class="tech-name">Next.js</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="1"><span class="tech-name">React</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="2"><span class="tech-name">Webflow</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="3"><span class="tech-name">Tailwind</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="4"><span class="tech-name">TypeScript</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="5"><span class="tech-name">Supabase</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="6"><span class="tech-name">Node.js</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="7"><span class="tech-name">Vercel</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="8"><span class="tech-name">n8n</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="9"><span class="tech-name">Make.com</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="10"><span class="tech-name">Zapier</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="11"><span class="tech-name">OpenAI API</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="12"><span class="tech-name">Claude API</span></div>
+        <div class="glass tech-item scroll-reveal" data-delay="13"><span class="tech-name">Stripe</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process-overview-section">
+    <div class="container">
+      <span class="section-label scroll-reveal">A FOLYAMAT</span>
+      <h2 class="section-title scroll-reveal">Így dolgozunk mi</h2>
+      <div class="process-overview-grid">
+        <div class="glass process-overview-card scroll-reveal" data-delay="0">
+          <span class="process-overview-number">01</span>
+          <h3 class="process-overview-title">Felfedezés és Tervezés <span style="font-weight: 400; font-size: 1rem; opacity: 0.7; display:block; margin-top: 0.5rem">(1-2 hét)</span></h3>
+          <p class="process-overview-desc">Célok meghatározása, tech stack kiválasztása, UX drótvázak elkészítése és elfogadása.</p>
         </div>
-        <div class="glass tech-item scroll-reveal" data-delay="1">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="4"/>
-              <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/>
-              <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/>
-            </svg>
-          </div>
-          <span class="tech-name">React</span>
+        <div class="glass process-overview-card scroll-reveal" data-delay="1">
+          <span class="process-overview-number">02</span>
+          <h3 class="process-overview-title">Fejlesztés és Iteráció <span style="font-weight: 400; font-size: 1rem; opacity: 0.7; display:block; margin-top: 0.5rem">(2-6 hét)</span></h3>
+          <p class="process-overview-desc">Agilis fejlesztés szoros kommunikációval, heti demókkal és folyamatos moduláris teszteléssel.</p>
         </div>
-        <div class="glass tech-item scroll-reveal" data-delay="2">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
-            </svg>
-          </div>
-          <span class="tech-name">Supabase</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="3">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-              <circle cx="9" cy="10" r="1.5" fill="currentColor"/>
-              <circle cx="15" cy="10" r="1.5" fill="currentColor"/>
-              <path d="M8 15c0 0 1.5 2 4 2s4-2 4-2"/>
-            </svg>
-          </div>
-          <span class="tech-name">OpenAI</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="4">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </div>
-          <span class="tech-name">Claude API</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="5">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2"/>
-              <line x1="8" y1="21" x2="16" y2="21"/>
-              <line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
-          </div>
-          <span class="tech-name">Webflow</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="6">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-              <polyline points="2 17 12 22 22 17"/>
-              <polyline points="2 12 12 17 22 12"/>
-            </svg>
-          </div>
-          <span class="tech-name">Vercel</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="7">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
-              <line x1="16" y1="8" x2="2" y2="22"/>
-              <line x1="17.5" y1="15" x2="9" y2="15"/>
-            </svg>
-          </div>
-          <span class="tech-name">Tailwind CSS</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="8">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-          </div>
-          <span class="tech-name">n8n</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="9">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-            </svg>
-          </div>
-          <span class="tech-name">Make.com</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="10">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-              <line x1="1" y1="10" x2="23" y2="10"/>
-            </svg>
-          </div>
-          <span class="tech-name">Stripe</span>
-        </div>
-        <div class="glass tech-item scroll-reveal" data-delay="11">
-          <div class="tech-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18" y2="10"/>
-              <line x1="12" y1="20" x2="12" y2="4"/>
-              <line x1="6" y1="20" x2="6" y2="14"/>
-            </svg>
-          </div>
-          <span class="tech-name">Analytics</span>
+        <div class="glass process-overview-card scroll-reveal" data-delay="2">
+          <span class="process-overview-number">03</span>
+          <h3 class="process-overview-title">Indítás és Skálázás <span style="font-weight: 400; font-size: 1rem; opacity: 0.7; display:block; margin-top: 0.5rem">(Folyamatos)</span></h3>
+          <p class="process-overview-desc">Élesítés, szerver beállítások optimalizálása, SEO felügyelet és hosszú távú havi support.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- FAQ Section (Moved from index) -->
+  <section class="section faq-section" id="gyik">
+    <div class="container">
+      <div class="faq-header scroll-reveal">
+        <span class="section-label">GYIK</span>
+        <h2 class="section-title">Gyakori kérdések</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Mennyi idő alatt készül el egy projekt?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Tól-ig: egy egyszerűbb weboldal 2 hét, egy komplex app vagy e-commerce rendszer 2-3 hónap.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Milyen technológiákat használtok?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Főleg Next.js, React, Supabase, Tailwind, és egyedi AI integrációk (OpenAI, Make.com, n8n). Bizonyos esetekben Webflow-t is használunk.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Vállaltok karbantartást is?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Igen, minden lehalálozott projektünkhöz biztosítunk havi support opciót.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Csak webfejlesztéssel foglalkoztok?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Nem, teljes digitális transzformációval, beleértve az AI automatizálást és a konverzió optimalizálást (CRO) is.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Mit jelent az AI automatizálás a gyakorlatban?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Ismétlődő folyamatok, pl. ügyfélszolgálat (chatbot), számlázás, adatkövetés szoftveres automatizálását AI és API eszközökkel.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Kapok forráskódot?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Igen, a projekt átadásakor a teljes szellemi tulajdon és forráskód a Tiéd.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Hogyan lesz SEO optimalizált az oldalam?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Technikai SEO-t alapból építünk a Next.js tudásával (SSR/SSG), a tartalmi stratégiákban pedig partnerek vagyunk.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Webshopokat is építetek?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Igen, leginkább egyedi, headless e-commerce megoldásokat Stripe integrációval. Sablonos, lomha shopokat nem.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item scroll-reveal">
+          <button class="faq-question" aria-expanded="false">
+            Milyen garanciát nyújtotok?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Az átadást követő 30 napban minden esetleges bugot díjmentesen javítunk.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual CTA Section -->
   <section class="section cta-section" id="cta">
     <div class="container">
       <div class="glass cta-panel scroll-reveal">
-        <h2 class="cta-title">Készen állsz, hogy <span class="gradient-text">felgyorsítsd</span> az üzleted?</h2>
-        <p class="cta-subtitle">Beszéljünk arról, hogyan segíthet a web és az AI a növekedésedben.</p>
-        <a href="mailto:hello@cestive.hu" class="cta-button">Írj nekünk <span class="cta-arrow">→</span></a>
+        <h2 class="cta-title"><span class="gradient-text">Készen állsz a közös munkára?</span></h2>
+        <div style="display: flex; gap: 1rem; justify-content: center; align-items: center; margin-top: 2.5rem; flex-wrap: wrap;">
+          <a href="referenciak.html" style="padding: 1rem 2rem; border-radius: 100px; font-weight: 500; font-family: 'Plus Jakarta Sans', sans-serif; background: rgba(255,255,255,0.05); text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;">Munkáink megtekintése</a>
+          <a href="arak.html" class="cta-button">Kezdjük el <span class="cta-arrow">→</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -286,14 +351,13 @@
     <div class="container footer-inner">
       <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
       <div class="footer-links">
+        <a href="referenciak.html">Munkáink</a>
         <a href="szolgaltatasok.html">Szolgáltatások</a>
-        <a href="folyamat.html">Folyamat</a>
         <a href="rolunk.html">Rólunk</a>
-        <a href="referenciak.html">Referenciák</a>
-        <a href="arak.html">Ajánlat</a>
         <a href="adatvédelem.html">Adatvédelem</a>
         <a href="aszf.html">ÁSZF</a>
       </div>
+      <a href="mailto:hello@cestive.hu" class="footer-email">hello@cestive.hu</a>
       <span class="footer-copy">&copy; 2026 Cestive &mdash; Készítette a Cestive csapat</span>
     </div>
   </footer>

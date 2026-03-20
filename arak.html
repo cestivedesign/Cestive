@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
-  <title>Ajánlatkérés — Cestive</title>
-  <meta name="description" content="Kérj egyedi ajánlatot weboldalra, AI automatizálásra vagy növekedési rendszerekre. Töltsd ki a kérdőívet és hamarosan keresünk!">
+  <title>Projekt Ajánlatkérő — Cestive</title>
+  <meta name="description" content="Töltsd ki a projekt ajánlatkérő űrlapot és 24 órán belül személyre szabott ajánlattal keresünk.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="quote-page">
   <!-- Starscape -->
   <canvas id="starscape"></canvas>
 
@@ -44,13 +44,11 @@
     <div class="nav-inner">
       <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
       <div class="nav-links" id="navLinks">
+        <a href="referenciak.html" class="nav-link">Munkáink</a>
         <a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a>
-        <a href="folyamat.html" class="nav-link">Folyamat</a>
         <a href="rolunk.html" class="nav-link">Rólunk</a>
-        <a href="referenciak.html" class="nav-link">Referenciák</a>
-        <a href="arak.html" class="nav-link active">Ajánlat</a>
       </div>
-      <a href="mailto:hello@cestive.hu" class="nav-cta">Kapcsolat</a>
+      <a href="arak.html" class="nav-cta">Kezdjük</a>
       <button class="hamburger" id="hamburger" aria-label="Menü">
         <span></span>
         <span></span>
@@ -61,119 +59,154 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
+    <a href="referenciak.html" class="mobile-link">Munkáink</a>
     <a href="szolgaltatasok.html" class="mobile-link">Szolgáltatások</a>
-    <a href="folyamat.html" class="mobile-link">Folyamat</a>
     <a href="rolunk.html" class="mobile-link">Rólunk</a>
-    <a href="referenciak.html" class="mobile-link">Referenciák</a>
-    <a href="arak.html" class="mobile-link active">Ajánlat</a>
-    <a href="mailto:hello@cestive.hu" class="mobile-link mobile-cta">Kapcsolat</a>
+    <a href="arak.html" class="mobile-link mobile-cta">Kezdjük</a>
   </div>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
+  <!-- Quote Form Header -->
+  <section class="quote-header">
     <div class="container">
-      <span class="section-label scroll-reveal">AJÁNLATKÉRÉS</span>
-      <h1 class="section-title scroll-reveal">Kérj egyedi <span class="gradient-text">ajánlatot</span></h1>
-      <p class="page-hero-subtitle scroll-reveal">Töltsd ki az alábbi kérdőívet, és 24 órán belül személyre szabott ajánlattal keresünk.</p>
+      <span class="quote-logo">cestive<span class="quote-logo-dot">.</span></span>
+      <h1 class="quote-title">Indítsuk el a projekted.</h1>
+      <p class="quote-subtitle">Töltsd ki az alábbi űrlapot, és 24 órán belül felvesszük veled a kapcsolatot egy személyre szabott ajánlattal.</p>
     </div>
   </section>
 
-  <!-- Quote Form -->
+  <!-- Form Section -->
   <section class="section">
-    <div class="container">
-      <form id="quoteForm" class="glass quote-form scroll-reveal" novalidate>
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+      <form id="quoteForm" class="form-card" novalidate style="position: relative; overflow: hidden; padding: clamp(1.5rem, 5vw, 3rem); border-radius: 20px;">
+        <!-- Single Step -->
+        <div class="form-step active" style="display: block; opacity: 1; transform: none; position: static;">
+          <h2 class="step-title">Személyes adatok</h2>
+          
+          <div class="field-row">
+            <div class="form-group">
+              <label class="form-label">Teljes név <span class="req">*</span></label>
+              <input type="text" name="name" class="form-input" required placeholder="pl. Kovács Anna">
+            </div>
+            <div class="form-group">
+              <label class="form-label">E-mail cím <span class="req">*</span></label>
+              <input type="email" name="email" class="form-input" required placeholder="pl. anna@kovacs.hu">
+            </div>
+          </div>
 
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="name" class="form-label">Név *</label>
-            <input type="text" id="name" name="name" class="form-input" required placeholder="Teljes neved">
+          <div class="field-row">
+            <div class="form-group">
+              <label class="form-label">Telefonszám</label>
+              <input type="tel" name="phone" class="form-input" placeholder="pl. +36 30 123 4567">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Cégnév</label>
+              <input type="text" name="company" class="form-input" placeholder="pl. KovácsSoft Kft.">
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="email" class="form-label">E-mail *</label>
-            <input type="email" id="email" name="email" class="form-input" required placeholder="email@ceg.hu">
+            <label class="form-label">Jelenlegi weboldal (opcionális)</label>
+            <input type="url" name="website" class="form-input" placeholder="https://...">
+          </div>
+
+          <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2.5rem 0;">
+
+          <h2 class="step-title">Projekt adatok</h2>
+
+          <div class="field-row">
+            <div class="form-group">
+              <label class="form-label">Iparág / Tevékenység <span class="req">*</span></label>
+              <input type="text" name="industry" class="form-input" required placeholder="pl. E-commerce, vendéglátás...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Szolgáltatás típusa <span class="req">*</span></label>
+              <select name="service_type" class="form-input form-select" required>
+                <option value="" disabled selected>Válassz...</option>
+                <option value="Webfejlesztés / Webdesign">Webfejlesztés / Webdesign</option>
+                <option value="AI Automatizálás">AI Automatizálás</option>
+                <option value="Növekedés & SEO">Növekedés & SEO</option>
+                <option value="Komplex transzformáció">Komplex transzformáció (Több egyben)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="form-group">
+              <label class="form-label">Rendelkezésre álló keretösszeg <span class="req">*</span></label>
+              <select name="budget" class="form-input form-select" required>
+                <option value="" disabled selected>Válassz...</option>
+                <option value="Vállalkozás indító (500e - 1M Ft)">Vállalkozás indító (500e - 1M Ft)</option>
+                <option value="Növekedési fázis (1M - 3M Ft)">Növekedési fázis (1M - 3M Ft)</option>
+                <option value="Skálázódó cég (3M+ Ft)">Skálázódó cég (3M+ Ft)</option>
+                <option value="Még nem tudom / Egyéb">Még nem tudom / Egyéb</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Határidő <span class="req">*</span></label>
+              <select name="timeline" class="form-input form-select" required>
+                <option value="" disabled selected>Válassz...</option>
+                <option value="Minél hamarabb (1 hónapon belül)">Minél hamarabb (1 hónapon belül)</option>
+                <option value="Belátható időn belül (1-3 hónap)">Belátható időn belül (1-3 hónap)</option>
+                <option value="Rugalmas">Rugalmas</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="phone" class="form-label">Telefonszám</label>
-            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+36 XX XXX XXXX">
-          </div>
-
-          <div class="form-group">
-            <label for="company" class="form-label">Cégnév *</label>
-            <input type="text" id="company" name="company" class="form-input" required placeholder="Cég Kft.">
-          </div>
-
-          <div class="form-group">
-            <label for="website" class="form-label">Weboldal URL</label>
-            <input type="url" id="website" name="website" class="form-input" placeholder="https://ceg.hu">
-          </div>
-
-          <div class="form-group">
-            <label for="industry" class="form-label">Iparág *</label>
-            <input type="text" id="industry" name="industry" class="form-input" required placeholder="pl. E-commerce, SaaS, Ingatlan...">
-          </div>
-
-          <div class="form-group">
-            <label for="service" class="form-label">Milyen szolgáltatás érdekli? *</label>
-            <select id="service" name="service" class="form-input form-select" required>
+            <label class="form-label">Honnan hallottál rólunk?</label>
+            <select name="source" class="form-input form-select">
               <option value="" disabled selected>Válassz...</option>
-              <option value="Webfejlesztés">Webfejlesztés</option>
-              <option value="AI Automatizálás">AI Automatizálás</option>
-              <option value="Növekedési Rendszerek">Növekedési Rendszerek</option>
-              <option value="Több szolgáltatás">Több szolgáltatás</option>
-              <option value="Nem tudom még">Nem tudom még</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="budget" class="form-label">Tervezett büdzsé</label>
-            <select id="budget" name="budget" class="form-input form-select">
-              <option value="" disabled selected>Válassz...</option>
-              <option value="<250K Ft">250.000 Ft alatt</option>
-              <option value="250-500K Ft">250.000 – 500.000 Ft</option>
-              <option value="500K-1M Ft">500.000 – 1.000.000 Ft</option>
-              <option value="1M+ Ft">1.000.000 Ft felett</option>
-              <option value="Nem tudom még">Nem tudom még</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="timeline" class="form-label">Tervezett határidő</label>
-            <select id="timeline" name="timeline" class="form-input form-select">
-              <option value="" disabled selected>Válassz...</option>
-              <option value="1-2 hét">1–2 hét</option>
-              <option value="3-4 hét">3–4 hét</option>
-              <option value="1-2 hónap">1–2 hónap</option>
-              <option value="3+ hónap">3+ hónap</option>
-              <option value="Nincs fix határidő">Nincs fix határidő</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="source" class="form-label">Hogyan hallott rólunk?</label>
-            <select id="source" name="source" class="form-input form-select">
-              <option value="" disabled selected>Válassz...</option>
-              <option value="Google">Google keresés</option>
+              <option value="Google keresés">Google keresés</option>
               <option value="Közösségi média">Közösségi média</option>
-              <option value="Ajánlás">Ajánlás</option>
+              <option value="Ismerős ajánlása">Ismerős ajánlása</option>
               <option value="Egyéb">Egyéb</option>
             </select>
           </div>
+
+          <div class="form-group">
+            <label class="form-label">Röviden a projektről <span class="req">*</span></label>
+            <textarea name="description" class="form-input form-textarea" required placeholder="Írd le pár mondatban a céljaidat és miben segíthetünk..."></textarea>
+          </div>
+
+          <!-- Form Error & Submit -->
+          <div class="form-error" id="formError" hidden></div>
+          <div style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn-primary" id="btnSubmit">Ajánlatkérés elküldése <span class="cta-arrow">→</span></button>
+          </div>
         </div>
 
-        <div class="form-group form-group-full">
-          <label for="description" class="form-label">Projekt leírás *</label>
-          <textarea id="description" name="description" class="form-input form-textarea" required placeholder="Mesélj röviden a projektedről: mi a cél, milyen funkciókra van szükség, van-e meglévő oldal..."></textarea>
+        <!-- Success Screen -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✓</div>
+          <h2 class="success-title">Köszönjük!</h2>
+          <p class="success-text">Az ajánlatkérésed megérkezett. 24 órán belül felvesszük veled a kapcsolatot egy személyre szabott ajánlattal.</p>
+          <a href="index.html" class="btn-primary">Vissza a főoldalra <span class="cta-arrow">→</span></a>
         </div>
-
-        <div class="form-error" id="formError" hidden></div>
-
-        <button type="submit" class="cta-button form-submit" id="formSubmit">
-          Ajánlat kérése <span class="cta-arrow">→</span>
-        </button>
-
       </form>
+
+      <!-- Trust Badges -->
+      <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; text-align: center;">
+        <div class="glass" style="padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
+          <div style="color: var(--accent-blue); margin-bottom: 0.5rem;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 500;">24h válaszadás</h4>
+          <p style="font-size: 0.85rem; opacity: 0.7;">Gyors és precíz reakció.</p>
+        </div>
+        <div class="glass" style="padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
+          <div style="color: var(--accent-blue); margin-bottom: 0.5rem;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 500;">Ingyenes konzultáció</h4>
+          <p style="font-size: 0.85rem; opacity: 0.7;">Videohívás kockázat nélkül.</p>
+        </div>
+        <div class="glass" style="padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
+          <div style="color: var(--accent-blue); margin-bottom: 0.5rem;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 500;">Nincs elköteleződés</h4>
+          <p style="font-size: 0.85rem; opacity: 0.7;">Csak ha tetszik az ajánlat.</p>
+        </div>
+        <div class="glass" style="padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
+          <div style="color: var(--accent-blue); margin-bottom: 0.5rem;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 500;">Modern stack</h4>
+          <p style="font-size: 0.85rem; opacity: 0.7;">Next.js, Supabase, AI.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -182,14 +215,13 @@
     <div class="container footer-inner">
       <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
       <div class="footer-links">
+        <a href="referenciak.html">Munkáink</a>
         <a href="szolgaltatasok.html">Szolgáltatások</a>
-        <a href="folyamat.html">Folyamat</a>
         <a href="rolunk.html">Rólunk</a>
-        <a href="referenciak.html">Referenciák</a>
-        <a href="arak.html">Ajánlat</a>
         <a href="adatvédelem.html">Adatvédelem</a>
         <a href="aszf.html">ÁSZF</a>
       </div>
+      <a href="mailto:hello@cestive.hu" class="footer-email">hello@cestive.hu</a>
       <span class="footer-copy">&copy; 2026 Cestive &mdash; Készítette a Cestive csapat</span>
     </div>
   </footer>
