@@ -1156,6 +1156,97 @@ img {
   }
 }
 
+/* ===== CTA GLOW ===== */
+.cta-glow {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0 8rem;
+  z-index: 2;
+  background: #ffffff;
+}
+
+.cta-glow-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.cta-glow-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #143642;
+  line-height: 1.1;
+}
+
+.cta-glow-btn {
+  border-radius: 14px;
+}
+
+.cta-glow-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(1rem);
+  opacity: 0.8;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.cta-glow:hover .cta-glow-bg {
+  transform: translateY(-2rem);
+  opacity: 1;
+}
+
+.cta-glow-orbs {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cta-glow-orb {
+  position: absolute;
+  left: 50%;
+  border-radius: 50%;
+}
+
+.cta-glow-orb-lg {
+  bottom: 0;
+  height: 256px;
+  width: 60%;
+  transform: translateX(-50%) scale(2.5);
+  background: radial-gradient(ellipse at center, rgba(120, 202, 210, 0.5) 10%, rgba(120, 202, 210, 0) 60%);
+}
+
+.cta-glow-orb-sm {
+  bottom: 0;
+  height: 128px;
+  width: 40%;
+  transform: translateX(-50%) scale(2);
+  background: radial-gradient(ellipse at center, rgba(14, 116, 144, 0.3) 10%, rgba(120, 202, 210, 0) 60%);
+}
+
+@media (min-width: 640px) {
+  .cta-glow {
+    padding: 8rem 0 10rem;
+  }
+  .cta-glow-orb-lg {
+    height: 512px;
+  }
+  .cta-glow-orb-sm {
+    height: 256px;
+  }
+}
+
 /* ===== FOOTER ===== */
 .footer {
   position: relative;
@@ -1240,7 +1331,17 @@ img {
 }
 
 .hero-sticky::after {
-  display: none;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35vh;
+  background: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: var(--hero-fade, 0);
+  transition: opacity 0.1s linear;
 }
 
 #frameCanvas {
