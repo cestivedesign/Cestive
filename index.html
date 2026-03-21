@@ -328,6 +328,10 @@
             updateLoaderProgress();
             if (loadedFrames === FRAME_COUNT) onAllLoaded();
           };
+          img.onerror = function () {
+            loadedFrames++;
+            if (loadedFrames === FRAME_COUNT) onAllLoaded();
+          };
         })(i);
       }
 

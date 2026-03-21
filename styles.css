@@ -29,6 +29,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -2082,6 +2083,7 @@ img {
   background: #ffffff;
   font-size: clamp(2.5rem, 6vw, 5rem);
   scrollbar-width: none;
+  overflow-x: clip;
 }
 
 .word-scroll::-webkit-scrollbar {
@@ -2089,7 +2091,7 @@ img {
 }
 
 .word-scroll .scroll-spacer {
-  height: 10vh;
+  height: 25vh;
 }
 
 .word-scroll-inner {
@@ -2179,9 +2181,20 @@ img {
 }
 
 /* Word scroll mobile */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .word-scroll {
-    font-size: clamp(1.8rem, 8vw, 2.8rem);
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+  .word-scroll-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .word-scroll-inner h2 {
+    top: calc(50vh - 1.25lh);
+  }
+  .word-scroll-inner ul {
+    padding-block: calc(50vh - 0.25lh);
   }
 }
 

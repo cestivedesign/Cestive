@@ -345,7 +345,7 @@ const WordScroll = (() => {
 })();
 
 WordScroll.init('.word-scroll', {
-  snap: true,
+  snap: false,
   animate: true,
   start: 180,
   end: 260,
