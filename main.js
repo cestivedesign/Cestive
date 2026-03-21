@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
   if (!frameCanvas) {
     setTimeout(() => {
       hideLoader();
-    }, 2500);
+    }, 800);
   }
 });
 
@@ -138,7 +138,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   let stars = [];
   let rafId = null;
   let lastFrame = 0;
-  const FRAME_INTERVAL = 33; // ~30fps cap
+  const FRAME_INTERVAL = 50; // ~20fps cap
 
   function resize(){
     c.width = window.innerWidth;
@@ -149,7 +149,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   function init(){
     resize();
     stars = [];
-    for(let i=0; i<100; i++){
+    const starCount = window.innerWidth <= 768 ? 30 : 60;
+    for(let i=0; i<starCount; i++){
       stars.push({
         x: Math.random() * c.width,
         y: Math.random() * c.height,
