@@ -142,7 +142,6 @@ img {
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
   pointer-events: none;
   will-change: transform;
 }
@@ -1251,9 +1250,7 @@ img {
 .footer {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
   border-top: 1px solid rgba(20, 54, 66, 0.06);
   padding: 2.5rem 0;
 }
@@ -1682,32 +1679,30 @@ img {
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
-  filter: blur(8px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .scroll-reveal.visible {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0px);
+  will-change: auto;
 }
 
 /* ===== LOAD ANIMATIONS ===== */
 .animate-on-load {
   opacity: 0;
   transform: translateY(24px);
-  filter: blur(6px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .animate-on-load.visible {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0px);
+  will-change: auto;
 }
 
 /* Title line specific: slide up from below with clip */
@@ -2707,14 +2702,17 @@ img {
 .frost-card::after {
   content: "";
   position: absolute;
-  inset: -0.5rem;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
-  -webkit-backdrop-filter: blur(24px) saturate(1.5) brightness(0.85);
-  backdrop-filter: blur(24px) saturate(1.5) brightness(0.85);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.15) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.5) 55%, black 75%);
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.5) 55%, black 75%);
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    transparent 35%,
+    rgba(20, 30, 40, 0.15) 45%,
+    rgba(20, 30, 40, 0.45) 60%,
+    rgba(20, 30, 40, 0.7) 75%,
+    rgba(20, 30, 40, 0.85) 100%
+  );
 }
 
 .frost-backdrop {
@@ -2725,6 +2723,7 @@ img {
   object-fit: cover;
   pointer-events: none;
   user-select: none;
+  will-change: transform;
   transition: transform 0.5s ease-in-out;
 }
 

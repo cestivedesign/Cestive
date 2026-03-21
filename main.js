@@ -41,21 +41,30 @@ function triggerHeroAnimations() {
   });
 }
 
-// ===== NAVBAR SCROLL =====
+// ===== UNIFIED SCROLL HANDLER =====
 const navbar = document.getElementById('navbar');
-let lastScrollY = 0;
+let scrollTicking = false;
 
-function handleNavScroll() {
-  const scrollY = window.scrollY;
-  if (scrollY > 60) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      // Navbar
+      if (navbar) {
+        if (scrollY > 60) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+      }
+      // Scroll progress
+      const bar = document.getElementById('scrollProgress');
+      if (bar) {
+        const pct = (scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        bar.style.width = pct + '%';
+      }
+      scrollTicking = false;
+    });
+    scrollTicking = true;
   }
-  lastScrollY = scrollY;
-}
-
-window.addEventListener('scroll', handleNavScroll, { passive: true });
+}, { passive: true });
 
 // ===== HAMBURGER MENU =====
 const hamburger = document.getElementById('hamburger');
@@ -127,17 +136,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   if(!c) return;
   const ctx = c.getContext('2d');
   let stars = [];
+  let rafId = null;
+  let lastFrame = 0;
+  const FRAME_INTERVAL = 33; // ~30fps cap
+
   function resize(){
-    const d = window.devicePixelRatio || 1;
-    c.width = window.innerWidth * d;
-    c.height = window.innerHeight * d;
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
     c.style.width = window.innerWidth + 'px';
     c.style.height = window.innerHeight + 'px';
   }
   function init(){
     resize();
     stars = [];
-    for(let i=0; i<180; i++){
+    for(let i=0; i<100; i++){
       stars.push({
         x: Math.random() * c.width,
         y: Math.random() * c.height,
@@ -150,27 +162,39 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
     }
   }
-  function animate(){
+  function animate(now){
+    rafId = requestAnimationFrame(animate);
+    if(now - lastFrame < FRAME_INTERVAL) return;
+    lastFrame = now;
     ctx.clearRect(0, 0, c.width, c.height);
-    stars.forEach(s => {
+    const t = now;
+    for(let i = 0; i < stars.length; i++){
+      const s = stars[i];
       s.x += s.driftX;
       s.y += s.driftY;
       if(s.x < 0) s.x = c.width;
       if(s.x > c.width) s.x = 0;
       if(s.y < 0) s.y = c.height;
       if(s.y > c.height) s.y = 0;
-      const tw = Math.sin(Date.now() * s.twinkleSpeed + s.twinklePhase);
+      const tw = Math.sin(t * s.twinkleSpeed + s.twinklePhase);
       const op = s.baseOpacity + tw * 0.3;
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(10, 25, 47, ${Math.max(0, op)})`;
       ctx.fill();
-    });
-    requestAnimationFrame(animate);
+    }
   }
+  // Pause when tab is hidden
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden){
+      if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    } else {
+      if(!rafId){ lastFrame = 0; rafId = requestAnimationFrame(animate); }
+    }
+  });
   window.addEventListener('resize', () => { resize(); init(); });
   init();
-  animate();
+  rafId = requestAnimationFrame(animate);
 })();
 
 // ===== MAGNETIC BUTTONS =====
@@ -328,14 +352,7 @@ WordScroll.init('.word-scroll', {
   startIndex: 3,
 });
 
-// ===== SCROLL PROGRESS BAR =====
-const scrollProgressBar = document.getElementById('scrollProgress');
-if (scrollProgressBar) {
-  window.addEventListener('scroll', () => {
-    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    scrollProgressBar.style.width = pct + '%';
-  }, { passive: true });
-}
+// Scroll progress bar handled in unified scroll handler above
 
 // ===== GLOWING CARD EFFECT =====
 (function() {
@@ -346,7 +363,7 @@ if (scrollProgressBar) {
   const states = new Map();
 
   glowCards.forEach(card => {
-    states.set(card, { angle: 0 });
+    states.set(card, { angle: 0, rafId: null });
   });
 
   function easeOutQuart(t) {
@@ -354,27 +371,41 @@ if (scrollProgressBar) {
   }
 
   function animateAngle(card, from, to) {
+    const state = states.get(card);
+    if (!state) return;
+    // Cancel any running animation for this card
+    if (state.rafId) cancelAnimationFrame(state.rafId);
+
     const startTime = performance.now();
     const duration = 2000;
+    const glowEl = card.querySelector('.glow-effect');
+    if (!glowEl) return;
 
     function tick(now) {
       const p = Math.min((now - startTime) / duration, 1);
       const value = from + (to - from) * easeOutQuart(p);
-
-      const glowEl = card.querySelector('.glow-effect');
-      if (glowEl) glowEl.style.setProperty('--glow-start', String(value));
-
-      const state = states.get(card);
-      if (state) state.angle = value;
-
-      if (p < 1) requestAnimationFrame(tick);
+      glowEl.style.setProperty('--glow-start', String(value));
+      state.angle = value;
+      if (p < 1) {
+        state.rafId = requestAnimationFrame(tick);
+      } else {
+        state.rafId = null;
+      }
     }
-    requestAnimationFrame(tick);
+    state.rafId = requestAnimationFrame(tick);
   }
 
-  function update(x, y) {
+  let updateRaf = null;
+  function scheduleUpdate() {
+    if (updateRaf) return;
+    updateRaf = requestAnimationFrame(() => {
+      updateRaf = null;
+      doUpdate(pointer.x, pointer.y);
+    });
+  }
+
+  function doUpdate(x, y) {
     const proximity = 64;
-    const inactiveZone = 0.01;
 
     glowCards.forEach(card => {
       const glowEl = card.querySelector('.glow-effect');
@@ -383,14 +414,6 @@ if (scrollProgressBar) {
       const rect = card.getBoundingClientRect();
       const cx = rect.left + rect.width * 0.5;
       const cy = rect.top + rect.height * 0.5;
-
-      const dist = Math.hypot(x - cx, y - cy);
-      const inactiveR = 0.5 * Math.min(rect.width, rect.height) * inactiveZone;
-
-      if (dist < inactiveR) {
-        glowEl.style.setProperty('--glow-active', '0');
-        return;
-      }
 
       const active =
         x > rect.left - proximity &&
@@ -413,10 +436,8 @@ if (scrollProgressBar) {
   document.body.addEventListener('pointermove', (e) => {
     pointer.x = e.clientX;
     pointer.y = e.clientY;
-    update(e.clientX, e.clientY);
+    scheduleUpdate();
   }, { passive: true });
 
-  window.addEventListener('scroll', () => {
-    update(pointer.x, pointer.y);
-  }, { passive: true });
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
 })();
