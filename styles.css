@@ -1320,6 +1320,7 @@ img {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100dvh;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -2400,11 +2401,12 @@ img {
   }
 
   .hero-scroll {
-    height: 180vh;
+    height: 250vh;
   }
 
   .hero-sticky {
     background: #d5e8ed;
+    height: 100dvh;
   }
 
   .hero-sticky::after {
@@ -2542,11 +2544,12 @@ img {
   }
 
   .hero-scroll {
-    height: 160vh;
+    height: 250vh;
   }
 
   .hero-sticky {
     background: #d5e8ed;
+    height: 100dvh;
   }
 
   .hero-sticky::after {
