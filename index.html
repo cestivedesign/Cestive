@@ -274,10 +274,7 @@
   <!-- Frame Animation (only on homepage) -->
   <script>
     (function () {
-      // Load every 2nd frame: 1,3,5,...,121 = 61 frames instead of 121
-      var STEP = 2;
-      var TOTAL_ORIGINAL = 121;
-      var FRAME_COUNT = Math.ceil(TOTAL_ORIGINAL / STEP); // 61
+      var FRAME_COUNT = 121;
       var frames = new Array(FRAME_COUNT);
       var loadedFrames = 0;
       var canvas = document.getElementById('frameCanvas');
@@ -291,19 +288,18 @@
       var heroSection = document.getElementById('hero');
       var heroContent = document.getElementById('heroContent');
 
-      // Preload frames — plain Image objects (no createImageBitmap)
+      // Preload all 121 frames — plain Image objects (browser manages decode cache)
       for (var i = 0; i < FRAME_COUNT; i++) {
-        var fileNum = i * STEP + 1; // 1, 3, 5, ..., 121
-        (function(idx, num) {
+        (function(idx) {
           var img = new Image();
-          img.src = 'frames/frame_' + String(num).padStart(4, '0') + '.jpg';
+          img.src = 'frames/frame_' + String(idx + 1).padStart(4, '0') + '.jpg';
           img.onload = function () {
             frames[idx] = img;
             loadedFrames++;
             updateLoaderProgress();
             if (loadedFrames === FRAME_COUNT) onAllLoaded();
           };
-        })(i, fileNum);
+        })(i);
       }
 
       function updateLoaderProgress() {

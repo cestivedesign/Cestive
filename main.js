@@ -14,10 +14,10 @@ window.addEventListener('load', () => {
 });
 
 function hideLoader() {
+  document.body.classList.remove('loading');
   const loader = document.getElementById('loader');
   if (!loader) return;
   loader.classList.add('fade-out');
-  document.body.classList.remove('loading');
 
   // Trigger hero animations after loader fades
   setTimeout(() => {
@@ -211,14 +211,14 @@ document.querySelectorAll('.cta-button').forEach(btn => {
 });
 
 // ===== FAQ ACCORDION =====
-document.querySelectorAll('.faq-trigger').forEach(trigger => {
+document.querySelectorAll('.faq-question').forEach(trigger => {
   trigger.addEventListener('click', function() {
     const item = this.closest('.faq-item');
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(openItem => {
       if (openItem !== item) {
         openItem.classList.remove('open');
-        openItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+        openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
       }
     });
     item.classList.toggle('open');
@@ -255,7 +255,7 @@ if (quoteForm) {
         company: data.company || 'Nem adta meg',
         website: data.website || 'Nem adta meg',
         industry: data.industry || 'Nem adta meg',
-        services: data.services || 'Nem választott',
+        services: data.service_type || 'Nem választott',
         budget: data.budget || 'Nem választott',
         timeline: data.timeline || 'Nem választott',
         source: data.source || 'Nem választott',

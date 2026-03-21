@@ -10,6 +10,12 @@
   opacity: 0.6;
 }
 
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  --text-primary: #143642;
+  --accent-blue: #0e7490;
+}
+
 /* ===== RESET & BASE ===== */
 *,
 *::before,
@@ -1999,7 +2005,7 @@ img {
   border-top: 1px solid rgba(20, 54, 66, 0.08);
 }
 
-.faq-trigger {
+.faq-question {
   width: 100%;
   display: flex;
   align-items: center;
@@ -2010,19 +2016,15 @@ img {
   border: none;
   cursor: pointer;
   text-align: left;
-  font-family: inherit;
-}
-
-.faq-trigger:hover .faq-question {
-  color: #0e7490;
-}
-
-.faq-question {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   color: #143642;
   transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: #0e7490;
 }
 
 .faq-icon {
