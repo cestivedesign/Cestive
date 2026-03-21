@@ -228,5 +228,70 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="main.js"></script>
+  <script>
+    // Initialize EmailJS
+    emailjs.init('lImh7Y3P4X0INk2f4');
+
+    const form = document.getElementById('quoteForm');
+    const btnSubmit = document.getElementById('btnSubmit');
+    const formError = document.getElementById('formError');
+    const formSuccess = document.getElementById('formSuccess');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Basic validation
+      const requiredFields = form.querySelectorAll('[required]');
+      let valid = true;
+      requiredFields.forEach(function (field) {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#e05555';
+          valid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+
+      if (!valid) {
+        formError.textContent = 'Kérjük töltsd ki az összes kötelező mezőt (*)!';
+        formError.hidden = false;
+        return;
+      }
+
+      formError.hidden = true;
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Küldés...';
+
+      // Collect form data
+      const templateParams = {
+        from_name:    form.querySelector('[name="name"]').value,
+        from_email:   form.querySelector('[name="email"]').value,
+        phone:        form.querySelector('[name="phone"]').value || '—',
+        company:      form.querySelector('[name="company"]').value || '—',
+        website:      form.querySelector('[name="website"]').value || '—',
+        industry:     form.querySelector('[name="industry"]').value,
+        service_type: form.querySelector('[name="service_type"]').value,
+        budget:       form.querySelector('[name="budget"]').value,
+        timeline:     form.querySelector('[name="timeline"]').value,
+        source:       form.querySelector('[name="source"]').value || '—',
+        description:  form.querySelector('[name="description"]').value,
+      };
+
+      emailjs.send('service_l1itukg', 'template_9wkzyl9', templateParams)
+        .then(function () {
+          // Show success screen
+          form.querySelectorAll('.form-step, .field-row, .form-group, h2.step-title, hr').forEach(function(el) {
+            el.style.display = 'none';
+          });
+          formSuccess.style.display = 'flex';
+        })
+        .catch(function (err) {
+          formError.textContent = 'Hiba történt a küldés során: ' + (err.text || JSON.stringify(err));
+          formError.hidden = false;
+          btnSubmit.disabled = false;
+          btnSubmit.innerHTML = 'Ajánlatkérés elküldése <span class="cta-arrow">→</span>';
+        });
+    });
+  </script>
 </body>
 </html>
