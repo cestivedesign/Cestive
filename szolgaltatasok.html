@@ -247,6 +247,18 @@
     </div>
   </section>
 
+  <!-- Global Reach Globe Section -->
+  <section class="section globe-section scroll-reveal" style="text-align: center; overflow: hidden; position: relative; padding: 6rem 0;">
+    <div class="container" style="position: relative; z-index: 2;">
+      <h2 class="section-title">A világon minden elérhető, <span class="gradient-text">céllal.</span></h2>
+      <p class="cta-subtitle" style="margin-bottom: 2rem;">Bárhol is tartasz, a megfelelő technológiával globális szintre léphetsz.</p>
+    </div>
+    
+    <div style="position: relative; width: 100%; max-width: 600px; aspect-ratio: 1/1; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
+      <canvas id="cobe-globe" style="width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease; cursor: grab;"></canvas>
+    </div>
+  </section>
+
   <!-- Miért más a Cestive? -->
   <section class="section">
     <div class="container">
@@ -271,12 +283,15 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="section cta-section" id="cta">
-    <div class="container">
-      <div class="glass cta-panel scroll-reveal">
-        <h2 class="cta-title"><span class="gradient-text">Nem tudod, melyik szolgáltatás kell?</span></h2>
-        <p class="cta-subtitle">Segítünk a választásban. Foglalj egy ingyenes egyeztetést!</p>
-        <a href="arak.html" class="cta-button">Egyeztetés <span class="cta-arrow">→</span></a>
+  <section class="cta-glow" id="cta">
+    <div class="container cta-glow-inner">
+      <h2 class="cta-glow-title scroll-reveal">Nem tudod, melyik szolgáltatás kell?</h2>
+      <a href="arak.html" class="cta-button cta-glow-btn scroll-reveal" data-delay="1">Egyeztetés <span class="cta-arrow">→</span></a>
+    </div>
+    <div class="cta-glow-bg">
+      <div class="cta-glow-orbs">
+        <div class="cta-glow-orb cta-glow-orb-lg"></div>
+        <div class="cta-glow-orb cta-glow-orb-sm"></div>
       </div>
     </div>
   </section>
@@ -298,5 +313,97 @@
   </footer>
 
   <script src="main.js"></script>
+
+  <!-- Cobe Globe Vanilla JS Integration -->
+  <script type="module">
+    import createGlobe from 'https://cdn.skypack.dev/cobe';
+
+    const canvas = document.getElementById("cobe-globe");
+    if (canvas) {
+      let phi = 0;
+      let currentPhi = 0;
+      let pointerInteracting = null;
+      let pointerInteractionMovement = 0;
+      let globe;
+
+      const initGlobe = () => {
+        const width = canvas.offsetWidth;
+        const dpr = window.devicePixelRatio || 1;
+        
+        globe = createGlobe(canvas, {
+          devicePixelRatio: dpr,
+          width: width * dpr,
+          height: width * dpr,
+          phi: 0,
+          theta: 0.3,
+          dark: 1, // Dark mode for Cestive theme
+          diffuse: 1.2,
+          mapSamples: 16000,
+          mapBrightness: 6,
+          baseColor: [0.1, 0.1, 0.1], // Dark globe
+          markerColor: [120 / 255, 202 / 255, 210 / 255], // Cestive cyan: #78cad2
+          glowColor: [20 / 255, 54 / 255, 66 / 255], // Cestive dark blue: #143642
+          markers: [
+            { location: [14.5995, 120.9842], size: 0.03 },
+            { location: [19.076, 72.8777], size: 0.1 },
+            { location: [23.8103, 90.4125], size: 0.05 },
+            { location: [30.0444, 31.2357], size: 0.07 },
+            { location: [39.9042, 116.4074], size: 0.08 },
+            { location: [-23.5505, -46.6333], size: 0.1 },
+            { location: [19.4326, -99.1332], size: 0.1 },
+            { location: [40.7128, -74.006], size: 0.1 },
+            { location: [34.6937, 135.5022], size: 0.05 },
+            { location: [41.0082, 28.9784], size: 0.06 },
+            { location: [47.4979, 19.0402], size: 0.08 } // Budapest!
+          ],
+          onRender: (state) => {
+            if (pointerInteracting === null) {
+              phi += 0.005;
+            }
+            state.phi = phi + currentPhi;
+            state.width = width * dpr;
+            state.height = width * dpr;
+          }
+        });
+        setTimeout(() => (canvas.style.opacity = "1"), 100);
+      };
+
+      initGlobe();
+
+      window.addEventListener('resize', () => {
+        if (globe) {
+          globe.destroy();
+          initGlobe();
+        }
+      });
+
+      canvas.addEventListener("pointerdown", (e) => {
+        pointerInteracting = e.clientX - pointerInteractionMovement;
+        canvas.style.cursor = 'grabbing';
+      });
+      canvas.addEventListener("pointerup", () => {
+        pointerInteracting = null;
+        canvas.style.cursor = 'grab';
+      });
+      canvas.addEventListener("pointerout", () => {
+        pointerInteracting = null;
+        canvas.style.cursor = 'grab';
+      });
+      canvas.addEventListener("mousemove", (e) => {
+        if (pointerInteracting !== null) {
+          const delta = e.clientX - pointerInteracting;
+          pointerInteractionMovement = delta;
+          currentPhi = delta / 200;
+        }
+      });
+      canvas.addEventListener("touchmove", (e) => {
+        if (e.touches[0] && pointerInteracting !== null) {
+          const delta = e.touches[0].clientX - pointerInteracting;
+          pointerInteractionMovement = delta;
+          currentPhi = delta / 200;
+        }
+      }, { passive: true });
+    }
+  </script>
 </body>
 </html>
