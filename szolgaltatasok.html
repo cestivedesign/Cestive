@@ -255,7 +255,7 @@
     </div>
     
     <div style="position: relative; width: 100%; max-width: 850px; aspect-ratio: 1/1; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
-      <canvas id="cobe-globe" style="width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease; cursor: grab;"></canvas>
+      <canvas id="cobe-globe" style="cursor: grab;"></canvas>
     </div>
   </section>
 
@@ -324,30 +324,28 @@
       let currentPhi = 0;
       let pointerInteracting = null;
       let pointerInteractionMovement = 0;
-      let width = 0;
 
       const initGlobe = () => {
-        width = canvas.offsetWidth;
-        if (width === 0) {
-          requestAnimationFrame(initGlobe);
-          return;
-        }
+        const dpr = 2; // Device pixel ratio 
+        const cssWidth = 850; // Visual CSS size
 
-        const dpr = window.devicePixelRatio || 1;
+        // Important: set explicit width/height to avoid resizing oscillations
+        canvas.width = cssWidth * dpr;
+        canvas.height = cssWidth * dpr;
         
         createGlobe(canvas, {
           devicePixelRatio: dpr,
-          width: width * dpr,
-          height: width * dpr,
+          width: cssWidth,
+          height: cssWidth,
           phi: 0,
           theta: 0.3,
-          dark: 0,
+          dark: 0, // White mode
           diffuse: 0.4,
           mapSamples: 16000,
           mapBrightness: 1.2,
-          baseColor: [1, 1, 1],
-          markerColor: [20 / 255, 54 / 255, 66 / 255],
-          glowColor: [1, 1, 1],
+          baseColor: [1, 1, 1], // White globe
+          markerColor: [20 / 255, 54 / 255, 66 / 255], // Cestive dark blue markers: #143642
+          glowColor: [1, 1, 1], // White glow
           markers: [
             { location: [14.5995, 120.9842], size: 0.03 },
             { location: [19.076, 72.8777], size: 0.1 },
@@ -366,16 +364,11 @@
               phi += 0.005;
             }
             state.phi = phi + currentPhi;
-            state.width = width * dpr;
-            state.height = width * dpr;
+            state.width = cssWidth * dpr;
+            state.height = cssWidth * dpr;
           }
         });
         
-        setTimeout(() => (canvas.style.opacity = "1"), 100);
-
-        window.addEventListener('resize', () => {
-          width = canvas.offsetWidth;
-        });
 
         canvas.addEventListener("pointerdown", (e) => {
           pointerInteracting = e.clientX - pointerInteractionMovement;
