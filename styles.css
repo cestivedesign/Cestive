@@ -26,7 +26,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -1312,7 +1311,7 @@ img {
 /* ===== SCROLL HERO (Frame Animation) ===== */
 .hero-scroll {
   position: relative;
-  height: 200vh;
+  height: 300vh;
   z-index: 2;
 }
 
@@ -1334,12 +1333,11 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 35vh;
-  background: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+  height: 60vh;
+  background: linear-gradient(to bottom, transparent 0%, #ffffff 70%);
   z-index: 1;
   pointer-events: none;
   opacity: var(--hero-fade, 0);
-  transition: opacity 0.1s linear;
 }
 
 #frameCanvas {
@@ -2384,7 +2382,7 @@ img {
   }
 
   .hero-scroll {
-    height: 200vh;
+    height: 250vh;
   }
 
   .hero-sticky {
@@ -2393,7 +2391,8 @@ img {
   }
 
   .hero-sticky::after {
-    background: linear-gradient(to bottom, transparent 0%, #d5e8ed 40%, #ffffff 100%);
+    height: 70vh;
+    background: linear-gradient(to bottom, transparent 0%, rgba(213, 232, 237, 0.8) 30%, #ffffff 80%);
   }
 
   .hero-scroll .hero-content {
@@ -2527,7 +2526,7 @@ img {
   }
 
   .hero-scroll {
-    height: 200vh;
+    height: 280vh;
   }
 
   .hero-sticky {
@@ -2536,7 +2535,8 @@ img {
   }
 
   .hero-sticky::after {
-    background: linear-gradient(to bottom, transparent 0%, #d5e8ed 40%, #ffffff 100%);
+    height: 80vh;
+    background: linear-gradient(to bottom, transparent 0%, rgba(213, 232, 237, 0.6) 25%, #ffffff 70%);
   }
 
   .hero-scroll .hero-content {
