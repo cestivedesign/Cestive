@@ -2174,27 +2174,10 @@ img {
   border: 0;
 }
 
-/* Word scroll mobile */
+/* Word scroll mobile — hide on small screens */
 @media (max-width: 768px) {
   .word-scroll {
-    font-size: clamp(1.4rem, 6.5vw, 2.2rem);
-  }
-  .word-scroll .scroll-spacer {
-    height: 15vh;
-  }
-  .word-scroll-inner {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0;
-  }
-  .word-scroll-inner h2 {
-    position: sticky;
-    top: calc(50vh - 2em);
-    z-index: 2;
-  }
-  .word-scroll-inner ul {
-    padding-block: calc(50vh - 0.75em);
+    display: none;
   }
 }
 
