@@ -430,14 +430,16 @@
               scrollCue.style.opacity = textOpacity;
               scrollCue.style.transform = 'translateY(-' + textShift + 'px)';
             }
-            // Slide canvas up towards the end of scroll
-            var slideStart = 0.7;
-            if (progress > slideStart) {
-              var slideProgress = (progress - slideStart) / (1 - slideStart);
-              var slideY = slideProgress * window.innerHeight * 0.4;
-              canvas.style.transform = 'translateY(-' + slideY + 'px)';
-            } else {
-              canvas.style.transform = '';
+            // Slide canvas up towards the end of scroll (mobile only)
+            if (isMobile()) {
+              var slideStart = 0.7;
+              if (progress > slideStart) {
+                var slideProgress = (progress - slideStart) / (1 - slideStart);
+                var slideY = slideProgress * window.innerHeight * 0.4;
+                canvas.style.transform = 'translateY(-' + slideY + 'px)';
+              } else {
+                canvas.style.transform = '';
+              }
             }
 
             // Bottom gradient fade-in
