@@ -2176,18 +2176,24 @@ img {
 /* Word scroll mobile */
 @media (max-width: 768px) {
   .word-scroll {
-    font-size: clamp(1.6rem, 7vw, 2.4rem);
+    font-size: clamp(1.4rem, 6.5vw, 2.2rem);
+  }
+  .word-scroll .scroll-spacer {
+    height: 15vh;
   }
   .word-scroll-inner {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 0;
   }
   .word-scroll-inner h2 {
-    top: calc(50vh - 2.5em);
+    position: sticky;
+    top: calc(50vh - 2em);
+    z-index: 2;
   }
   .word-scroll-inner ul {
-    padding-block: calc(50vh - 0.5em);
+    padding-block: calc(50vh - 0.75em);
   }
 }
 
@@ -2405,6 +2411,15 @@ img {
     background: linear-gradient(to bottom, transparent 0%, #d5e8ed 40%, #ffffff 100%);
   }
 
+  .hero-scroll .hero-content {
+    margin-top: 55vh;
+  }
+
+  .hero-scroll .hero-title {
+    white-space: normal;
+    line-height: 1.15;
+  }
+
   /* New sections tablet */
   .services-bento {
     grid-template-columns: 1fr;
@@ -2463,8 +2478,11 @@ img {
   }
 
   .cta-button {
-    padding: 1rem 2rem;
+    padding: 1rem 1.6rem;
     font-size: 0.85rem;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .process-grid {
@@ -2504,6 +2522,12 @@ img {
     gap: 0.8rem;
   }
 
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
   .cta-panel {
     padding: 2.5rem 1.5rem;
     border-radius: 20px;
@@ -2518,7 +2542,7 @@ img {
   }
 
   .hero-scroll {
-    height: 180vh;
+    height: 160vh;
   }
 
   .hero-sticky {
@@ -2530,11 +2554,12 @@ img {
   }
 
   .hero-scroll .hero-content {
-    margin-top: 50vh;
+    margin-top: 45vh;
+    padding: 0 1rem;
   }
 
   .hero-scroll .hero-title {
-    font-size: clamp(1.6rem, 7vw, 2.4rem);
+    font-size: clamp(1.5rem, 6.5vw, 2.2rem);
     white-space: normal;
     line-height: 1.15;
     color: #143642;
@@ -2546,6 +2571,11 @@ img {
     color: #143642;
     border: 1px solid rgba(20, 54, 66, 0.15);
     backdrop-filter: blur(8px);
+  }
+
+  .hero-scroll .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .page-hero {
