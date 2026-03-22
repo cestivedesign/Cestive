@@ -625,6 +625,17 @@ img {
   50% { transform: scaleY(0.5); opacity: 0.4; }
 }
 
+/* ===== HERO TRANSITION ===== */
+.hero-transition {
+  position: relative;
+  z-index: 3;
+  height: 8vh;
+  background: linear-gradient(to bottom,
+    rgba(213, 232, 237, 0.15) 0%,
+    #ffffff 100%
+  );
+}
+
 /* ===== MARQUEE ===== */
 .marquee-section {
   position: relative;
@@ -2068,117 +2079,6 @@ img {
 }
 
 /* ===== WORD SCROLL ===== */
-.word-scroll {
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  background: #ffffff;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  scrollbar-width: none;
-  overflow-x: clip;
-}
-
-.word-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.word-scroll .scroll-spacer {
-  height: 25vh;
-}
-
-.word-scroll-inner {
-  display: flex;
-  justify-content: center;
-  line-height: 1.25;
-}
-
-.word-scroll-inner h2 {
-  position: sticky;
-  top: calc(50vh - 1.5em);
-  margin: 0;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: inherit;
-  font-weight: 400;
-  height: fit-content;
-  letter-spacing: -0.02em;
-}
-
-.word-scroll-inner ul {
-  font-family: 'Bebas Neue', sans-serif;
-  font-weight: 400;
-  list-style: none;
-  margin: 0;
-  padding-block: calc(50vh - 1em);
-  padding-left: 0;
-  --step: calc((var(--end) - var(--start)) / (var(--count) - 1));
-}
-
-.word-scroll[data-snap="true"] {
-  height: 100vh;
-  overflow-y: auto;
-  scroll-snap-type: y proximity;
-}
-
-.word-scroll[data-snap="true"] li {
-  scroll-snap-align: center;
-}
-
-.word-scroll li:not(:last-of-type) {
-  color: oklch(45% 0.12 calc(var(--start) + (var(--step) * var(--i))));
-}
-
-.word-scroll h2,
-.word-scroll li:last-of-type {
-  background: linear-gradient(#143642 50%, rgba(20, 54, 66, 0.3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-@supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
-  .word-scroll[data-animate="true"] li {
-    opacity: 0.15;
-    animation-name: wordBrighten;
-    animation-fill-mode: both;
-    animation-timing-function: linear;
-    animation-range: cover calc(50% - 1lh) calc(50% + 1lh);
-    animation-timeline: view();
-  }
-
-  .word-scroll[data-animate="true"] li:first-of-type {
-    --ws-start-opacity: 1;
-  }
-
-  .word-scroll[data-animate="true"] li:last-of-type {
-    --ws-end-opacity: 1;
-  }
-
-  @keyframes wordBrighten {
-    0% { opacity: var(--ws-start-opacity, 0.15); }
-    50% { opacity: 1; }
-    100% { opacity: var(--ws-end-opacity, 0.15); }
-  }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Word scroll mobile — hide on small screens */
-@media (max-width: 768px) {
-  .word-scroll {
-    display: none;
-  }
-}
-
 /* ===== LEGAL PAGES ===== */
 .legal-content {
   max-width: 760px;
