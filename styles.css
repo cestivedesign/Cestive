@@ -288,7 +288,8 @@ img {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navbar.scrolled {
+.navbar.scrolled,
+.navbar.nav-solid {
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(24px) saturate(1.4);
   -webkit-backdrop-filter: blur(24px) saturate(1.4);
