@@ -1823,17 +1823,23 @@ img {
 /* ===== PROCESS OVERVIEW ===== */
 .process-overview-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 3rem;
   position: relative;
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .process-overview-card {
   padding: 2rem;
-  text-align: left;
+  text-align: center;
   position: relative;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .process-overview-card:hover {
@@ -1841,16 +1847,6 @@ img {
 }
 
 .process-overview-card::after {
-  content: '';
-  position: absolute;
-  top: 2.5rem;
-  right: -0.75rem;
-  width: 1.5rem;
-  height: 1px;
-  background: linear-gradient(to right, rgba(120, 202, 210, 0.4), rgba(120, 202, 210, 0.1));
-}
-
-.process-overview-card:last-child::after {
   display: none;
 }
 
