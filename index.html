@@ -286,7 +286,7 @@
       var currentFrame = -1;
       var ticking = false;
       var drawDims = null;
-      var dpr = window.devicePixelRatio || 1;
+      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       var loaderBar = document.getElementById('loaderBar');
       var loaderPercent = document.getElementById('loaderPercent');
       var heroSection = document.getElementById('hero');
@@ -356,7 +356,7 @@
       }
 
       function resizeCanvas() {
-        dpr = window.devicePixelRatio || 1;
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
         var w = window.innerWidth, h = window.innerHeight;
         canvas.width = w * dpr;
         canvas.height = h * dpr;
@@ -370,18 +370,22 @@
       function drawFrame(index) {
         var f = frames[index];
         if (!f || !drawDims) return;
-        ctx.fillStyle = BG_COLOR;
-        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+        if (isMobile()) {
+          ctx.fillStyle = BG_COLOR;
+          ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+        }
         ctx.drawImage(f, drawDims.dx, drawDims.dy, drawDims.dw, drawDims.dh);
       }
 
-      // Cache scrollable distance
+      // Cache scrollable distance and hero offset
       var cachedScrollable = 0;
+      var cachedHeroTop = 0;
       var scrollCue = document.getElementById('scrollCue');
 
       function updateScrollable() {
         var vh = window.visualViewport ? window.visualViewport.height : document.documentElement.clientHeight;
         cachedScrollable = heroSection.offsetHeight - vh;
+        cachedHeroTop = heroSection.offsetTop;
       }
 
       window.addEventListener('resize', function () {
@@ -434,7 +438,7 @@
           var sp = SNAP_POINTS[i];
           // Ha közel érünk egy ponthoz & nem ugyanott ragadtunk be az előbb
           if (Math.abs(progress - sp) < SNAP_ZONE && lastSnappedPoint !== i) {
-            var targetScroll = heroSection.offsetTop + sp * cachedScrollable;
+            var targetScroll = cachedHeroTop + sp * cachedScrollable;
             snapLock(i, targetScroll);
             return;
           }
@@ -456,8 +460,8 @@
         if (!ticking) {
           requestAnimationFrame(function () {
             if (cachedScrollable <= 0) { ticking = false; return; }
-            var rect = heroSection.getBoundingClientRect();
-            var progress = Math.min(1, Math.max(0, -rect.top / cachedScrollable));
+            var scrolled = window.scrollY - cachedHeroTop;
+            var progress = Math.min(1, Math.max(0, scrolled / cachedScrollable));
             var frameIndex = Math.min(FRAME_COUNT - 1, Math.floor(progress * FRAME_COUNT));
 
             if (frameIndex !== currentFrame) {
