@@ -433,6 +433,8 @@
       }
 
       function snapCheck(progress) {
+        // Skip snap-lock on mobile — preventDefault on touchmove causes stutter
+        if (isMobile()) return;
         if (snapLocked) return;
         
         for (var i = 0; i < SNAP_POINTS.length; i++) {
