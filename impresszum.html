@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 — Cestive</title>
-  <meta name="description" content="Az oldal nem található.">
+  <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+  <title>Impresszum — Cestive</title>
+  <meta name="description" content="A cestive.hu honlap és a megjelenített információk tulajdonosának és üzemeltetőjének adatai.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -14,6 +15,16 @@
 <body>
   <!-- Starscape -->
   <canvas id="starscape"></canvas>
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="loader-text">
+      <span class="loader-letter" style="animation-delay: 0s">C</span><span class="loader-letter" style="animation-delay: 0.08s">e</span><span class="loader-letter" style="animation-delay: 0.16s">s</span><span class="loader-letter" style="animation-delay: 0.24s">t</span><span class="loader-letter" style="animation-delay: 0.32s">i</span><span class="loader-letter" style="animation-delay: 0.4s">v</span><span class="loader-letter" style="animation-delay: 0.48s">e</span><span class="loader-dot" style="animation-delay: 0.6s">.</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress"></div>
 
   <!-- Background Blobs -->
   <div class="blobs-container" aria-hidden="true">
@@ -54,13 +65,34 @@
     <a href="arak.html" class="mobile-link mobile-cta">Ajánlatkérés</a>
   </div>
 
-  <!-- 404 Content -->
-  <section class="error-page">
+  <!-- Page Hero -->
+  <section class="page-hero">
     <div class="container">
-      <span class="error-code">404</span>
-      <h1 class="error-title">Az oldal nem található</h1>
-      <p class="error-desc">A keresett oldal nem létezik, vagy áthelyezésre került.</p>
-      <a href="index.html" class="cta-button">Vissza a főoldalra <span class="cta-arrow">→</span></a>
+      <span class="section-label scroll-reveal">JOGI</span>
+      <h1 class="section-title scroll-reveal">Impresszum</h1>
+    </div>
+  </section>
+
+  <!-- Legal Content -->
+  <section class="section">
+    <div class="container">
+      <div class="legal-content glass scroll-reveal">
+
+        <h2>A honlap és a megjelenített információk tulajdonosa</h2>
+        <p><strong>BODOGÁN FÉLIX</strong><br>Minden jog fenntartva!</p>
+
+        <h2>Üzemeltető</h2>
+        <p><strong>iw Marketing kft.</strong></p>
+        <ul>
+          <li>Székhely: 8200 Veszprém, Óváros tér 2.</li>
+          <li>Telefon: <a href="tel:+36306061760">+36 30 606 1760</a></li>
+          <li>Email: <a href="mailto:felix@iwmarketing.hu">felix@iwmarketing.hu</a></li>
+          <li>Adószám: 14829051-1-19</li>
+          <li>Cégjegyzékszám: 19-09-511735</li>
+          <li>Céget jegyző bíróság: Veszprémi Törvényszék Cégbírósága</li>
+        </ul>
+
+      </div>
     </div>
   </section>
 
