@@ -2447,42 +2447,56 @@ img {
   }
 
   .hero-scroll {
-    height: 200vh;
+    height: 140vh; /* Megoldás a túl hosszú görgetésre - 200vh helyett 140vh */
   }
 
   .hero-sticky {
     background: #d5e8ed;
     height: 100dvh;
+    min-height: -webkit-fill-available;
   }
 
   .hero-sticky::after {
-    height: 80vh;
-    background: linear-gradient(to bottom, transparent 0%, rgba(213, 232, 237, 0.6) 25%, #ffffff 70%);
+    height: 60vh;
+    background: linear-gradient(to bottom, transparent 0%, rgba(213, 232, 237, 0.4) 20%, #ffffff 80%);
   }
 
   .hero-scroll .hero-content {
-    margin-top: 45vh;
-    padding: 0 1rem;
+    margin-top: 35vh;
+    padding: 0 1.2rem;
   }
 
   .hero-scroll .hero-title {
-    font-size: clamp(1.5rem, 6.5vw, 2.2rem);
+    font-size: clamp(2rem, 10vw, 3rem);
     white-space: normal;
-    line-height: 1.15;
+    word-break: break-word; /* hosszú szavak törése */
+    line-height: 1.1;
     color: #143642;
-    text-shadow: 0 1px 8px rgba(213, 232, 237, 0.6);
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 15px rgba(255, 255, 255, 0.9); /* Jobb olvashatóság a glóbusz felett */
+  }
+
+  .hero-scroll .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
   }
 
   .hero-scroll .cta-button {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     color: #143642;
     border: 1px solid rgba(20, 54, 66, 0.15);
     backdrop-filter: blur(8px);
+    width: 100%;
+    justify-content: center;
   }
 
   .hero-scroll .hero-buttons {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
+    gap: 0.8rem;
   }
 
   .page-hero {
