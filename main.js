@@ -24,6 +24,20 @@ function hideLoader() {
     triggerHeroAnimations();
   }, 400);
 
+  // After overflow:hidden lifts, reveal scroll-reveal elements already in viewport (mobile fix)
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.scroll-reveal:not(.visible)').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const delay = parseInt(el.dataset.delay || 0) * 120;
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, delay);
+        revealObserver.unobserve(el);
+      }
+    });
+  });
+
   // Remove loader from DOM after transition
   setTimeout(() => {
     loader.remove();
@@ -215,14 +229,40 @@ document.querySelectorAll('.cta-button').forEach(btn => {
 document.querySelectorAll('.faq-question').forEach(trigger => {
   trigger.addEventListener('click', function() {
     const item = this.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
     const isOpen = item.classList.contains('open');
+
+    // Close all other items with smooth animation
     document.querySelectorAll('.faq-item.open').forEach(openItem => {
       if (openItem !== item) {
+        const openAnswer = openItem.querySelector('.faq-answer');
+        openAnswer.style.maxHeight = openAnswer.scrollHeight + 'px';
+        // Force reflow so the browser registers the start value
+        openAnswer.offsetHeight;
+        openAnswer.style.maxHeight = '0px';
         openItem.classList.remove('open');
         openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
       }
     });
-    item.classList.toggle('open');
+
+    if (isOpen) {
+      // Closing: set explicit height first, then animate to 0
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      answer.offsetHeight;
+      answer.style.maxHeight = '0px';
+      item.classList.remove('open');
+    } else {
+      // Opening: animate from 0 to scrollHeight
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      // After transition ends, set to 'none' so content can resize naturally
+      answer.addEventListener('transitionend', function handler() {
+        if (item.classList.contains('open')) {
+          answer.style.maxHeight = 'none';
+        }
+        answer.removeEventListener('transitionend', handler);
+      });
+    }
     this.setAttribute('aria-expanded', String(!isOpen));
   });
 });
