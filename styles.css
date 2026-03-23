@@ -2501,6 +2501,32 @@ img {
     -webkit-backdrop-filter: blur(12px);
   }
 
+  .nav-cta {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 1.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(120, 202, 210, 0.4);
+    color: #143642;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.3s;
+  }
+
+  .nav-cta:active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0.96);
+  }
+
   .hero {
     padding: 5rem 1.2rem 3rem;
   }
@@ -2598,41 +2624,31 @@ img {
   }
 
   .hero-scroll .hero-content {
-    margin-top: 35vh;
+    margin-top: auto;
+    margin-bottom: 25vh; /* Szlogen lentebb pozícionálása, ahol a gombok voltak */
     padding: 0 1.2rem;
   }
 
   .hero-scroll .hero-title {
-    font-size: clamp(2.2rem, 9vw, 2.8rem);
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
     white-space: normal;
     word-break: break-word; /* hosszú szavak törése hogy ne nyomódjon össze */
     line-height: 1.1;
     color: #143642;
-    margin-bottom: 1rem;
+    margin-bottom: 0; /* Gombok eltűnnek alóla, nem kell margin */
     text-shadow: 0 2px 12px rgba(255, 255, 255, 0.9);
   }
 
   .hero-scroll .hero-subtitle {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 2rem;
-    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9);
+    display: none; /* Mobilon nem kell alcím a letisztultabb nézethez */
   }
 
   .hero-scroll .cta-button {
-    background: rgba(255, 255, 255, 0.95);
-    color: #143642;
-    border: 1px solid rgba(20, 54, 66, 0.15);
-    backdrop-filter: blur(8px);
-    width: 100%;
-    justify-content: center;
+    display: none !important; /* Gombok kicsapva */
   }
 
   .hero-scroll .hero-buttons {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.8rem;
+    display: none !important; /* Gombok konténere kicsapva */
   }
 
   .page-hero {
