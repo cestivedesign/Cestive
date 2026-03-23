@@ -3001,6 +3001,10 @@ img {
   gap: 0.5rem;
 }
 
+.qf-checkbox-grid.qf-checkbox-1col {
+  grid-template-columns: 1fr;
+}
+
 .qf-checkbox-label {
   display: flex;
   align-items: center;

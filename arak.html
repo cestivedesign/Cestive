@@ -110,10 +110,23 @@
               </div>
             </div>
 
+            <!-- Phone + Website (side by side) -->
+            <div class="qf-row">
+              <div class="qf-group">
+                <label class="qf-label">Telefon <span class="qf-req">*</span></label>
+                <input type="tel" name="phone" class="qf-input" required placeholder="pl. +36 30 123 4567">
+                <span class="qf-error-msg"></span>
+              </div>
+              <div class="qf-group">
+                <label class="qf-label">Honlap</label>
+                <input type="url" name="current_website" class="qf-input" placeholder="pl. www.ceged.hu">
+              </div>
+            </div>
+
             <!-- 3: Services (checkboxes) -->
             <div class="qf-group">
               <label class="qf-label">Milyen szolgáltatás érdekel? <span class="qf-req">*</span></label>
-              <div class="qf-checkbox-grid">
+              <div class="qf-checkbox-grid qf-checkbox-1col">
                 <label class="qf-checkbox-label">
                   <input type="checkbox" name="services" value="Weboldal készítés / újratervezés">
                   <span class="qf-checkbox-box"></span>
@@ -210,6 +223,38 @@
               <label class="qf-label">Mutass 1-2 weboldalt ami tetszik!</label>
               <input type="text" name="inspiration" class="qf-input" placeholder="pl. airbnb.com, stripe.com">
               <span class="qf-hint">💡 Ez segít megérteni milyen stílust és szintet képzelsz el.</span>
+            </div>
+
+            <!-- 9: How did you hear about us? -->
+            <div class="qf-group">
+              <label class="qf-label">Honnan hallottál rólunk?</label>
+              <div class="qf-checkbox-grid qf-checkbox-1col">
+                <label class="qf-checkbox-label">
+                  <input type="checkbox" name="source" value="Google">
+                  <span class="qf-checkbox-box"></span>
+                  <span>Google</span>
+                </label>
+                <label class="qf-checkbox-label">
+                  <input type="checkbox" name="source" value="Facebook">
+                  <span class="qf-checkbox-box"></span>
+                  <span>Facebook</span>
+                </label>
+                <label class="qf-checkbox-label">
+                  <input type="checkbox" name="source" value="Instagram">
+                  <span class="qf-checkbox-box"></span>
+                  <span>Instagram</span>
+                </label>
+                <label class="qf-checkbox-label">
+                  <input type="checkbox" name="source" value="TikTok">
+                  <span class="qf-checkbox-box"></span>
+                  <span>TikTok</span>
+                </label>
+                <label class="qf-checkbox-label">
+                  <input type="checkbox" name="source" value="Ajánlás">
+                  <span class="qf-checkbox-box"></span>
+                  <span>Ajánlás</span>
+                </label>
+              </div>
             </div>
 
             <!-- Submit -->
@@ -322,6 +367,13 @@
           if (!firstBad) firstBad = email;
         } else clearError(email);
 
+        // Phone
+        const phone = form.querySelector('[name="phone"]');
+        if (!phone.value.trim()) {
+          showError(phone, 'Kérjük add meg a telefonszámod.');
+          if (!firstBad) firstBad = phone;
+        } else clearError(phone);
+
         // Services (at least 1 checked)
         const checks = form.querySelectorAll('[name="services"]:checked');
         const sErr = document.getElementById('servicesError');
@@ -358,7 +410,8 @@
 
         const servicesArr = Array.from(checks).map(c => c.value);
         const hasWebsite = form.querySelector('[name="has_website"]:checked');
-        const branding = form.querySelector('[name="branding"]:checked');
+        const sourceChecks = form.querySelectorAll('[name="source"]:checked');
+        const sourceArr = Array.from(sourceChecks).map(c => c.value);
         let industry = indRadio.value;
         if (industry === 'Egyéb' && industryOtherText.value.trim()) {
           industry = 'Egyéb: ' + industryOtherText.value.trim();
@@ -369,18 +422,18 @@
           from_email: email.value.trim(),
           name: name.value.trim(),
           email: email.value.trim(),
-          phone: 'Nem adta meg',
+          phone: phone.value.trim(),
           company: name.value.trim(),
-          website: form.querySelector('[name="inspiration"]').value || '—',
+          website: form.querySelector('[name="current_website"]').value || '—',
           industry: industry,
           service_type: servicesArr.join(', '),
           budget: 'Nem választott',
           timeline: 'Nem választott',
-          source: 'Nem választott',
+          source: sourceArr.length ? sourceArr.join(', ') : 'Nem válaszolt',
           description: desc.value.trim(),
           services: servicesArr.join(', '),
           has_website: hasWebsite ? hasWebsite.value : 'Nem válaszolt',
-          branding: branding ? branding.value : 'Nem válaszolt',
+          branding: 'Nem kérdezett',
           inspiration: form.querySelector('[name="inspiration"]').value || '—',
           features: 'Nem választott',
           content_source: 'Nem választott',
