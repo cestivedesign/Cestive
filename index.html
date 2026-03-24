@@ -305,12 +305,27 @@
         (function(idx) {
           var img = new Image();
           img.src = frameDir + '/frame_' + String(idx + 1).padStart(4, '0') + '.webp';
-          img.onload = function () {
-            frames[idx] = img;
-            loadedFrames++;
-            updateLoaderProgress();
-            if (loadedFrames === FRAME_COUNT) onAllLoaded();
-          };
+            img.onload = function () {
+              frames[idx] = img;
+              loadedFrames++;
+              updateLoaderProgress();
+              
+              // NEW: Draw first frame IMMEDIATELY if it's the first one loaded
+              if (idx === 0) {
+                resizeCanvas();
+                drawFrame(0);
+                // Reveal navbar earlier if we have the first frame
+                if (navbar) navbar.style.zIndex = "10001";
+                // Make loader semi-transparent to show frame 0
+                var ldr = document.getElementById('loader');
+                if (ldr) {
+                  ldr.style.background = "rgba(255,255,255,0.7)";
+                  ldr.style.backdropFilter = "blur(10px)";
+                }
+              }
+
+              if (loadedFrames === FRAME_COUNT) onAllLoaded();
+            };
           img.onerror = function () {
             loadedFrames++;
             if (loadedFrames === FRAME_COUNT) onAllLoaded();
