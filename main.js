@@ -65,7 +65,8 @@ lenisScript.src = 'https://unpkg.com/lenis@1.1.20/dist/lenis.min.js';
 lenisScript.onload = () => {
   lenis = new window.Lenis({
     autoRaf: true,
-    duration: 1.2,
+    duration: 1.8, // Lassabb, nyugodtabb görgetés
+    lerp: 0.1,    // Közvetlenebb megállás, kevesebb "ide-oda" mozgás
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   });
 

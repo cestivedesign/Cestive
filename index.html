@@ -304,7 +304,7 @@
       for (var i = 0; i < FRAME_COUNT; i++) {
         (function(idx) {
           var img = new Image();
-          img.src = frameDir + '/frame_' + String(idx + 1).padStart(4, '0') + '.jpg';
+          img.src = frameDir + '/frame_' + String(idx + 1).padStart(4, '0') + '.webp';
           img.onload = function () {
             frames[idx] = img;
             loadedFrames++;

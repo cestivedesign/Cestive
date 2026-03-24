@@ -2691,13 +2691,19 @@ img {
   }
 
   .hero-scroll .hero-title {
-    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem); /* 20%-kal nagyobb */
     white-space: normal;
-    word-break: break-word; /* hosszú szavak törése hogy ne nyomódjon össze */
+    word-break: break-word;
     line-height: 1.1;
     color: #143642;
-    margin-bottom: 0; /* Gombok eltűnnek alóla, nem kell margin */
-    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.9);
+    margin-bottom: 0;
+    text-shadow: none; /* Glow eltávolítva a kérésnek megfelelően */
+  }
+
+  .hero-scroll .hero-title .gradient-text {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: inherit;
   }
 
   .hero-scroll .hero-subtitle {
