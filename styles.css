@@ -2691,19 +2691,20 @@ img {
   }
 
   .hero-scroll .hero-title {
-    font-size: clamp(1.9rem, 8.5vw, 2.6rem); /* 20%-kal nagyobb */
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
     white-space: normal;
     word-break: break-word;
     line-height: 1.1;
     color: #143642;
     margin-bottom: 0;
-    text-shadow: none; /* Glow eltávolítva a kérésnek megfelelően */
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.4);
   }
 
   .hero-scroll .hero-title .gradient-text {
     background: none;
-    -webkit-text-fill-color: initial;
-    color: inherit;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: #143642;
+    background-clip: unset;
   }
 
   .hero-scroll .hero-subtitle {
