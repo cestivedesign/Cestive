@@ -368,16 +368,10 @@ img {
   background: #143642;
 }
 
-/* DURING LOADING: Use White (since loader is dark navy) */
-body.loading .navbar .logo,
-body.loading .navbar .logo .logo-dot {
-  color: #ffffff !important;
-}
-body.loading .navbar .nav-link {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-body.loading .navbar .hamburger span {
-  background: #ffffff !important;
+/* DURING LOADING: Ensure branding is clear */
+body.loading .navbar {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .navbar.scrolled,
