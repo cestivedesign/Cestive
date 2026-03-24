@@ -354,6 +354,31 @@ img {
   padding: 1.2rem 2rem;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+/* Transparent State (Home Page Hero) - Use Dark Blue by default as BG is light blue */
+.navbar:not(.scrolled):not(.nav-solid) .logo {
+  color: #143642;
+}
+.navbar:not(.scrolled):not(.nav-solid) .logo-dot {
+  color: #78cad2;
+}
+.navbar:not(.scrolled):not(.nav-solid) .nav-link {
+  color: #4a6670;
+}
+.navbar:not(.scrolled):not(.nav-solid) .hamburger span {
+  background: #143642;
+}
+
+/* DURING LOADING: Use White (since loader is dark navy) */
+body.loading .navbar .logo,
+body.loading .navbar .logo .logo-dot {
+  color: #ffffff !important;
+}
+body.loading .navbar .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+body.loading .navbar .hamburger span {
+  background: #ffffff !important;
+}
 
 .navbar.scrolled,
 .navbar.nav-solid {
