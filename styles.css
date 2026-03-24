@@ -91,7 +91,7 @@ img {
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: #ffffff;
+  background: #0a192f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,8 +106,8 @@ img {
 .loader-text {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(3rem, 10vw, 6rem);
-  color: #143642;
-  letter-spacing: -0.03em;
+  color: #ffffff;
+  letter-spacing: -0.02em;
   display: flex;
   align-items: baseline;
 }
@@ -119,7 +119,7 @@ img {
 
 .loader-dot {
   display: inline-block;
-  color: #0a192f;
+  color: #78cad2;
   opacity: 1;
 }
 
@@ -2616,7 +2616,8 @@ img {
   }
 
   .hero-scroll {
-    height: 140vh; /* Rövidedebb, feszesebb görgetés mobilra */
+    height: 140vh;
+    /* Rövidedebb, feszesebb görgetés mobilra */
   }
 
   .hero-sticky {
@@ -2632,7 +2633,8 @@ img {
 
   .hero-scroll .hero-content {
     margin-top: auto;
-    margin-bottom: 25vh; /* Szlogen lentebb pozícionálása, ahol a gombok voltak */
+    margin-bottom: 25vh;
+    /* Szlogen lentebb pozícionálása, ahol a gombok voltak */
     padding: 0 1.2rem;
   }
 
@@ -2654,15 +2656,18 @@ img {
   }
 
   .hero-scroll .hero-subtitle {
-    display: none; /* Mobilon nem kell alcím a letisztultabb nézethez */
+    display: none;
+    /* Mobilon nem kell alcím a letisztultabb nézethez */
   }
 
   .hero-scroll .cta-button {
-    display: none !important; /* Gombok kicsapva */
+    display: none !important;
+    /* Gombok kicsapva */
   }
 
   .hero-scroll .hero-buttons {
-    display: none !important; /* Gombok konténere kicsapva */
+    display: none !important;
+    /* Gombok konténere kicsapva */
   }
 
   .page-hero {
