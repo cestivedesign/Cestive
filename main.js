@@ -55,30 +55,47 @@ function triggerHeroAnimations() {
   });
 }
 
-// ===== UNIFIED SCROLL HANDLER =====
+// ===== SMOOTH SCROLL & PARALLAX (LENIS) =====
 const navbar = document.getElementById('navbar');
-let scrollTicking = false;
+let lenis;
 
-window.addEventListener('scroll', () => {
-  if (!scrollTicking) {
-    requestAnimationFrame(() => {
-      const scrollY = window.scrollY;
-      // Navbar
-      if (navbar) {
-        if (scrollY > 60) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
-      }
-      // Scroll progress
-      const bar = document.getElementById('scrollProgress');
-      if (bar) {
-        const pct = (scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-        bar.style.width = pct + '%';
-      }
-      scrollTicking = false;
+// Load Lenis dynamically
+const lenisScript = document.createElement('script');
+lenisScript.src = 'https://unpkg.com/lenis@1.1.20/dist/lenis.min.js';
+lenisScript.onload = () => {
+  lenis = new window.Lenis({
+    autoRaf: true,
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+
+  const blobs = document.querySelectorAll('.blob');
+
+  lenis.on('scroll', (e) => {
+    const scrollY = e.animatedScroll;
+    
+    // Navbar
+    if (navbar) {
+      if (scrollY > 60) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    }
+    
+    // Scroll progress
+    const bar = document.getElementById('scrollProgress');
+    if (bar) {
+      const pct = (scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      bar.style.width = pct + '%';
+    }
+    
+    // Blobs parallax
+    blobs.forEach((blob, index) => {
+      // Different speed multiplier for depth effect
+      const speed = 0.15 + (index % 3) * 0.1;
+      blob.style.transform = `translateY(${scrollY * speed}px)`;
     });
-    scrollTicking = true;
-  }
-}, { passive: true });
+  });
+};
+document.head.appendChild(lenisScript);
 
 // ===== HAMBURGER MENU =====
 const hamburger = document.getElementById('hamburger');
@@ -132,12 +149,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(targetId);
     if (target) {
-      const offset = 80;
-      const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -80 });
+      } else {
+        const offset = 80;
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      }
     }
   });
 });
@@ -267,81 +285,7 @@ document.querySelectorAll('.faq-question').forEach(trigger => {
   });
 });
 
-// ===== SINGLE-STEP QUOTE FORM =====
-const quoteForm = document.getElementById('quoteForm');
-if (quoteForm) {
-  emailjs.init('lImh7Y3P4X0INk2f4');
-  
-  const errorEl = document.getElementById('formError');
-  const successEl = document.getElementById('formSuccess');
-  const btnSubmit = document.getElementById('btnSubmit');
-
-  quoteForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    errorEl.hidden = true;
-    if(btnSubmit) {
-      btnSubmit.disabled = true;
-      btnSubmit.textContent = 'Küldés...';
-    }
-    
-    const formData = new FormData(quoteForm);
-    const data = Object.fromEntries(formData.entries());
-    
-    try {
-      await emailjs.send('service_l1itukg', 'template_9wkzyl9', {
-        name: data.name || '',
-        email: data.email || '',
-        phone: data.phone || 'Nem adta meg',
-        company: data.company || 'Nem adta meg',
-        website: data.website || 'Nem adta meg',
-        industry: data.industry || 'Nem adta meg',
-        services: data.service_type || 'Nem választott',
-        budget: data.budget || 'Nem választott',
-        timeline: data.timeline || 'Nem választott',
-        source: data.source || 'Nem választott',
-        description: data.description || '',
-        features: 'Nem választott',
-        content_source: 'Nem választott',
-        branding: 'Nem választott',
-        hosting: 'Nem választott',
-        tech_notes: '',
-        ai_tasks: 'Nem választott',
-        current_tools: '',
-        repetitive_tasks: '',
-        team_size: 'Nem adta meg',
-        payment_pref: 'Nem választott',
-        maintenance: 'Nem választott',
-        success_criteria: '',
-        concerns: '',
-        availability: 'Nem választott',
-        channels: 'Nem választott',
-        extra_notes: '',
-        references: 'Nem adta meg',
-        pages: 'Nem adta meg'
-      });
-      
-      // Hide form fields container and show success message
-      if (quoteForm.children.length > 0) {
-        quoteForm.children[0].style.display = 'none';
-      }
-      if (successEl) {
-        successEl.classList.add('visible');
-      }
-    } catch (err) {
-      if (errorEl) {
-        errorEl.textContent = 'Hiba történt a küldés során. Kérjük, próbáld újra vagy írj a hello@cestive.hu címre.';
-        errorEl.hidden = false;
-      }
-      if (btnSubmit) {
-        btnSubmit.disabled = false;
-        btnSubmit.innerHTML = 'Ajánlatkérés elküldése <span class="cta-arrow">→</span>';
-      }
-    }
-  });
-}
-
-// Scroll progress bar handled in unified scroll handler above
+// Form validation handled by inline script on arak.html
 
 // ===== GLOWING CARD EFFECT =====
 (function() {

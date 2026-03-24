@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+  <script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
   <title>Rólunk — Cestive</title>
-  <meta name="description" content="A cestive.com-nál egy dologban hiszünk: a jó technológiának láthatatlannak kell lennie. AI-megoldások kisvállalkozásoknak.">
+  <meta name="description"
+    content="A cestive.com-nál egy dologban hiszünk: a jó technológiának láthatatlannak kell lennie. AI-megoldások kisvállalkozásoknak.">
+  <meta property="og:title" content="Rólunk — Cestive">
+  <meta property="og:description" content="A cestive.com-nál egy dologban hiszünk: a jó technológiának láthatatlannak kell lennie. AI-megoldások kisvállalkozásoknak.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cestive.com/rolunk">
+  <meta property="og:locale" content="hu_HU">
+  <meta property="og:site_name" content="Cestive">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- Starscape -->
   <canvas id="starscape"></canvas>
@@ -19,7 +30,12 @@
   <!-- Loader (no progress bar — subpage) -->
   <div id="loader" class="loader">
     <div class="loader-text">
-      <span class="loader-letter" style="animation-delay: 0s">C</span><span class="loader-letter" style="animation-delay: 0.08s">e</span><span class="loader-letter" style="animation-delay: 0.16s">s</span><span class="loader-letter" style="animation-delay: 0.24s">t</span><span class="loader-letter" style="animation-delay: 0.32s">i</span><span class="loader-letter" style="animation-delay: 0.4s">v</span><span class="loader-letter" style="animation-delay: 0.48s">e</span><span class="loader-dot" style="animation-delay: 0.6s">.</span>
+      <span class="loader-letter" style="animation-delay: 0s">C</span><span class="loader-letter"
+        style="animation-delay: 0.08s">e</span><span class="loader-letter" style="animation-delay: 0.16s">s</span><span
+        class="loader-letter" style="animation-delay: 0.24s">t</span><span class="loader-letter"
+        style="animation-delay: 0.32s">i</span><span class="loader-letter" style="animation-delay: 0.4s">v</span><span
+        class="loader-letter" style="animation-delay: 0.48s">e</span><span class="loader-dot"
+        style="animation-delay: 0.6s">.</span>
     </div>
   </div>
 
@@ -42,13 +58,13 @@
   <!-- Navigation -->
   <nav id="navbar" class="navbar nav-solid">
     <div class="nav-inner">
-      <a href="index.html" class="logo">cestive<span class="logo-dot">.</span></a>
+      <a href="/" class="logo">cestive<span class="logo-dot">.</span></a>
       <div class="nav-links" id="navLinks">
-        <a href="referenciak.html" class="nav-link">Munkáink</a>
-        <a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a>
-        <a href="rolunk.html" class="nav-link active">Rólunk</a>
+        <a href="referenciak" class="nav-link">Munkáink</a>
+        <a href="szolgaltatasok" class="nav-link">Szolgáltatások</a>
+        <a href="rolunk" class="nav-link active">Rólunk</a>
       </div>
-      <a href="arak.html" class="nav-cta">Ajánlatkérés</a>
+      <a href="arak" class="nav-cta">Ingyenes konzultáció</a>
       <button class="hamburger" id="hamburger" aria-label="Menü">
         <span></span>
         <span></span>
@@ -59,33 +75,48 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="referenciak.html" class="mobile-link">Munkáink</a>
-    <a href="szolgaltatasok.html" class="mobile-link">Szolgáltatások</a>
-    <a href="rolunk.html" class="mobile-link active">Rólunk</a>
-    <a href="arak.html" class="mobile-link mobile-cta">Ajánlatkérés</a>
+    <a href="referenciak" class="mobile-link">Munkáink</a>
+    <a href="szolgaltatasok" class="mobile-link">Szolgáltatások</a>
+    <a href="rolunk" class="mobile-link active">Rólunk</a>
+    <a href="arak" class="mobile-link mobile-cta">Ingyenes konzultáció</a>
   </div>
 
   <!-- Page Hero -->
-  <section class="page-hero" style="background: linear-gradient(to bottom, rgba(14, 21, 31, 0.5), rgba(14, 21, 31, 0.95)), url('rolunk-bg.jpeg') center/cover no-repeat; padding: 15rem 2rem 8rem;">
+  <section class="page-hero"
+    style="background: linear-gradient(to bottom, rgba(14, 21, 31, 0.5), rgba(14, 21, 31, 0.95)), url('rolunk-bg.jpeg') center/cover no-repeat; padding: 15rem 2rem 8rem;">
     <div class="container">
-      <span class="section-label scroll-reveal" style="background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 50%, transparent); border: none; color: #fff; padding: 0.4rem 4rem;">RÓLUNK</span>
+      <span class="section-label scroll-reveal"
+        style="background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 50%, transparent); border: none; color: #fff; padding: 0.4rem 4rem;">RÓLUNK</span>
       <h1 class="section-title scroll-reveal" style="color: #fff;">Mi elvégezzük azt, amire nincs időd.</h1>
-      <p class="page-hero-subtitle scroll-reveal" style="color: rgba(255,255,255,0.8);">Hogy te arra koncentrálhass, ami igazán számít.</p>
+      <p class="page-hero-subtitle scroll-reveal" style="color: rgba(255,255,255,0.8);">Hogy te arra koncentrálhass, ami
+        igazán számít.</p>
     </div>
   </section>
 
   <!-- About Intro -->
   <section class="section">
     <div class="container">
-      <p class="about-intro scroll-reveal">A cestive.com-nál egy dologban hiszünk: a jó technológiának láthatatlannak kell lennie. Nem arról szól, hogy „AI-t vezettünk be" — hanem arról, hogy reggel van 10 beérkező foglalásod, mire felébredsz. Hogy az ügyfeled kap egy automatikus emlékeztetőt, és nem felejti el az időpontját. Hogy a heted nem az Excel-táblázatok frissítésével kezdődik.</p>
+      <p class="about-intro scroll-reveal">A cestive.com-nál egy dologban hiszünk: a jó technológiának láthatatlannak
+        kell lennie. Nem arról szól, hogy „AI-t vezettünk be" — hanem arról, hogy reggel van 10 beérkező foglalásod,
+        mire felébredsz. Hogy az ügyfeled kap egy automatikus emlékeztetőt, és nem felejti el az időpontját. Hogy a
+        heted nem az Excel-táblázatok frissítésével kezdődik.</p>
     </div>
   </section>
 
   <!-- Mottó Section -->
-  <section class="section">
-    <div class="container">
-      <blockquote class="scroll-reveal" style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 600; text-align: center; margin: 2rem auto; max-width: 900px; line-height: 1.4; color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif;">
-        "Weboldalakat építünk, automatizálásokat programozunk, és AI-megoldásokat hozunk a mindennapjaidba — de mindig azzal a kérdéssel kezdjük: <span style="color: var(--accent-blue);">mi rabolja el a legtöbb idődet?</span>"
+  <section class="section motto-section">
+    <!-- Animated SVG Wave Background -->
+    <div class="scroll-reveal motto-wave-wrapper" aria-hidden="true">
+      <div class="motto-wave-layer motto-wave-glow"></div>
+      <div class="motto-wave-layer motto-wave-sharp1"></div>
+      <div class="motto-wave-layer motto-wave-sharp2"></div>
+    </div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+      <blockquote class="scroll-reveal"
+        style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 600; text-align: center; margin: 2rem auto; max-width: 900px; line-height: 1.4; color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif;">
+        "Weboldalakat építünk, automatizálásokat programozunk, és AI-megoldásokat hozunk a mindennapjaidba — de mindig
+        azzal a kérdéssel kezdjük: <span style="color: var(--accent-blue);">mi rabolja el a legtöbb idődet?</span>"
       </blockquote>
     </div>
   </section>
@@ -98,40 +129,48 @@
       <div class="values-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
         <div class="glass value-card scroll-reveal" data-delay="0">
           <div class="value-icon value-icon-teal">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
             </svg>
           </div>
           <h3 class="value-title">Transzparencia</h3>
-          <p class="value-desc">Fix árak, nincs rejtett havidíj, nincs meglepetésszámla. Tudod, mit kapsz és mennyiért.</p>
+          <p class="value-desc">Fix árak, nincs rejtett havidíj, nincs meglepetésszámla. Tudod, mit kapsz és mennyiért.
+          </p>
         </div>
         <div class="glass value-card scroll-reveal" data-delay="1">
           <div class="value-icon value-icon-blue">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
             </svg>
           </div>
           <h3 class="value-title">Sebesség</h3>
-          <p class="value-desc">Gyors indulás, gyors eredmény. Nem húzzuk az időt — mert tudjuk, hogy neked sincs rá.</p>
+          <p class="value-desc">Gyors indulás, gyors eredmény. Nem húzzuk az időt — mert tudjuk, hogy neked sincs rá.
+          </p>
         </div>
         <div class="glass value-card scroll-reveal" data-delay="2">
           <div class="value-icon value-icon-green">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
             </svg>
           </div>
           <h3 class="value-title">Érthetőség</h3>
-          <p class="value-desc">Nem dobálózunk tech szavakkal. Elmagyarázzuk mit csinálunk, miért, és milyen eredményt hoz.</p>
+          <p class="value-desc">Nem dobálózunk tech szavakkal. Elmagyarázzuk mit csinálunk, miért, és milyen eredményt
+            hoz.</p>
         </div>
         <div class="glass value-card scroll-reveal" data-delay="3">
           <div class="value-icon" style="color: #FACC15; background: rgba(250, 204, 21, 0.1);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
             </svg>
           </div>
           <h3 class="value-title">Mérhető eredmény</h3>
-          <p class="value-desc">Nem ígérünk — mutatjuk. Minden megoldásunknál konkrét számokkal bizonyítjuk a megtérülést.</p>
+          <p class="value-desc">Nem ígérünk — mutatjuk. Minden megoldásunknál konkrét számokkal bizonyítjuk a
+            megtérülést.</p>
         </div>
       </div>
     </div>
@@ -142,22 +181,26 @@
     <div class="container">
       <span class="section-label scroll-reveal">A FOLYAMAT</span>
       <h2 class="section-title scroll-reveal" style="margin-bottom: 0.5rem;">Egyszerű. Gyors. Mérhető.</h2>
-      <p class="cta-subtitle scroll-reveal" style="text-align: center; margin-bottom: 3rem;">Három lépés, és a rendszered dolgozik.</p>
+      <p class="cta-subtitle scroll-reveal" style="text-align: center; margin-bottom: 3rem;">Három lépés, és a
+        rendszered dolgozik.</p>
       <div class="process-overview-grid">
         <div class="glass process-overview-card scroll-reveal" data-delay="0">
           <span class="process-overview-number">01</span>
           <h3 class="process-overview-title">Felmérés</h3>
-          <p class="process-overview-desc">Kitöltöd a kérdőívet, mi 24 órán belül konkrét javaslattal jelentkezünk — ingyen, elköteleződés nélkül.</p>
+          <p class="process-overview-desc">Kitöltöd a kérdőívet, mi 24 órán belül konkrét javaslattal jelentkezünk —
+            ingyen, elköteleződés nélkül.</p>
         </div>
         <div class="glass process-overview-card scroll-reveal" data-delay="1">
           <span class="process-overview-number">02</span>
           <h3 class="process-overview-title">Beállítás</h3>
-          <p class="process-overview-desc">Mi beállítjuk a rendszert, te közben dolgozhatsz. Heti demók, folyamatos egyeztetés.</p>
+          <p class="process-overview-desc">Mi beállítjuk a rendszert, te közben dolgozhatsz. Heti demók, folyamatos
+            egyeztetés.</p>
         </div>
         <div class="glass process-overview-card scroll-reveal" data-delay="2">
           <span class="process-overview-number">03</span>
           <h3 class="process-overview-title">Eredmény</h3>
-          <p class="process-overview-desc">A rendszered él és dolgozik. Mérhető eredmények az első héttől — support-tal a hátad mögött.</p>
+          <p class="process-overview-desc">A rendszered él és dolgozik. Mérhető eredmények az első héttől — support-tal
+            a hátad mögött.</p>
         </div>
       </div>
     </div>
@@ -175,11 +218,16 @@
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
             Mennyi idő alatt készül el egy projekt?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Egy egyszerűbb weboldal 1-2 hét, egy komplex rendszer automatizálással 3-4 hét. Az első eredményeket már az indulás után azonnal látod.
+              Egy egyszerűbb weboldal 1-2 hét, egy komplex rendszer automatizálással 3-4 hét. Az első eredményeket már
+              az indulás után azonnal látod.
             </div>
           </div>
         </div>
@@ -187,11 +235,16 @@
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
             Milyen technológiákat használtok?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              A legmodernebb eszközökkel dolgozunk, de ami fontosabb: mindent a te igényeidre szabunk. Nem a technológia a lényeg, hanem az eredmény, amit hoz.
+              A legmodernebb eszközökkel dolgozunk, de ami fontosabb: mindent a te igényeidre szabunk. Nem a technológia
+              a lényeg, hanem az eredmény, amit hoz.
             </div>
           </div>
         </div>
@@ -199,7 +252,11 @@
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
             Vállaltok karbantartást is?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
@@ -211,11 +268,16 @@
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
             Csak webfejlesztéssel foglalkoztok?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Nem, teljes körű megoldást kínálunk: weboldal, AI automatizálás, foglalási rendszer, email marketing és ügyfélkezelés — egy helyen.
+              Nem, teljes körű megoldást kínálunk: weboldal, AI automatizálás, foglalási rendszer, email marketing és
+              ügyfélkezelés — egy helyen.
             </div>
           </div>
         </div>
@@ -223,23 +285,32 @@
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
             Mit jelent az AI automatizálás a gyakorlatban?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Például: reggel van 10 beérkező foglalásod anélkül, hogy telefonáltál volna. Az ügyfeled kap automatikus emlékeztetőt. A Google review-kra magától válaszol a rendszer. Ilyen dolgokat automatizálunk.
+              Például: reggel van 10 beérkező foglalásod anélkül, hogy telefonáltál volna. Az ügyfeled kap automatikus
+              emlékeztetőt. A Google review-kra magától válaszol a rendszer. Ilyen dolgokat automatizálunk.
             </div>
           </div>
         </div>
 
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
-            Kapok forráskódot és szellemi tulajdont?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            Kapok forráskódot?
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              A felépített rendszer és a weboldal teljes használati joga a Tiéd, de a szellemi tulajdon és a forráskód a mi tulajdonunkban marad. Természetesen mindent úgy adunk át, hogy az üzleted zavartalanul működjön.
+              Igen, a projekt átadásakor a forráskód a Tiéd.
             </div>
           </div>
         </div>
@@ -247,11 +318,16 @@
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
             Hogyan lesz SEO optimalizált az oldalam?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Minden weboldalt SEO-optimalizáltan építünk. A cél: hogy az ügyfeleid megtaláljanak Google-ön — nem csak hogy szép legyen az oldal.
+              Minden weboldalt SEO-optimalizáltan építünk. A cél: hogy az ügyfeleid megtaláljanak Google-ön — nem csak
+              hogy szép legyen az oldal.
             </div>
           </div>
         </div>
@@ -259,11 +335,16 @@
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
             Webshopokat is építetek?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Igen, leginkább egyedi, headless e-commerce megoldásokat modern fizetési integrációkkal. Sablonos, lomha shopokat nem.
+              Igen, leginkább egyedi, headless e-commerce megoldásokat modern fizetési integrációkkal. Sablonos, lomha
+              shopokat nem.
             </div>
           </div>
         </div>
@@ -271,7 +352,11 @@
         <div class="faq-item scroll-reveal">
           <button class="faq-question" aria-expanded="false">
             Milyen garanciát nyújtotok?
-            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
@@ -287,7 +372,8 @@
   <section class="cta-glow" id="cta">
     <div class="container cta-glow-inner">
       <h2 class="cta-glow-title scroll-reveal">Készen állsz visszakapni az idődet?</h2>
-      <a href="arak.html" class="cta-button cta-glow-btn scroll-reveal" data-delay="1">Ingyenes konzultáció <span class="cta-arrow">→</span></a>
+      <a href="arak" class="cta-button cta-glow-btn scroll-reveal" data-delay="1">Ingyenes konzultáció <span
+          class="cta-arrow">→</span></a>
     </div>
     <div class="cta-glow-bg">
       <div class="cta-glow-orbs">
@@ -301,14 +387,15 @@
   <footer class="footer">
     <div class="container footer-inner">
       <span class="footer-logo">cestive<span class="footer-dot">.</span></span>
-      <p class="footer-tagline" style="font-size: 0.85rem; opacity: 0.6; margin-top: 0.25rem;">AI-megoldások kisvállalkozásoknak.</p>
+      <p class="footer-tagline" style="font-size: 0.85rem; opacity: 0.6; margin-top: 0.25rem;">AI-megoldások
+        kisvállalkozásoknak.</p>
       <div class="footer-links">
-        <a href="referenciak.html">Munkáink</a>
-        <a href="szolgaltatasok.html">Szolgáltatások</a>
-        <a href="rolunk.html">Rólunk</a>
-        <a href="impresszum.html">Impresszum</a>
-        <a href="adatvédelem.html">Adatvédelem</a>
-        <a href="aszf.html">ÁSZF</a>
+        <a href="referenciak">Munkáink</a>
+        <a href="szolgaltatasok">Szolgáltatások</a>
+        <a href="rolunk">Rólunk</a>
+        <a href="impresszum">Impresszum</a>
+        <a href="adatvédelem">Adatvédelem</a>
+        <a href="aszf">ÁSZF</a>
       </div>
       <a href="mailto:hello@cestive.hu" class="footer-email">hello@cestive.hu</a>
       <span class="footer-copy">&copy; 2026 cestive.com &mdash; GDPR-megfelelő</span>
@@ -317,4 +404,5 @@
 
   <script src="main.js"></script>
 </body>
+
 </html>
