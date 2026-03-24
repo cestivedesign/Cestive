@@ -1750,60 +1750,6 @@ img {
   padding: 8rem 0 !important;
 }
 
-.motto-wave-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.motto-wave-layer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-  height: 350px;
-  background-size: 1440px 320px;
-  background-repeat: repeat-x;
-  background-position: 0 center;
-  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 10%, rgba(0,0,0,0) 65%);
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 10%, rgba(0,0,0,0) 65%);
-}
-
-.motto-wave-glow {
-  /* Érős, elmosott ragyogás a háttérben */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='rgba(120, 202, 210, 0.9)' stroke-width='60' stroke-linecap='round' d='M0,160 Q180,260 360,160 T720,160 T1080,160 T1440,160 T1800,160 T2160,160 T2520,160 T2880,160' /%3E%3C/svg%3E");
-  filter: blur(40px);
-  opacity: 0.8;
-  animation: waveScroll 25s linear infinite;
-}
-
-.motto-wave-sharp1 {
-  /* Vékony, éles hullám 1 */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='rgba(120, 202, 210, 0.6)' stroke-width='3' stroke-linecap='round' d='M0,160 Q180,260 360,160 T720,160 T1080,160 T1440,160 T1800,160 T2160,160 T2520,160 T2880,160' /%3E%3C/svg%3E");
-  animation: waveScroll 20s linear infinite;
-}
-
-.motto-wave-sharp2 {
-  /* Vékony, éles hullám 2 - ellenkező irányba megy */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='rgba(14, 116, 144, 0.3)' stroke-width='5' stroke-linecap='round' d='M0,160 Q180,60 360,160 T720,160 T1080,160 T1440,160 T1800,160 T2160,160 T2520,160 T2880,160' /%3E%3C/svg%3E");
-  animation: waveScrollReverse 15s linear infinite;
-}
-
-@keyframes waveScroll {
-  0% { background-position-x: 0; }
-  100% { background-position-x: -1440px; }
-}
-
-@keyframes waveScrollReverse {
-  0% { background-position-x: 0; }
-  100% { background-position-x: 1440px; }
-}
-
 /* ===== VALUE CARDS ===== */
 .values-grid {
   display: grid;
