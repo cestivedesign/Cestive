@@ -434,7 +434,7 @@ body.loading .navbar {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
-  background: #0a192f;
+  background: linear-gradient(135deg, #0e7490 0%, #0a6e7d 100%);
   color: #ffffff;
   padding: 0.6rem 1.6rem;
   border-radius: 100px;
@@ -443,7 +443,7 @@ body.loading .navbar {
 
 .nav-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(10, 25, 47, 0.3);
+  box-shadow: 0 8px 24px rgba(14, 116, 144, 0.3);
 }
 
 .hamburger {
@@ -2548,7 +2548,7 @@ body.loading .navbar {
     font-size: 0.8rem;
     padding: 0.55rem 1.2rem;
     border-radius: 100px;
-    background: #0a192f;
+    background: linear-gradient(135deg, #0e7490 0%, #0a6e7d 100%);
     border: none;
     color: #ffffff;
     text-decoration: none;
@@ -2557,7 +2557,7 @@ body.loading .navbar {
   }
 
   .nav-cta:active {
-    background: #143642;
+    background: linear-gradient(135deg, #0a6e7d 0%, #085d6a 100%);
     transform: scale(0.96) translateX(-50%);
   }
 
