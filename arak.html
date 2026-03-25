@@ -425,43 +425,23 @@
         }
 
         const params = {
-          from_name: name.value.trim(),
-          from_email: email.value.trim(),
           name: name.value.trim(),
           email: email.value.trim(),
           phone: phone.value.trim(),
-          company: name.value.trim(),
           website: form.querySelector('[name="current_website"]').value || '—',
           industry: industry,
-          service_type: servicesArr.join(', '),
-          budget: 'Nem választott',
-          timeline: 'Nem választott',
-          source: sourceArr.length ? sourceArr.join(', ') : 'Nem válaszolt',
-          description: desc.value.trim(),
           services: servicesArr.join(', '),
+          description: desc.value.trim(),
           has_website: hasWebsite ? hasWebsite.value : 'Nem válaszolt',
-          branding: 'Nem kérdezett',
           inspiration: form.querySelector('[name="inspiration"]').value || '—',
-          features: 'Nem választott',
-          content_source: 'Nem választott',
-          hosting: 'Nem választott',
-          tech_notes: '',
-          ai_tasks: 'Nem választott',
-          current_tools: '',
-          repetitive_tasks: '',
-          team_size: 'Nem adta meg',
-          payment_pref: 'Nem választott',
-          maintenance: 'Nem választott',
-          success_criteria: '',
-          concerns: '',
-          availability: 'Nem választott',
-          channels: 'Nem választott',
-          extra_notes: '',
-          references: '—',
-          pages: 'Nem adta meg'
+          source: sourceArr.length ? sourceArr.join(', ') : 'Nem válaszolt'
         };
 
-        emailjs.send('service_l1itukg', 'template_9wkzyl9', params)
+        // 1) Összefoglaló neked + 2) Visszaigazolás az ügyfélnek
+        Promise.all([
+          emailjs.send('service_l1itukg', 'template_9wkzyl9', params),
+          emailjs.send('service_l1itukg', 'template_visszaigazolas', params)
+        ])
           .then(function() {
             form.style.opacity = '0';
             form.style.transform = 'translateY(10px)';
