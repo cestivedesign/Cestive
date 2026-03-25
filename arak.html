@@ -437,12 +437,11 @@
           source: sourceArr.length ? sourceArr.join(', ') : 'Nem válaszolt'
         };
 
-        // 1) Összefoglaló neked + 2) Visszaigazolás az ügyfélnek
-        Promise.all([
-          emailjs.send('service_l1itukg', 'template_9wkzyl9', params),
-          emailjs.send('service_l1itukg', 'template_visszaigazolas', params)
-        ])
+        // 1) Összefoglaló neked (kötelező) + 2) Visszaigazolás az ügyfélnek (opcionális)
+        emailjs.send('service_l1itukg', 'template_9wkzyl9', params)
           .then(function() {
+            // Visszaigazolás — ha nem sikerül, nem gond
+            emailjs.send('service_l1itukg', 'template_visszaigazolas', params).catch(function() {});
             form.style.opacity = '0';
             form.style.transform = 'translateY(10px)';
             setTimeout(function() {
