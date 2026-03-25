@@ -3152,6 +3152,20 @@ body.loading .navbar {
   box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
 }
 
+.qf-phone-wrap {
+  display: flex;
+  gap: 0.5rem;
+}
+.qf-phone-code {
+  width: auto;
+  min-width: 110px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.qf-phone-num {
+  flex: 1;
+}
+
 .qf-textarea {
   resize: vertical;
   min-height: 100px;

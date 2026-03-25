@@ -289,15 +289,9 @@ document.querySelectorAll('.faq-question').forEach(trigger => {
 
 // ===== GLOWING CARD EFFECT =====
 (function() {
-  const glowCards = document.querySelectorAll('[data-glow]');
-  if (!glowCards.length) return;
-
+  const allGlowCards = [];
   const pointer = { x: 0, y: 0 };
   const states = new Map();
-
-  glowCards.forEach(card => {
-    states.set(card, { angle: 0, rafId: null });
-  });
 
   function easeOutQuart(t) {
     return 1 - Math.pow(1 - t, 4);
@@ -306,7 +300,6 @@ document.querySelectorAll('.faq-question').forEach(trigger => {
   function animateAngle(card, from, to) {
     const state = states.get(card);
     if (!state) return;
-    // Cancel any running animation for this card
     if (state.rafId) cancelAnimationFrame(state.rafId);
 
     const startTime = performance.now();
@@ -340,7 +333,7 @@ document.querySelectorAll('.faq-question').forEach(trigger => {
   function doUpdate(x, y) {
     const proximity = 64;
 
-    glowCards.forEach(card => {
+    allGlowCards.forEach(card => {
       const glowEl = card.querySelector('.glow-effect');
       if (!glowEl) return;
 
@@ -365,6 +358,20 @@ document.querySelectorAll('.faq-question').forEach(trigger => {
       animateAngle(card, current, current + diff);
     });
   }
+
+  function registerCard(card) {
+    if (states.has(card)) return;
+    states.set(card, { angle: 0, rafId: null });
+    allGlowCards.push(card);
+  }
+
+  // Register initial cards
+  document.querySelectorAll('[data-glow]').forEach(registerCard);
+
+  // Expose for dynamic cards
+  window.initGlowCard = function(card) {
+    registerCard(card);
+  };
 
   document.body.addEventListener('pointermove', (e) => {
     pointer.x = e.clientX;

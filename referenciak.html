@@ -85,50 +85,90 @@
   <!-- Referenciák Grid -->
   <section class="section">
     <div class="container">
-      <div class="referenciak-grid">
-
-        <!-- Projekt 1: Crew Cutz -->
-        <div class="frost-card-wrap scroll-reveal" data-glow>
-          <div class="glow-effect"><div class="glow"></div></div>
-          <a href="https://crewcutz.hu/" target="_blank" rel="noopener" class="frost-card">
-            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop" alt="Crew Cutz Barbershop" loading="lazy" class="frost-backdrop">
-            <div class="frost-content">
-              <span class="frost-category">Webfejlesztés · UI/UX · Foglalási Rendszer</span>
-              <h3 class="frost-title">Crew Cutz Barbershop</h3>
-              <p class="frost-desc">Napi 40+ automata foglalás asszisztencia nélkül.</p>
-            </div>
-          </a>
-        </div>
-
-        <!-- Projekt 2: SaaS Onboarding -->
-        <div class="frost-card-wrap scroll-reveal" data-glow>
-          <div class="glow-effect"><div class="glow"></div></div>
-          <div class="frost-card">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop" alt="SaaS Dashboard" loading="lazy" class="frost-backdrop">
-            <div class="frost-content">
-              <span class="frost-category">Adatbázis · Automatizáció · Rendszer</span>
-              <h3 class="frost-title">SaaS Onboarding Automatizáció</h3>
-              <p class="frost-desc">0 emberi beavatkozású előfizetés menedzsment.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Projekt 3: E-commerce -->
-        <div class="frost-card-wrap scroll-reveal" data-glow>
-          <div class="glow-effect"><div class="glow"></div></div>
-          <div class="frost-card">
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2000&auto=format&fit=crop" alt="E-commerce alkalmazás" loading="lazy" class="frost-backdrop">
-            <div class="frost-content">
-              <span class="frost-category">Webalkalmazás · Fizetés · Tartalomkezelés</span>
-              <h3 class="frost-title">E-commerce Webalkalmazás</h3>
-              <p class="frost-desc">+45% konverziós ráta az első hónapban.</p>
-            </div>
-          </div>
-        </div>
-
+      <div class="referenciak-grid" id="refGrid"></div>
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <button id="loadMoreBtn" class="cta-button" style="display: none;">Több munkánk <span class="cta-arrow">→</span></button>
       </div>
     </div>
   </section>
+
+  <script>
+    // === Referenciák adatai — új hozzáadásához csak adj hozzá egy objektumot ===
+    var references = [
+      {
+        title: 'Crew Cutz Barbershop',
+        category: 'Webfejlesztés · UI/UX · Foglalási Rendszer',
+        desc: 'Napi 40+ automata foglalás asszisztencia nélkül.',
+        img: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop',
+        link: 'https://crewcutz.hu/'
+      },
+      {
+        title: 'SaaS Onboarding Automatizáció',
+        category: 'Adatbázis · Automatizáció · Rendszer',
+        desc: '0 emberi beavatkozású előfizetés menedzsment.',
+        img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop',
+        link: ''
+      },
+      {
+        title: 'E-commerce Webalkalmazás',
+        category: 'Webalkalmazás · Fizetés · Tartalomkezelés',
+        desc: '+45% konverziós ráta az első hónapban.',
+        img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2000&auto=format&fit=crop',
+        link: ''
+      }
+    ];
+
+    (function() {
+      var grid = document.getElementById('refGrid');
+      var btn = document.getElementById('loadMoreBtn');
+      var shown = 0;
+      var perPage = 3;
+
+      function createCard(ref) {
+        var wrap = document.createElement('div');
+        wrap.className = 'frost-card-wrap scroll-reveal';
+        wrap.setAttribute('data-glow', '');
+
+        var tag = ref.link ? 'a' : 'div';
+        var linkAttr = ref.link ? ' href="' + ref.link + '" target="_blank" rel="noopener"' : '';
+
+        wrap.innerHTML =
+          '<div class="glow-effect"><div class="glow"></div></div>' +
+          '<' + tag + linkAttr + ' class="frost-card">' +
+            '<img src="' + ref.img + '" alt="' + ref.title + '" loading="lazy" class="frost-backdrop">' +
+            '<div class="frost-content">' +
+              '<span class="frost-category">' + ref.category + '</span>' +
+              '<h3 class="frost-title">' + ref.title + '</h3>' +
+              '<p class="frost-desc">' + ref.desc + '</p>' +
+            '</div>' +
+          '</' + tag + '>';
+
+        return wrap;
+      }
+
+      function initCard(card) {
+        // Scroll reveal
+        setTimeout(function() { card.classList.add('visible'); }, 80);
+        // Glow effect
+        if (typeof window.initGlowCard === 'function') window.initGlowCard(card);
+      }
+
+      function loadMore() {
+        var end = Math.min(shown + perPage, references.length);
+        for (var i = shown; i < end; i++) {
+          var card = createCard(references[i]);
+          grid.appendChild(card);
+          initCard(card);
+        }
+        shown = end;
+        btn.style.display = shown < references.length ? '' : 'none';
+      }
+
+      // Első betöltés
+      loadMore();
+      btn.addEventListener('click', loadMore);
+    })();
+  </script>
 
   <!-- CTA Section -->
   <section class="cta-glow" id="cta">

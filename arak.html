@@ -120,7 +120,18 @@
             <div class="qf-row">
               <div class="qf-group">
                 <label class="qf-label">Telefon <span class="qf-req">*</span></label>
-                <input type="tel" name="phone" class="qf-input" required placeholder="pl. +36 30 123 4567">
+                <div class="qf-phone-wrap">
+                  <select name="phone_code" class="qf-input qf-phone-code">
+                    <option value="+36">🇭🇺 +36</option>
+                    <option value="+43">🇦🇹 +43</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+421">🇸🇰 +421</option>
+                    <option value="+40">🇷🇴 +40</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+1">🇺🇸 +1</option>
+                  </select>
+                  <input type="tel" name="phone" class="qf-input qf-phone-num" required placeholder="30 123 4567">
+                </div>
                 <span class="qf-error-msg"></span>
               </div>
               <div class="qf-group">
@@ -427,7 +438,7 @@
         const params = {
           name: name.value.trim(),
           email: email.value.trim(),
-          phone: phone.value.trim(),
+          phone: form.querySelector('[name="phone_code"]').value + ' ' + phone.value.trim(),
           website: form.querySelector('[name="current_website"]').value || '—',
           industry: industry,
           services: servicesArr.join(', '),
