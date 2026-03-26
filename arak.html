@@ -14,6 +14,8 @@
   <meta property="og:site_name" content="Cestive">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -121,7 +123,7 @@
               <div class="qf-group">
                 <label class="qf-label">Telefon <span class="qf-req">*</span></label>
                 <div class="qf-phone-wrap">
-                  <select name="phone_code" class="qf-input qf-phone-code">
+                  <select name="phone_code" class="qf-input qf-phone-code" id="phoneCode">
                     <option value="+36">🇭🇺 +36</option>
                     <option value="+43">🇦🇹 +43</option>
                     <option value="+49">🇩🇪 +49</option>
@@ -130,8 +132,9 @@
                     <option value="+44">🇬🇧 +44</option>
                     <option value="+1">🇺🇸 +1</option>
                   </select>
-                  <input type="tel" name="phone" class="qf-input qf-phone-num" required placeholder="30 123 4567">
+                  <input type="tel" name="phone" class="qf-input qf-phone-num" id="phoneInput" required placeholder="30 123 4567">
                 </div>
+                <span class="qf-hint" id="phoneHint">Csak a telefonszámot írd be (az országkód már ki van választva)</span>
                 <span class="qf-error-msg"></span>
               </div>
               <div class="qf-group">
@@ -277,7 +280,7 @@
             <!-- Submit -->
             <div class="qf-error" id="formError" hidden></div>
             <button type="submit" class="qf-submit" id="btnSubmit">Ajánlatot kérek <span class="cta-arrow">→</span></button>
-            <p class="qf-privacy">🔒 Az adataidat bizalmasan kezeljük és harmadik félnek nem adjuk ki.</p>
+            <p class="qf-privacy">🔒 Az adataidat bizalmasan kezeljük és harmadik félnek nem adjuk ki. Ez az oldal a Google reCAPTCHA védelemmel van ellátva, amelyre a Google <a href="https://policies.google.com/privacy" target="_blank" style="text-decoration: underline;">Adatvédelmi Szabályzata</a> és <a href="https://policies.google.com/terms" target="_blank" style="text-decoration: underline;">Felhasználási Feltételei</a> vonatkoznak.</p>
 
           </form>
 
@@ -314,6 +317,7 @@
     </div>
   </footer>
 
+  <script async src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY_HERE"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="main.js"></script>
   <script>
@@ -336,6 +340,33 @@
           if (industryOther.checked) industryOtherText.focus();
         });
       });
+
+      // === Phone number format helper ===
+      const phoneCode = document.getElementById('phoneCode');
+      const phoneInput = document.getElementById('phoneInput');
+      const phoneHint = document.getElementById('phoneHint');
+
+      const phoneFormats = {
+        '+36': { placeholder: '30 123 4567', hint: 'Csak a telefonszámot írd be (az országkód már ki van választva)' },
+        '+43': { placeholder: '664 1234567', hint: 'Enter phone number only (country code already selected)' },
+        '+49': { placeholder: '151 12345678', hint: 'Enter phone number only (country code already selected)' },
+        '+421': { placeholder: '912 123 456', hint: 'Enter phone number only (country code already selected)' },
+        '+40': { placeholder: '712 345 678', hint: 'Enter phone number only (country code already selected)' },
+        '+44': { placeholder: '7700 900123', hint: 'Enter phone number only (country code already selected)' },
+        '+1': { placeholder: '(555) 123-4567', hint: 'Enter phone number only (country code already selected)' }
+      };
+
+      function updatePhoneFormat() {
+        const selected = phoneCode.value;
+        const format = phoneFormats[selected];
+        if (format) {
+          phoneInput.placeholder = format.placeholder;
+          phoneHint.textContent = format.hint;
+        }
+      }
+
+      phoneCode.addEventListener('change', updatePhoneFormat);
+      updatePhoneFormat(); // Initialize on load
 
       // === Custom checkbox/radio click animation ===
       document.querySelectorAll('.qf-checkbox-label, .qf-radio-label').forEach(label => {
@@ -364,6 +395,18 @@
       form.querySelectorAll('.qf-input').forEach(input => {
         input.addEventListener('input', () => clearError(input));
       });
+
+      // === Safe grecaptcha.ready() wrapper ===
+      // Ensures grecaptcha.ready() works even if reCAPTCHA script hasn't loaded yet
+      if(typeof grecaptcha === 'undefined') {
+        grecaptcha = {
+          ready: function(cb) {
+            const c = '___grecaptcha_cfg';
+            window[c] = window[c] || {};
+            (window[c]['fns'] = window[c]['fns'] || []).push(cb);
+          }
+        };
+      }
 
       // === Submit handler ===
       form.addEventListener('submit', function(e) {
@@ -424,7 +467,7 @@
         // Collect
         formError.hidden = true;
         btnSubmit.disabled = true;
-        btnSubmit.textContent = 'Küldés...';
+        btnSubmit.textContent = 'Ellenőrzés...';
 
         const servicesArr = Array.from(checks).map(c => c.value);
         const hasWebsite = form.querySelector('[name="has_website"]:checked');
@@ -438,6 +481,7 @@
         const params = {
           name: name.value.trim(),
           email: email.value.trim(),
+          to_email: email.value.trim(),
           phone: form.querySelector('[name="phone_code"]').value + ' ' + phone.value.trim(),
           website: form.querySelector('[name="current_website"]').value || '—',
           industry: industry,
@@ -448,24 +492,43 @@
           source: sourceArr.length ? sourceArr.join(', ') : 'Nem válaszolt'
         };
 
-        // 1) Összefoglaló neked (kötelező) + 2) Visszaigazolás az ügyfélnek (opcionális)
-        emailjs.send('service_l1itukg', 'template_9wkzyl9', params)
-          .then(function() {
-            // Visszaigazolás — ha nem sikerül, nem gond
-            emailjs.send('service_l1itukg', 'template_visszaigazolas', params).catch(function() {});
-            form.style.opacity = '0';
-            form.style.transform = 'translateY(10px)';
-            setTimeout(function() {
-              form.style.display = 'none';
-              formSuccess.classList.add('visible');
-            }, 300);
-          })
-          .catch(function(err) {
-            formError.textContent = 'Hiba történt a küldés során. Kérjük próbáld újra, vagy írj a cestive.design@gmail.com címre.';
-            formError.hidden = false;
-            btnSubmit.disabled = false;
-            btnSubmit.innerHTML = 'Ajánlatot kérek <span class="cta-arrow">→</span>';
-          });
+        // Execute reCAPTCHA v3
+        grecaptcha.ready(function() {
+          grecaptcha.execute('YOUR_SITE_KEY_HERE', { action: 'submit_quote' })
+            .then(function(token) {
+              btnSubmit.textContent = 'Küldés...';
+              params.recaptcha_token = token;
+
+              // 1) Összefoglaló neked (kötelező) + 2) Visszaigazolás az ügyfélnek (opcionális)
+              emailjs.send('service_l1itukg', 'template_9wkzyl9', params)
+                .then(function() {
+                  // Visszaigazolás — ha nem sikerül, nem gond
+                  emailjs.send('service_l1itukg', 'template_visszaigazolas', params).catch(function(err) {
+                    console.error('Visszaigazolás küldése sikertelen:', err);
+                  });
+                  form.style.opacity = '0';
+                  form.style.transform = 'translateY(10px)';
+                  setTimeout(function() {
+                    form.style.display = 'none';
+                    formSuccess.classList.add('visible');
+                  }, 300);
+                })
+                .catch(function(err) {
+                  console.error('EmailJS hiba:', err);
+                  formError.textContent = 'Hiba történt a küldés során. Kérjük próbáld újra, vagy írj a cestive.design@gmail.com címre.';
+                  formError.hidden = false;
+                  btnSubmit.disabled = false;
+                  btnSubmit.innerHTML = 'Ajánlatot kérek <span class="cta-arrow">→</span>';
+                });
+            })
+            .catch(function(err) {
+              console.error('reCAPTCHA hiba:', err);
+              formError.textContent = 'Biztonsági ellenőrzés sikertelen. Kérjük frissítsd az oldalt és próbáld újra.';
+              formError.hidden = false;
+              btnSubmit.disabled = false;
+              btnSubmit.innerHTML = 'Ajánlatot kérek <span class="cta-arrow">→</span>';
+            });
+        });
       });
     })();
   </script>

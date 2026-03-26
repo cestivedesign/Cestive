@@ -287,10 +287,12 @@
       var canvas = document.getElementById('frameCanvas');
       if (!canvas) return;
       var ctx = canvas.getContext('2d', { alpha: false });
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
       var currentFrame = -1;
       var ticking = false;
       var drawDims = null;
-      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      var dpr = Math.min(window.devicePixelRatio || 1, 2.5);
       var loaderBar = document.getElementById('loaderBar');
       var loaderPercent = document.getElementById('loaderPercent');
       var heroSection = document.getElementById('hero');
@@ -375,7 +377,7 @@
       }
 
       function resizeCanvas() {
-        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        dpr = Math.min(window.devicePixelRatio || 1, 2.5);
         var w = window.innerWidth, h = window.innerHeight;
         canvas.width = w * dpr;
         canvas.height = h * dpr;
@@ -393,7 +395,13 @@
           ctx.fillStyle = BG_COLOR;
           ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
         }
-        ctx.drawImage(f, drawDims.dx, drawDims.dy, drawDims.dw, drawDims.dh);
+        ctx.drawImage(
+          f,
+          Math.round(drawDims.dx),
+          Math.round(drawDims.dy),
+          Math.round(drawDims.dw),
+          Math.round(drawDims.dh)
+        );
       }
 
       // Cache scrollable distance and hero offset

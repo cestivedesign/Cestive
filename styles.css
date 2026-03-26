@@ -714,6 +714,7 @@ body.loading .navbar {
 .scroll-cue {
   position: absolute;
   bottom: 2.5rem;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3531,4 +3532,9 @@ body.loading .navbar {
     flex-direction: column;
     align-items: center;
   }
+}
+
+/* Hide reCAPTCHA v3 badge (allowed if terms disclosed in privacy text) */
+.grecaptcha-badge {
+  visibility: hidden;
 }
