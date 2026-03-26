@@ -317,7 +317,7 @@
     </div>
   </footer>
 
-  <script async src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY_HERE"></script>
+  <script async src="https://www.google.com/recaptcha/api.js?render=6LdnqJksAAAAAI5Q9qK9z4M_wpnEkUiKPq4JJPvX"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="main.js"></script>
   <script>
@@ -494,7 +494,7 @@
 
         // Execute reCAPTCHA v3
         grecaptcha.ready(function() {
-          grecaptcha.execute('YOUR_SITE_KEY_HERE', { action: 'submit_quote' })
+          grecaptcha.execute('6LdnqJksAAAAAI5Q9qK9z4M_wpnEkUiKPq4JJPvX', { action: 'submit_quote' })
             .then(function(token) {
               btnSubmit.textContent = 'Küldés...';
               params.recaptcha_token = token;
