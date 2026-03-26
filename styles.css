@@ -711,46 +711,6 @@ body.loading .navbar {
   transform: translateX(4px);
 }
 
-.scroll-cue {
-  position: absolute;
-  bottom: 1.5rem;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.scroll-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #8ba8b8;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, #8ba8b8, transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-
-  0%,
-  100% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-
-  50% {
-    transform: scaleY(0.5);
-    opacity: 0.4;
-  }
-}
-
 /* ===== HERO TRANSITION ===== */
 .hero-transition {
   position: relative;
@@ -2638,10 +2598,6 @@ body.loading .navbar {
 
   .cta-title {
     font-size: clamp(1.6rem, 6vw, 2.2rem);
-  }
-
-  .scroll-cue {
-    bottom: 1.5rem;
   }
 
   .hero-scroll {
