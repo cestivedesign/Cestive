@@ -327,6 +327,28 @@
   <script src="main.js"></script>
   <script>
     (function() {
+      // === "Egyéb" industry toggle ===
+      // IMPORTANT: This runs FIRST, before EmailJS, to avoid dependency issues
+      const industryOther = document.getElementById('industryOther');
+      const industryOtherText = document.getElementById('industryOtherText');
+
+      if (industryOther && industryOtherText) {
+        function updateIndustryOtherState() {
+          industryOtherText.disabled = !industryOther.checked;
+          if (industryOther.checked) {
+            industryOtherText.focus();
+          }
+        }
+
+        document.querySelectorAll('input[name="industry"]').forEach(r => {
+          r.addEventListener('change', updateIndustryOtherState);
+          r.addEventListener('click', updateIndustryOtherState);
+        });
+
+        // Initialize state on page load
+        updateIndustryOtherState();
+      }
+
       // === Init EmailJS ===
       emailjs.init('lImh7Y3P4X0INk2f4');
 
@@ -334,25 +356,6 @@
       const btnSubmit = document.getElementById('btnSubmit');
       const formError = document.getElementById('formError');
       const formSuccess = document.getElementById('formSuccess');
-
-      // === "Egyéb" industry toggle ===
-      const industryOther = document.getElementById('industryOther');
-      const industryOtherText = document.getElementById('industryOtherText');
-
-      function updateIndustryOtherState() {
-        industryOtherText.disabled = !industryOther.checked;
-        if (industryOther.checked) {
-          industryOtherText.focus();
-        }
-      }
-
-      document.querySelectorAll('input[name="industry"]').forEach(r => {
-        r.addEventListener('change', updateIndustryOtherState);
-        r.addEventListener('click', updateIndustryOtherState);
-      });
-
-      // Initialize state on page load
-      updateIndustryOtherState();
 
       // === Phone number format helper ===
       const phoneCode = document.getElementById('phoneCode');
