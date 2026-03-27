@@ -337,12 +337,20 @@
       const industryOther = document.getElementById('industryOther');
       const industryOtherText = document.getElementById('industryOtherText');
 
+      function updateIndustryOtherState() {
+        industryOtherText.disabled = !industryOther.checked;
+        if (industryOther.checked) {
+          industryOtherText.focus();
+        }
+      }
+
       document.querySelectorAll('input[name="industry"]').forEach(r => {
-        r.addEventListener('change', () => {
-          industryOtherText.disabled = !industryOther.checked;
-          if (industryOther.checked) industryOtherText.focus();
-        });
+        r.addEventListener('change', updateIndustryOtherState);
+        r.addEventListener('click', updateIndustryOtherState);
       });
+
+      // Initialize state on page load
+      updateIndustryOtherState();
 
       // === Phone number format helper ===
       const phoneCode = document.getElementById('phoneCode');
