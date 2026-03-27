@@ -544,8 +544,8 @@
                   lastSubmitTime = Date.now();
 
                   // Visszaigazolás — ha nem sikerül, nem gond
-                  emailjs.send('service_l1itukg', 'template_visszaigazolas', params).catch(function() {
-                    // Security: Don't log sensitive error details
+                  emailjs.send('service_l1itukg', 'template_visszaigazolas', params).catch(function(err) {
+                    console.log('Visszaigazolás hiba (nem kritikus):', err);
                   });
                   form.style.opacity = '0';
                   form.style.transform = 'translateY(10px)';
@@ -554,16 +554,18 @@
                     formSuccess.classList.add('visible');
                   }, 300);
                 })
-                .catch(function() {
-                  // Security: Don't log sensitive error details
+                .catch(function(err) {
+                  // Debug: Show error details
+                  console.error('EmailJS fő küldés hiba:', err);
                   formError.textContent = 'Hiba történt a küldés során. Kérjük próbáld újra, vagy írj a cestive.design@gmail.com címre.';
                   formError.hidden = false;
                   btnSubmit.disabled = false;
                   btnSubmit.innerHTML = 'Ajánlatot kérek <span class="cta-arrow">→</span>';
                 });
             })
-            .catch(function() {
-              // Security: Don't log sensitive error details
+            .catch(function(err) {
+              // Debug: Show reCAPTCHA error
+              console.error('reCAPTCHA hiba:', err);
               formError.textContent = 'Biztonsági ellenőrzés sikertelen. Kérjük frissítsd az oldalt és próbáld újra.';
               formError.hidden = false;
               btnSubmit.disabled = false;
