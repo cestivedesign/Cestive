@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://api.emailjs.com https://www.google.com https://www.gstatic.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
   <title>Munkáink — Cestive</title>
   <meta name="description" content="Valódi vállalkozók, valódi eredmények. Nézd meg, hogyan segítettünk kisvállalkozásoknak időt és pénzt megtakarítani.">
@@ -122,19 +123,62 @@
         wrap.className = 'frost-card-wrap scroll-reveal';
         wrap.setAttribute('data-glow', '');
 
-        var tag = ref.link ? 'a' : 'div';
-        var linkAttr = ref.link ? ' href="' + ref.link + '" target="_blank" rel="noopener"' : '';
+        // Glow effect
+        var glowEffect = document.createElement('div');
+        glowEffect.className = 'glow-effect';
+        var glow = document.createElement('div');
+        glow.className = 'glow';
+        glowEffect.appendChild(glow);
 
-        wrap.innerHTML =
-          '<div class="glow-effect"><div class="glow"></div></div>' +
-          '<' + tag + linkAttr + ' class="frost-card">' +
-            '<img src="' + ref.img + '" alt="' + ref.title + '" loading="lazy" class="frost-backdrop">' +
-            '<div class="frost-content">' +
-              '<span class="frost-category">' + ref.category + '</span>' +
-              '<h3 class="frost-title">' + ref.title + '</h3>' +
-              '<p class="frost-desc">' + ref.desc + '</p>' +
-            '</div>' +
-          '</' + tag + '>';
+        // Card container (a or div)
+        var card = document.createElement(ref.link ? 'a' : 'div');
+        card.className = 'frost-card';
+
+        // Only set href if link exists and is safe (http/https only)
+        if (ref.link) {
+          // Validate URL protocol (security: prevent javascript: URLs)
+          var isValidUrl = /^https?:\/\//i.test(ref.link);
+          if (isValidUrl) {
+            card.href = ref.link;
+            card.target = '_blank';
+            card.rel = 'noopener';
+          }
+        }
+
+        // Image
+        var img = document.createElement('img');
+        img.src = ref.img;
+        img.alt = ref.title;
+        img.loading = 'lazy';
+        img.className = 'frost-backdrop';
+
+        // Content wrapper
+        var content = document.createElement('div');
+        content.className = 'frost-content';
+
+        // Category
+        var category = document.createElement('span');
+        category.className = 'frost-category';
+        category.textContent = ref.category;
+
+        // Title
+        var title = document.createElement('h3');
+        title.className = 'frost-title';
+        title.textContent = ref.title;
+
+        // Description
+        var desc = document.createElement('p');
+        desc.className = 'frost-desc';
+        desc.textContent = ref.desc;
+
+        // Assemble
+        content.appendChild(category);
+        content.appendChild(title);
+        content.appendChild(desc);
+        card.appendChild(img);
+        card.appendChild(content);
+        wrap.appendChild(glowEffect);
+        wrap.appendChild(card);
 
         return wrap;
       }

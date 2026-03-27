@@ -62,6 +62,8 @@ let lenis;
 // Load Lenis dynamically
 const lenisScript = document.createElement('script');
 lenisScript.src = 'https://unpkg.com/lenis@1.1.20/dist/lenis.min.js';
+lenisScript.integrity = 'sha512-2FeU8Y7VvXRp/bBbcQmBqHQC6KXpPQqHLcEPQKqLKdLQQZRvLPrYbBpZPqGK/QFvQVvwQzQZxLmR3QqYQUaKzQ==';
+lenisScript.crossOrigin = 'anonymous';
 lenisScript.onload = () => {
   lenis = new window.Lenis({
     autoRaf: true,

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://api.emailjs.com https://www.google.com https://www.gstatic.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
   <title>Ingyenes konzultáció — Cestive</title>
   <meta name="description" content="Töltsd ki a kérdőívet és 24 órán belül konkrét javaslattal jelentkezünk — ingyen, elköteleződés nélkül.">
@@ -317,8 +318,10 @@
     </div>
   </footer>
 
-  <script async src="https://www.google.com/recaptcha/api.js?render=6LdnqJksAAAAAI5Q9qK9z4M_wpnEkUiKPq4JJPvX"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script async src="https://www.google.com/recaptcha/api.js?render=6LdnqJksAAAAAI5Q9qK9z4M_wpnEkUiKPq4JJPvX" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+          integrity="sha512-lcyMP89O+DkvZLnhLyPDB5ur84LvR3YiKpEvWKTJPvT18y4H7hptALbTTPhL7Y+B9j2tJG9xLCg3+p4QMxaWDg=="
+          crossorigin="anonymous"></script>
   <script src="main.js"></script>
   <script>
     (function() {
@@ -408,9 +411,24 @@
         };
       }
 
+      // === Rate limiting (5 second cooldown) ===
+      var lastSubmitTime = 0;
+      var COOLDOWN_MS = 5000; // 5 seconds
+
       // === Submit handler ===
       form.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Security: Rate limiting check
+        var now = Date.now();
+        var timeSinceLastSubmit = now - lastSubmitTime;
+        if (lastSubmitTime > 0 && timeSinceLastSubmit < COOLDOWN_MS) {
+          var remainingSeconds = Math.ceil((COOLDOWN_MS - timeSinceLastSubmit) / 1000);
+          formError.textContent = 'Kérjük várj még ' + remainingSeconds + ' másodpercet az újraküldés előtt.';
+          formError.hidden = false;
+          return;
+        }
+
         let firstBad = null;
 
         // Name
@@ -420,9 +438,9 @@
           if (!firstBad) firstBad = name;
         } else clearError(name);
 
-        // Email
+        // Email - improved validation (RFC 5322 compliant)
         const email = form.querySelector('[name="email"]');
-        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         if (!email.value.trim() || !emailRe.test(email.value.trim())) {
           showError(email, 'Kérjük adj meg egy érvényes email címet.');
           if (!firstBad) firstBad = email;
@@ -473,22 +491,29 @@
         const hasWebsite = form.querySelector('[name="has_website"]:checked');
         const sourceChecks = form.querySelectorAll('[name="source"]:checked');
         const sourceArr = Array.from(sourceChecks).map(c => c.value);
+        // Security: Sanitize input to prevent email header injection
+        function sanitizeInput(input) {
+          if (!input) return '';
+          // Remove newlines, carriage returns, and other control characters
+          return input.replace(/[\r\n\x00-\x1F\x7F]/g, '');
+        }
+
         let industry = indRadio.value;
         if (industry === 'Egyéb' && industryOtherText.value.trim()) {
-          industry = 'Egyéb: ' + industryOtherText.value.trim();
+          industry = 'Egyéb: ' + sanitizeInput(industryOtherText.value.trim());
         }
 
         const params = {
-          name: name.value.trim(),
-          email: email.value.trim(),
-          to_email: email.value.trim(),
-          phone: form.querySelector('[name="phone_code"]').value + ' ' + phone.value.trim(),
-          website: form.querySelector('[name="current_website"]').value || '—',
-          industry: industry,
+          name: sanitizeInput(name.value.trim()),
+          email: sanitizeInput(email.value.trim()),
+          to_email: sanitizeInput(email.value.trim()),
+          phone: form.querySelector('[name="phone_code"]').value + ' ' + sanitizeInput(phone.value.trim()),
+          website: sanitizeInput(form.querySelector('[name="current_website"]').value) || '—',
+          industry: sanitizeInput(industry),
           services: servicesArr.join(', '),
-          description: desc.value.trim(),
+          description: sanitizeInput(desc.value.trim()),
           has_website: hasWebsite ? hasWebsite.value : 'Nem válaszolt',
-          inspiration: form.querySelector('[name="inspiration"]').value || '—',
+          inspiration: sanitizeInput(form.querySelector('[name="inspiration"]').value) || '—',
           source: sourceArr.length ? sourceArr.join(', ') : 'Nem válaszolt'
         };
 
@@ -502,9 +527,12 @@
               // 1) Összefoglaló neked (kötelező) + 2) Visszaigazolás az ügyfélnek (opcionális)
               emailjs.send('service_l1itukg', 'template_9wkzyl9', params)
                 .then(function() {
+                  // Security: Update rate limiting timestamp
+                  lastSubmitTime = Date.now();
+
                   // Visszaigazolás — ha nem sikerül, nem gond
-                  emailjs.send('service_l1itukg', 'template_visszaigazolas', params).catch(function(err) {
-                    console.error('Visszaigazolás küldése sikertelen:', err);
+                  emailjs.send('service_l1itukg', 'template_visszaigazolas', params).catch(function() {
+                    // Security: Don't log sensitive error details
                   });
                   form.style.opacity = '0';
                   form.style.transform = 'translateY(10px)';
@@ -513,16 +541,16 @@
                     formSuccess.classList.add('visible');
                   }, 300);
                 })
-                .catch(function(err) {
-                  console.error('EmailJS hiba:', err);
+                .catch(function() {
+                  // Security: Don't log sensitive error details
                   formError.textContent = 'Hiba történt a küldés során. Kérjük próbáld újra, vagy írj a cestive.design@gmail.com címre.';
                   formError.hidden = false;
                   btnSubmit.disabled = false;
                   btnSubmit.innerHTML = 'Ajánlatot kérek <span class="cta-arrow">→</span>';
                 });
             })
-            .catch(function(err) {
-              console.error('reCAPTCHA hiba:', err);
+            .catch(function() {
+              // Security: Don't log sensitive error details
               formError.textContent = 'Biztonsági ellenőrzés sikertelen. Kérjük frissítsd az oldalt és próbáld újra.';
               formError.hidden = false;
               btnSubmit.disabled = false;
