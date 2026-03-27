@@ -227,12 +227,14 @@
                   <span class="qf-radio-dot"></span>
                   <span>Webshop / e-commerce</span>
                 </label>
-                <label class="qf-radio-label qf-radio-other">
-                  <input type="radio" name="industry" value="Egyéb" id="industryOther">
-                  <span class="qf-radio-dot"></span>
-                  <span>Egyéb:</span>
+                <div class="qf-radio-label qf-radio-other" style="display: flex; align-items: center; gap: 0.5rem;">
+                  <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="radio" name="industry" value="Egyéb" id="industryOther">
+                    <span class="qf-radio-dot"></span>
+                    <span>Egyéb:</span>
+                  </label>
                   <input type="text" class="qf-input qf-inline-input" id="industryOtherText" placeholder="Írd be..." disabled>
-                </label>
+                </div>
               </div>
               <span class="qf-error-msg" id="industryError"></span>
             </div>
