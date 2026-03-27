@@ -401,8 +401,8 @@
 
       // === Safe grecaptcha.ready() wrapper ===
       // Ensures grecaptcha.ready() works even if reCAPTCHA script hasn't loaded yet
-      if(typeof grecaptcha === 'undefined') {
-        grecaptcha = {
+      if(typeof window.grecaptcha === 'undefined') {
+        window.grecaptcha = {
           ready: function(cb) {
             const c = '___grecaptcha_cfg';
             window[c] = window[c] || {};
