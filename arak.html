@@ -531,27 +531,41 @@
         };
 
         // Execute reCAPTCHA v3
+        console.log('🔵 Submit megnyomva, reCAPTCHA indítása...');
         grecaptcha.ready(function() {
+          console.log('🔵 reCAPTCHA ready, token kérése...');
           grecaptcha.execute('6LdnqJksAAAAAI5Q9qK9z4M_wpnEkUiKPq4JJPvX', { action: 'submit_quote' })
             .then(function(token) {
+              console.log('✅ reCAPTCHA token megérkezett:', token.substring(0, 20) + '...');
               btnSubmit.textContent = 'Küldés...';
               params.recaptcha_token = token;
 
+              console.log('📧 EmailJS küldése (Cestive Cucc)...');
               // 1) Összefoglaló neked (kötelező) + 2) Visszaigazolás az ügyfélnek (opcionális)
               emailjs.send('service_l1itukg', 'template_9wkzyl9', params)
-                .then(function() {
+                .then(function(response) {
+                  console.log('✅ Cestive Cucc email elküldve:', response);
                   // Security: Update rate limiting timestamp
                   lastSubmitTime = Date.now();
 
+                  console.log('📧 Visszaigazolás küldése ügyfélnek (Contact Us)...');
                   // Visszaigazolás — ha nem sikerül, nem gond
                   emailjs.send('service_l1itukg', 'template_g0i4ttb', params).catch(function(err) {
-                    console.log('Visszaigazolás hiba (nem kritikus):', err);
+                    console.log('⚠️ Visszaigazolás hiba (nem kritikus):', err);
                   });
+
+                  console.log('🎉 Success UI megjelenítése...');
+                  console.log('Form elem:', form);
+                  console.log('Success elem:', formSuccess);
+
                   form.style.opacity = '0';
                   form.style.transform = 'translateY(10px)';
                   setTimeout(function() {
+                    console.log('⏱️ Timeout lefutott, form elrejtése és success mutatása...');
                     form.style.display = 'none';
                     formSuccess.classList.add('visible');
+                    console.log('✅ Success elem visible class hozzáadva');
+                    console.log('Success elem display:', window.getComputedStyle(formSuccess).display);
                   }, 300);
                 })
                 .catch(function(err) {
