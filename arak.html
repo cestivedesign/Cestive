@@ -283,7 +283,7 @@
             <!-- Submit -->
             <div class="qf-error" id="formError" hidden></div>
             <button type="submit" class="qf-submit" id="btnSubmit">Ajánlatot kérek <span class="cta-arrow">→</span></button>
-            <p class="qf-privacy">🔒 Az adataidat bizalmasan kezeljük és harmadik félnek nem adjuk ki. Ez az oldal a Google reCAPTCHA védelemmel van ellátva, amelyre a Google <a href="https://policies.google.com/privacy" target="_blank" style="text-decoration: underline;">Adatvédelmi Szabályzata</a> és <a href="https://policies.google.com/terms" target="_blank" style="text-decoration: underline;">Felhasználási Feltételei</a> vonatkoznak.</p>
+            <p class="qf-privacy">🔒 Az adataidat bizalmasan kezeljük és harmadik félnek nem adjuk ki.</p>
 
           </form>
 
@@ -320,7 +320,8 @@
     </div>
   </footer>
 
-  <script async src="https://www.google.com/recaptcha/api.js?render=6LdnqJksAAAAAI5Q9qK9z4M_wpnEkUiKPq4JJPvX" crossorigin="anonymous"></script>
+  <!-- reCAPTCHA temporarily disabled - will re-enable after site key setup -->
+  <!-- <script async src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY_HERE" crossorigin="anonymous"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" crossorigin="anonymous"></script>
   <script src="main.js"></script>
   <script>
@@ -410,17 +411,7 @@
         input.addEventListener('input', () => clearError(input));
       });
 
-      // === Safe grecaptcha.ready() wrapper ===
-      // Ensures grecaptcha.ready() works even if reCAPTCHA script hasn't loaded yet
-      if(typeof window.grecaptcha === 'undefined') {
-        window.grecaptcha = {
-          ready: function(cb) {
-            const c = '___grecaptcha_cfg';
-            window[c] = window[c] || {};
-            (window[c]['fns'] = window[c]['fns'] || []).push(cb);
-          }
-        };
-      }
+      // reCAPTCHA wrapper removed - re-enable when site key is configured
 
       // === Rate limiting (5 second cooldown) ===
       var lastSubmitTime = 0;
@@ -528,62 +519,45 @@
           source: sourceArr.length ? sourceArr.join(', ') : 'Nem válaszolt'
         };
 
-        // Execute reCAPTCHA v3
-        console.log('🔵 Submit megnyomva, reCAPTCHA indítása...');
-        grecaptcha.ready(function() {
-          console.log('🔵 reCAPTCHA ready, token kérése...');
-          grecaptcha.execute('6LdnqJksAAAAAI5Q9qK9z4M_wpnEkUiKPq4JJPvX', { action: 'submit_quote' })
-            .then(function(token) {
-              console.log('✅ reCAPTCHA token megérkezett:', token.substring(0, 20) + '...');
-              btnSubmit.textContent = 'Küldés...';
-              params.recaptcha_token = token;
+        // Send emails directly (reCAPTCHA temporarily disabled)
+        console.log('📧 Submit megnyomva, EmailJS küldése...');
+        btnSubmit.textContent = 'Küldés...';
 
-              console.log('📧 EmailJS küldése (Cestive Cucc)...');
-              // 1) Összefoglaló neked (kötelező) + 2) Visszaigazolás az ügyfélnek (opcionális)
-              emailjs.send('service_l1itukg', 'template_9wkzyl9', params)
-                .then(function(response) {
-                  console.log('✅ Cestive Cucc email elküldve:', response);
-                  // Security: Update rate limiting timestamp
-                  lastSubmitTime = Date.now();
+        // 1) Összefoglaló neked (kötelező) + 2) Visszaigazolás az ügyfélnek (opcionális)
+        emailjs.send('service_l1itukg', 'template_9wkzyl9', params)
+          .then(function(response) {
+            console.log('✅ Cestive Cucc email elküldve:', response);
+            // Security: Update rate limiting timestamp
+            lastSubmitTime = Date.now();
 
-                  console.log('📧 Visszaigazolás küldése ügyfélnek (Contact Us)...');
-                  // Visszaigazolás — ha nem sikerül, nem gond
-                  emailjs.send('service_l1itukg', 'template_g0i4ttb', params).catch(function(err) {
-                    console.log('⚠️ Visszaigazolás hiba (nem kritikus):', err);
-                  });
-
-                  console.log('🎉 Success UI megjelenítése...');
-                  console.log('Form elem:', form);
-                  console.log('Success elem:', formSuccess);
-
-                  form.style.opacity = '0';
-                  form.style.transform = 'translateY(10px)';
-                  setTimeout(function() {
-                    console.log('⏱️ Timeout lefutott, form elrejtése és success mutatása...');
-                    form.style.display = 'none';
-                    formSuccess.classList.add('visible');
-                    console.log('✅ Success elem visible class hozzáadva');
-                    console.log('Success elem display:', window.getComputedStyle(formSuccess).display);
-                  }, 300);
-                })
-                .catch(function(err) {
-                  // Debug: Show error details
-                  console.error('EmailJS fő küldés hiba:', err);
-                  formError.textContent = 'Hiba történt a küldés során. Kérjük próbáld újra, vagy írj a cestive.design@gmail.com címre.';
-                  formError.hidden = false;
-                  btnSubmit.disabled = false;
-                  btnSubmit.innerHTML = 'Ajánlatot kérek <span class="cta-arrow">→</span>';
-                });
-            })
-            .catch(function(err) {
-              // Debug: Show reCAPTCHA error
-              console.error('reCAPTCHA hiba:', err);
-              formError.textContent = 'Biztonsági ellenőrzés sikertelen. Kérjük frissítsd az oldalt és próbáld újra.';
-              formError.hidden = false;
-              btnSubmit.disabled = false;
-              btnSubmit.innerHTML = 'Ajánlatot kérek <span class="cta-arrow">→</span>';
+            console.log('📧 Visszaigazolás küldése ügyfélnek (Contact Us)...');
+            // Visszaigazolás — ha nem sikerül, nem gond
+            emailjs.send('service_l1itukg', 'template_g0i4ttb', params).catch(function(err) {
+              console.log('⚠️ Visszaigazolás hiba (nem kritikus):', err);
             });
-        });
+
+            console.log('🎉 Success UI megjelenítése...');
+            console.log('Form elem:', form);
+            console.log('Success elem:', formSuccess);
+
+            form.style.opacity = '0';
+            form.style.transform = 'translateY(10px)';
+            setTimeout(function() {
+              console.log('⏱️ Timeout lefutott, form elrejtése és success mutatása...');
+              form.style.display = 'none';
+              formSuccess.classList.add('visible');
+              console.log('✅ Success elem visible class hozzáadva');
+              console.log('Success elem display:', window.getComputedStyle(formSuccess).display);
+            }, 300);
+          })
+          .catch(function(err) {
+            // Debug: Show error details
+            console.error('EmailJS fő küldés hiba:', err);
+            formError.textContent = 'Hiba történt a küldés során. Kérjük próbáld újra, vagy írj a cestive.design@gmail.com címre.';
+            formError.hidden = false;
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = 'Ajánlatot kérek <span class="cta-arrow">→</span>';
+          });
       });
     })();
   </script>
