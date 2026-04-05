@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://api.emailjs.com https://www.google.com https://www.gstatic.com; frame-src https://www.google.com https://kertem-etterem.vercel.app https://mosoly-dental.vercel.app https://kulcs-ingatlan.vercel.app; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://api.emailjs.com https://www.google.com https://www.gstatic.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <script>if('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
   <title>Élő demo — Cestive</title>
   <meta name="description" content="Nézd meg élőben, amit építünk. Interaktív bemutató étterem, fogorvos és ingatlan projektekkel.">
@@ -79,13 +79,14 @@
     <div class="container">
       <span class="section-label scroll-reveal" style="background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 50%, transparent); border: none; color: #fff; padding: 0.4rem 4rem;">ÉLŐ DEMO</span>
       <h1 class="section-title scroll-reveal" style="color: #fff;">Nézd meg élőben, amit építünk.</h1>
-      <p class="page-hero-subtitle scroll-reveal" style="color: rgba(255,255,255,0.85);">Három iparág. Három weboldal. Három admin felület.</p>
+      <p class="page-hero-subtitle scroll-reveal" style="color: rgba(255,255,255,0.85);">Három iparág. Három weboldal. Három admin felület. Mindegyik tesztelhető.</p>
     </div>
   </section>
 
   <!-- ====== PROJECT 1: KERTEM ÉTTEREM ====== -->
   <section class="section demo-section">
     <div class="container">
+
       <div class="demo-project-header scroll-reveal">
         <span class="demo-number">01</span>
         <div class="demo-project-info">
@@ -102,61 +103,35 @@
         </div>
       </div>
 
-      <!-- Weboldal -->
+      <!-- Weboldal screenshot -->
       <div class="demo-card scroll-reveal">
-        <div class="demo-card-header">
-          <span class="demo-card-label">Weboldal</span>
-          <a href="https://kertem-etterem.vercel.app" target="_blank" rel="noopener" class="demo-card-link">Megnyitás élőben <span class="cta-arrow">&#8594;</span></a>
-        </div>
-        <div class="demo-device">
-          <div class="demo-device-bar">
-            <div class="demo-device-dots">
-              <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-            </div>
-            <span class="demo-device-url">kertem-etterem.vercel.app</span>
+        <span class="demo-card-label">Weboldal</span>
+        <a href="https://kertem-etterem.vercel.app" target="_blank" rel="noopener" class="demo-card-img-wrap">
+          <img src="assets/demo/kertem-web.png" alt="Kertem Étterem weboldal" class="demo-card-img" loading="lazy">
+          <div class="demo-card-overlay">
+            <span class="demo-card-overlay-text">Nézd meg élőben <span class="cta-arrow">&#8594;</span></span>
           </div>
-          <div class="demo-frame-wrap" data-src="https://kertem-etterem.vercel.app">
-            <div class="demo-frame-placeholder">
-              <div class="demo-frame-loader"></div>
-              <span>Kattints a betöltéshez</span>
-            </div>
-            <button class="demo-frame-load-btn" aria-label="Weboldal betöltése">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-        </div>
+        </a>
       </div>
 
-      <!-- Admin -->
+      <!-- Admin screenshot -->
       <div class="demo-card scroll-reveal">
-        <div class="demo-card-header">
-          <span class="demo-card-label">Admin felület</span>
-          <a href="https://kertem-etterem.vercel.app/admin.html" target="_blank" rel="noopener" class="demo-card-link">Megnyitás élőben <span class="cta-arrow">&#8594;</span></a>
-        </div>
-        <div class="demo-device">
-          <div class="demo-device-bar">
-            <div class="demo-device-dots">
-              <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-            </div>
-            <span class="demo-device-url">kertem-etterem.vercel.app/admin</span>
+        <span class="demo-card-label">Nézd meg, hogy néz ki egy admin felület</span>
+        <a href="https://kertem-etterem.vercel.app/admin.html" target="_blank" rel="noopener" class="demo-card-img-wrap">
+          <img src="assets/demo/kertem-admin.png" alt="Kertem Étterem admin felület" class="demo-card-img" loading="lazy">
+          <div class="demo-card-overlay">
+            <span class="demo-card-overlay-text">Nézd meg élőben <span class="cta-arrow">&#8594;</span></span>
           </div>
-          <div class="demo-frame-wrap" data-src="https://kertem-etterem.vercel.app/admin.html">
-            <div class="demo-frame-placeholder">
-              <div class="demo-frame-loader"></div>
-              <span>Kattints a betöltéshez</span>
-            </div>
-            <button class="demo-frame-load-btn" aria-label="Admin betöltése">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-        </div>
+        </a>
       </div>
+
     </div>
   </section>
 
   <!-- ====== PROJECT 2: MOSOLY DENTAL ====== -->
   <section class="section demo-section">
     <div class="container">
+
       <div class="demo-project-header scroll-reveal">
         <span class="demo-number">02</span>
         <div class="demo-project-info">
@@ -172,61 +147,35 @@
         </div>
       </div>
 
-      <!-- Weboldal -->
+      <!-- Weboldal screenshot -->
       <div class="demo-card scroll-reveal">
-        <div class="demo-card-header">
-          <span class="demo-card-label">Weboldal</span>
-          <a href="https://mosoly-dental.vercel.app" target="_blank" rel="noopener" class="demo-card-link">Megnyitás élőben <span class="cta-arrow">&#8594;</span></a>
-        </div>
-        <div class="demo-device">
-          <div class="demo-device-bar">
-            <div class="demo-device-dots">
-              <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-            </div>
-            <span class="demo-device-url">mosoly-dental.vercel.app</span>
+        <span class="demo-card-label">Weboldal</span>
+        <a href="https://mosoly-dental.vercel.app" target="_blank" rel="noopener" class="demo-card-img-wrap">
+          <img src="assets/demo/mosoly-web.png" alt="Mosoly Dental weboldal" class="demo-card-img" loading="lazy">
+          <div class="demo-card-overlay">
+            <span class="demo-card-overlay-text">Nézd meg élőben <span class="cta-arrow">&#8594;</span></span>
           </div>
-          <div class="demo-frame-wrap" data-src="https://mosoly-dental.vercel.app">
-            <div class="demo-frame-placeholder">
-              <div class="demo-frame-loader"></div>
-              <span>Kattints a betöltéshez</span>
-            </div>
-            <button class="demo-frame-load-btn" aria-label="Weboldal betöltése">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-        </div>
+        </a>
       </div>
 
-      <!-- Admin -->
+      <!-- Admin screenshot -->
       <div class="demo-card scroll-reveal">
-        <div class="demo-card-header">
-          <span class="demo-card-label">Admin felület</span>
-          <a href="https://mosoly-dental.vercel.app/admin.html" target="_blank" rel="noopener" class="demo-card-link">Megnyitás élőben <span class="cta-arrow">&#8594;</span></a>
-        </div>
-        <div class="demo-device">
-          <div class="demo-device-bar">
-            <div class="demo-device-dots">
-              <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-            </div>
-            <span class="demo-device-url">mosoly-dental.vercel.app/admin</span>
+        <span class="demo-card-label">Nézd meg, hogy néz ki egy admin felület</span>
+        <a href="https://mosoly-dental.vercel.app/admin.html" target="_blank" rel="noopener" class="demo-card-img-wrap">
+          <img src="assets/demo/mosoly-admin.png" alt="Mosoly Dental admin felület" class="demo-card-img" loading="lazy">
+          <div class="demo-card-overlay">
+            <span class="demo-card-overlay-text">Nézd meg élőben <span class="cta-arrow">&#8594;</span></span>
           </div>
-          <div class="demo-frame-wrap" data-src="https://mosoly-dental.vercel.app/admin.html">
-            <div class="demo-frame-placeholder">
-              <div class="demo-frame-loader"></div>
-              <span>Kattints a betöltéshez</span>
-            </div>
-            <button class="demo-frame-load-btn" aria-label="Admin betöltése">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-        </div>
+        </a>
       </div>
+
     </div>
   </section>
 
   <!-- ====== PROJECT 3: KULCS INGATLAN ====== -->
   <section class="section demo-section">
     <div class="container">
+
       <div class="demo-project-header scroll-reveal">
         <span class="demo-number">03</span>
         <div class="demo-project-info">
@@ -242,55 +191,28 @@
         </div>
       </div>
 
-      <!-- Weboldal -->
+      <!-- Weboldal screenshot -->
       <div class="demo-card scroll-reveal">
-        <div class="demo-card-header">
-          <span class="demo-card-label">Weboldal</span>
-          <a href="https://kulcs-ingatlan.vercel.app" target="_blank" rel="noopener" class="demo-card-link">Megnyitás élőben <span class="cta-arrow">&#8594;</span></a>
-        </div>
-        <div class="demo-device">
-          <div class="demo-device-bar">
-            <div class="demo-device-dots">
-              <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-            </div>
-            <span class="demo-device-url">kulcs-ingatlan.vercel.app</span>
+        <span class="demo-card-label">Weboldal</span>
+        <a href="https://kulcs-ingatlan.vercel.app" target="_blank" rel="noopener" class="demo-card-img-wrap">
+          <img src="assets/demo/kulcs-web.png" alt="Kulcs Ingatlan weboldal" class="demo-card-img" loading="lazy">
+          <div class="demo-card-overlay">
+            <span class="demo-card-overlay-text">Nézd meg élőben <span class="cta-arrow">&#8594;</span></span>
           </div>
-          <div class="demo-frame-wrap" data-src="https://kulcs-ingatlan.vercel.app">
-            <div class="demo-frame-placeholder">
-              <div class="demo-frame-loader"></div>
-              <span>Kattints a betöltéshez</span>
-            </div>
-            <button class="demo-frame-load-btn" aria-label="Weboldal betöltése">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-        </div>
+        </a>
       </div>
 
-      <!-- Keresés -->
+      <!-- Keresés screenshot -->
       <div class="demo-card scroll-reveal">
-        <div class="demo-card-header">
-          <span class="demo-card-label">Keresési felület</span>
-          <a href="https://kulcs-ingatlan.vercel.app/kereses.html" target="_blank" rel="noopener" class="demo-card-link">Megnyitás élőben <span class="cta-arrow">&#8594;</span></a>
-        </div>
-        <div class="demo-device">
-          <div class="demo-device-bar">
-            <div class="demo-device-dots">
-              <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-            </div>
-            <span class="demo-device-url">kulcs-ingatlan.vercel.app/kereses</span>
+        <span class="demo-card-label">Nézd meg, hogy néz ki egy admin felület</span>
+        <a href="https://kulcs-ingatlan.vercel.app/kereses.html" target="_blank" rel="noopener" class="demo-card-img-wrap">
+          <img src="assets/demo/kulcs-kereses.png" alt="Kulcs Ingatlan keresési felület" class="demo-card-img" loading="lazy">
+          <div class="demo-card-overlay">
+            <span class="demo-card-overlay-text">Nézd meg élőben <span class="cta-arrow">&#8594;</span></span>
           </div>
-          <div class="demo-frame-wrap" data-src="https://kulcs-ingatlan.vercel.app/kereses.html">
-            <div class="demo-frame-placeholder">
-              <div class="demo-frame-loader"></div>
-              <span>Kattints a betöltéshez</span>
-            </div>
-            <button class="demo-frame-load-btn" aria-label="Kereső betöltése">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-        </div>
+        </a>
       </div>
+
     </div>
   </section>
 
@@ -328,34 +250,5 @@
   </footer>
 
   <script src="main.js"></script>
-  <script>
-    (function() {
-      // Load iframe on play button click
-      document.querySelectorAll('.demo-frame-load-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var wrap = btn.closest('.demo-frame-wrap');
-          var src = wrap.dataset.src;
-          if (!src || wrap.querySelector('iframe')) return;
-
-          // Show loader
-          var placeholder = wrap.querySelector('.demo-frame-placeholder');
-          placeholder.querySelector('span').textContent = 'Betöltés...';
-          placeholder.querySelector('.demo-frame-loader').style.display = 'block';
-          btn.style.display = 'none';
-
-          // Create iframe
-          var iframe = document.createElement('iframe');
-          iframe.src = src;
-          iframe.setAttribute('loading', 'lazy');
-          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope');
-          iframe.addEventListener('load', function() {
-            placeholder.style.opacity = '0';
-            setTimeout(function() { placeholder.style.display = 'none'; }, 500);
-          });
-          wrap.insertBefore(iframe, wrap.firstChild);
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
