@@ -373,9 +373,6 @@
 
   </div><!-- /demo-viewport -->
 
-  <!-- Spacer to create scroll room -->
-  <div class="demo-spacer"></div>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
@@ -399,16 +396,16 @@
   <script>
     (function() {
       // === SCROLL-DRIVEN PRESENTATION ENGINE ===
+      var viewport = document.querySelector('.demo-viewport');
       var track = document.querySelector('.demo-track');
       var slides = document.querySelectorAll('.demo-slide');
-      var spacer = document.querySelector('.demo-spacer');
       var dots = document.querySelectorAll('.demo-progress-dot');
       var counterCurrent = document.querySelector('.demo-counter-current');
       var totalSlides = slides.length;
       var currentSlide = 0;
 
-      // Set spacer height based on number of slides
-      spacer.style.height = (totalSlides * 100) + 'vh';
+      // Set viewport height to create scroll room (each slide = 100vh of scroll)
+      viewport.style.height = (totalSlides * 100) + 'vh';
 
       function activateSlide(index) {
         if (index === currentSlide) return;
@@ -442,9 +439,12 @@
 
       function updatePresentation() {
         var scrollY = window.scrollY;
-        var viewportTop = track.parentElement.offsetTop;
-        var scrollRange = spacer.offsetHeight - window.innerHeight;
-        var progress = Math.max(0, Math.min(1, (scrollY - viewportTop) / scrollRange));
+        var vpTop = viewport.offsetTop;
+        var vpHeight = viewport.offsetHeight;
+        var scrollRange = vpHeight - window.innerHeight;
+        if (scrollRange <= 0) return;
+
+        var progress = Math.max(0, Math.min(1, (scrollY - vpTop) / scrollRange));
         var slideIndex = Math.min(totalSlides - 1, Math.floor(progress * totalSlides));
 
         activateSlide(slideIndex);
@@ -466,9 +466,9 @@
       dots.forEach(function(dot) {
         dot.addEventListener('click', function() {
           var targetSlide = parseInt(dot.dataset.goto);
-          var viewportTop = track.parentElement.offsetTop;
-          var scrollRange = spacer.offsetHeight - window.innerHeight;
-          var targetScroll = viewportTop + (targetSlide / totalSlides) * scrollRange;
+          var vpTop = viewport.offsetTop;
+          var scrollRange = viewport.offsetHeight - window.innerHeight;
+          var targetScroll = vpTop + (targetSlide / totalSlides) * scrollRange;
           window.scrollTo({ top: targetScroll, behavior: 'smooth' });
         });
       });
