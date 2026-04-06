@@ -430,6 +430,46 @@ body.loading .navbar {
   color: #143642;
 }
 
+/* Highlighted "Élő demo" nav link with live dot */
+.nav-link-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-link-demo::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+  animation: navDemoPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes navDemoPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+.mobile-link-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-link-demo::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+  animation: navDemoPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
 .nav-cta {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
