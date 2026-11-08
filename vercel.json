@@ -11,6 +11,9 @@
     { "source": "/adatvedelem", "destination": "/adatvédelem.html" },
     { "source": "/aszf", "destination": "/aszf.html" },
     { "source": "/koszonjuk", "destination": "/koszonjuk.html" },
-    { "source": "/404", "destination": "/404.html" }
+    { "source": "/404", "destination": "/404.html" },
+    { "source": "/projektek", "destination": "https://cestive-os.vercel.app/projektek" },
+    { "source": "/projektek/:path*", "destination": "https://cestive-os.vercel.app/projektek/:path*" },
+    { "source": "/_next/:path*", "destination": "https://cestive-os.vercel.app/_next/:path*" }
   ]
 }
