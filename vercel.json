@@ -1,19 +1,70 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "https://cestive-os.vercel.app/command",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "https://cestive-os.vercel.app/:path*",
+      "permanent": false
+    }
+  ],
   "rewrites": [
-    { "source": "/szolgaltatasok", "destination": "/szolgaltatasok.html" },
-    { "source": "/referenciak", "destination": "/referenciak.html" },
-    { "source": "/rolunk", "destination": "/rolunk.html" },
-    { "source": "/arak", "destination": "/arak.html" },
-    { "source": "/impresszum", "destination": "/impresszum.html" },
-    { "source": "/adatvédelem", "destination": "/adatvédelem.html" },
-    { "source": "/adatvedelem", "destination": "/adatvédelem.html" },
-    { "source": "/aszf", "destination": "/aszf.html" },
-    { "source": "/koszonjuk", "destination": "/koszonjuk.html" },
-    { "source": "/404", "destination": "/404.html" },
-    { "source": "/projektek", "destination": "https://cestive-os.vercel.app/projektek" },
-    { "source": "/projektek/:path*", "destination": "https://cestive-os.vercel.app/projektek/:path*" },
-    { "source": "/_next/:path*", "destination": "https://cestive-os.vercel.app/_next/:path*" }
+    {
+      "source": "/szolgaltatasok",
+      "destination": "/szolgaltatasok.html"
+    },
+    {
+      "source": "/referenciak",
+      "destination": "/referenciak.html"
+    },
+    {
+      "source": "/rolunk",
+      "destination": "/rolunk.html"
+    },
+    {
+      "source": "/arak",
+      "destination": "/arak.html"
+    },
+    {
+      "source": "/impresszum",
+      "destination": "/impresszum.html"
+    },
+    {
+      "source": "/adatvédelem",
+      "destination": "/adatvédelem.html"
+    },
+    {
+      "source": "/adatvedelem",
+      "destination": "/adatvédelem.html"
+    },
+    {
+      "source": "/aszf",
+      "destination": "/aszf.html"
+    },
+    {
+      "source": "/koszonjuk",
+      "destination": "/koszonjuk.html"
+    },
+    {
+      "source": "/404",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/projektek",
+      "destination": "https://cestive-os.vercel.app/projektek"
+    },
+    {
+      "source": "/projektek/:path*",
+      "destination": "https://cestive-os.vercel.app/projektek/:path*"
+    },
+    {
+      "source": "/_next/:path*",
+      "destination": "https://cestive-os.vercel.app/_next/:path*"
+    }
   ]
 }
